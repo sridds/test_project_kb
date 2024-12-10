@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     public int damageAmount = 25;
+    public float lifeTime = 5.0f;
 
     private Rigidbody2D rb;
 
@@ -10,6 +11,12 @@ public class PlayerBullet : MonoBehaviour
     {
         // get the rigidbody
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        // destroys the object after a certain amount of time
+        Destroy(gameObject, lifeTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
