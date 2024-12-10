@@ -14,7 +14,8 @@ public class SafeZoneHandler : MonoBehaviour
 
     private void GameStateUpdate(GameStateManager.GameState gameState)
     {
-        if(gameState == GameStateManager.GameState.QuestionPromptState)
+        // Only if we are in the safe state -- set the holder active
+        if(gameState == GameStateManager.GameState.SafeState)
         {
             holder.SetActive(true);
         }
@@ -22,22 +23,37 @@ public class SafeZoneHandler : MonoBehaviour
 
     public void EasySelected()
     {
+        // Tells the QuestionPrompt script to prompt a easy question to the player
         promptReference.PromptEasyQuestion();
 
+        // Hide the holder
         holder.SetActive(false);
+
+        // Enter the question prompt state
+        GameStateManager.Instance.UpdateState(GameStateManager.GameState.QuestionPromptState);
     }
 
     public void MediumSelected()
     {
+        // Tells the QuestionPrompt script to prompt a medium question to the player
         promptReference.PromptMediumQuestion();
 
+        // Hide the holder
         holder.SetActive(false);
+
+        // Enter the question prompt state
+        GameStateManager.Instance.UpdateState(GameStateManager.GameState.QuestionPromptState);
     }
 
     public void HardSelected()
     {
+        // Tells the QuestionPrompt script to prompt a hard question to the player
         promptReference.PromptHardQuestion();
 
+        // Hide the holder
         holder.SetActive(false);
+
+        // Enter the question prompt state
+        GameStateManager.Instance.UpdateState(GameStateManager.GameState.QuestionPromptState);
     }
 }

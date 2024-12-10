@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
@@ -9,9 +8,11 @@ public class GameStateManager : MonoBehaviour
 
     public enum GameState
     {
-        CorrectState,
-        QuestionPromptState,
-        IncorrectState,
+        RegularState, // The state entered at the very beginning of the game
+        CorrectState, // The state entered when the player gets an answer correct
+        SafeState, // The state entered when no enemies can spawn and the player is selecting something
+        QuestionPromptState, // The state entered when the player is prompted a question
+        IncorrectState, // The state entered when the player answers an incorrect question
         ExitableState,
         LoseState
     }
@@ -20,11 +21,11 @@ public class GameStateManager : MonoBehaviour
     private GameState lastGameState;
     public GameState gameState = GameState.CorrectState;
 
+    // Private fields
     private int score;
-    private float questionTimer;
 
-    // Public variables
-    public float questionPromptThreshold = 2.0f;
+    // public values
+    public int scoreWinThreshold = 10000;
 
     // Events
     public delegate void GameStateChanged(GameState newState);
@@ -33,13 +34,25 @@ public class GameStateManager : MonoBehaviour
     public delegate void PointsAdded(int newPointTotal);
     public PointsAdded OnPointsAdded;
 
+    public QuestionPrompt.Question lastQuestion;
+
     private void Awake()
     {
         Instance = this;
     }
 
+    /// <summary>
+    /// Updates the current game state and calls out an event to any script that is listening to it.
+    /// </summary>
+    /// <param name="gameState"></param>
     public void UpdateState(GameState gameState)
     {
+        // The reason why we do this is because if we are already in the exit state we don't want anything to change that
+        if(this.gameState == GameState.ExitableState)
+        {
+            return;
+        }
+
         OnGameStateChanged?.Invoke(gameState);
 
         this.gameState = gameState;
@@ -47,69 +60,18 @@ public class GameStateManager : MonoBehaviour
 
     private void Update()
     {
-        if (gameState == GameState.CorrectState)
+        // check if the score has exceeded the win threshold and we aren't already in the exitable state
+        if (score >= scoreWinThreshold && gameState != GameState.ExitableState)
         {
-            HandleCorrectState();
-        }
-        if (gameState == GameState.QuestionPromptState)
-        {
-            HandleQuestionState();
-        }
-        if (gameState == GameState.IncorrectState)
-        {
-            HandleIncorrectState();
-        }
-        if (gameState == GameState.ExitableState)
-        {
-            HandleExitableState();
-        }
-        if (gameState == GameState.LoseState)
-        {
-            HandleLoseState();
+            // Update the state to exitable now that we know we've won
+            UpdateState(GameState.ExitableState);
         }
     }
 
-    private void HandleQuestionState()
-    {
-        questionTimer = 0.0f;
-    }
-
-    private void HandleIncorrectState()
-    {
-        lastGameState = gameState;
-
-        questionTimer += Time.deltaTime;
-
-        if (questionTimer > questionPromptThreshold)
-        {
-            UpdateState(GameState.QuestionPromptState);
-            questionTimer = 0.0f;
-        }
-    }
-
-    private void HandleCorrectState()
-    {
-        lastGameState = gameState;
-
-        questionTimer += Time.deltaTime;
-
-        if(questionTimer > questionPromptThreshold)
-        {
-            UpdateState(GameState.QuestionPromptState);
-            questionTimer = 0.0f;
-        }
-    }
-
-    private void HandleExitableState()
-    {
-        lastGameState = gameState;
-    }
-
-    private void HandleLoseState()
-    {
-        lastGameState = gameState;
-    }
-
+    /// <summary>
+    /// Calls the score to be increased
+    /// </summary>
+    /// <param name="points"></param>
     public void IncreaseScore(int points)
     {
         score += points;

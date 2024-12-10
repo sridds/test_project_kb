@@ -3,6 +3,13 @@ using TMPro;
 using System.Collections.Generic;
 using System.Linq;
 
+public enum QuestionDifficulty
+{
+    Easy,
+    Medium,
+    Hard
+}
+
 public class QuestionPrompt : MonoBehaviour
 {
     // this is a container of all the question stuff
@@ -14,19 +21,21 @@ public class QuestionPrompt : MonoBehaviour
         public string IncorrectOptionTwo;
         public string IncorrectOptionThree;
         public string CorrectOption;
+
+        public QuestionDifficulty Difficulty;
     }
 
     // Question data
-    public Question[] easyQuestions;
-    public Question[] mediumQuestions;
-    public Question[] hardQuestions;
+    public List<Question> easyQuestions = new List<Question>();
+    public List<Question> mediumQuestions = new List<Question>();
+    public List<Question> hardQuestions = new List<Question>();
 
     // Option text references
     public GameObject holder;
-
     public TextMeshPro questionPromptText;
-
     public Option[] options;
+
+    Question currentSelectedQuestion;
 
     private void Start()
     {
@@ -35,17 +44,41 @@ public class QuestionPrompt : MonoBehaviour
 
     public void PromptEasyQuestion()
     {
-        Setup(easyQuestions[Random.Range(0, easyQuestions.Length - 1)]);
+        // Setup a random easy question
+        if(easyQuestions.Count == 0)
+        {
+            // Ensures the compiler doesn't throw an error for having no more questions. 
+            Debug.Log("Failed to show question, no more left!");
+            return;
+        }
+
+        Setup(easyQuestions[Random.Range(0, easyQuestions.Count)]);
     }
 
     public void PromptMediumQuestion()
     {
-        Setup(mediumQuestions[Random.Range(0, mediumQuestions.Length - 1)]);
+        // Setup a random medium question
+        if (mediumQuestions.Count == 0)
+        {
+            // Ensures the compiler doesn't throw an error for having no more questions. 
+            Debug.Log("Failed to show question, no more left!");
+            return;
+        }
+
+        Setup(mediumQuestions[Random.Range(0, mediumQuestions.Count)]);
     }
 
     public void PromptHardQuestion()
     {
-        Setup(hardQuestions[Random.Range(0, hardQuestions.Length - 1)]);
+        // Setup a random hard quesiton
+        if (hardQuestions.Count == 0)
+        {
+            // Ensures the compiler doesn't throw an error for having no more questions. 
+            Debug.Log("Failed to show question, no more left!");
+            return;
+        }
+
+        Setup(hardQuestions[Random.Range(0, hardQuestions.Count)]);
     }
 
     public void Setup(Question question)
@@ -80,6 +113,8 @@ public class QuestionPrompt : MonoBehaviour
             // Setup the other options as non correct answers
             options[i].SetupOption(list[i], false);
         }
+
+        GameStateManager.Instance.lastQuestion = question;
     }
 
     /// <summary>
@@ -94,7 +129,32 @@ public class QuestionPrompt : MonoBehaviour
             GameStateManager.Instance.UpdateState(GameStateManager.GameState.CorrectState);
             holder.SetActive(false);
 
-            GameStateManager.Instance.IncreaseScore(100);
+            if (GameStateManager.Instance.lastQuestion.Difficulty == QuestionDifficulty.Easy)
+            {
+                /// HERE -- Consider replacing with your own score script for now. I just made a function in GameStateManager for now.
+                GameStateManager.Instance.IncreaseScore(1000);
+
+                // Ensure the question never appears again
+                easyQuestions.Remove(currentSelectedQuestion);
+            }
+
+            else if (GameStateManager.Instance.lastQuestion.Difficulty == QuestionDifficulty.Medium)
+            {
+                /// HERE -- Consider replacing with your own score script for now. I just made a function in GameStateManager for now.
+                GameStateManager.Instance.IncreaseScore(2000);
+
+                // Ensure the question never appears again
+                mediumQuestions.Remove(currentSelectedQuestion);
+            }
+
+            else if (GameStateManager.Instance.lastQuestion.Difficulty == QuestionDifficulty.Hard)
+            {
+                /// HERE -- Consider replacing with your own score script for now. I just made a function in GameStateManager for now.
+                GameStateManager.Instance.IncreaseScore(4000);
+
+                // Ensure the question never appears again
+                hardQuestions.Remove(currentSelectedQuestion);
+            }
         }
 
         else
@@ -103,5 +163,8 @@ public class QuestionPrompt : MonoBehaviour
             GameStateManager.Instance.UpdateState(GameStateManager.GameState.IncorrectState);
             holder.SetActive(false);
         }
+
+        // Ensure current question is no longer set to anything
+        currentSelectedQuestion = null;
     }
 }
