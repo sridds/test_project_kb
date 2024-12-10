@@ -31,22 +31,6 @@ public class QuestionPrompt : MonoBehaviour
     private void Start()
     {
         holder.SetActive(false);
-
-        // Subscribing to the game state change event
-        GameStateManager.Instance.OnGameStateChanged += SetupQuestionState;
-    }
-
-    private void SetupQuestionState(GameStateManager.GameState state)
-    {
-        if (state != GameStateManager.GameState.QuestionPromptState) return;
-
-        int random = Random.Range(0, 3);
-
-        // This is currently random but you can make this whateva you want
-        if (random == 0) PromptEasyQuestion();
-        else if(random == 1) PromptMediumQuestion();
-        else if(random == 2) PromptHardQuestion();
-        //KBC TODO: Make this check with the Game State Manager for individual difficulty states, based on the difficulty selected by player
     }
 
     public void PromptEasyQuestion()

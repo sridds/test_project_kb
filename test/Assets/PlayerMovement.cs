@@ -26,6 +26,6 @@ public class PlayerMovement : MonoBehaviour
         movement = movement.normalized * playerSpeed;
 
         // velocity is set to movement
-        rb.velocity = movement;
+        rb.linearVelocity = movement;
     }
 }

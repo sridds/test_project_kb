@@ -47,11 +47,26 @@ public class GameStateManager : MonoBehaviour
 
     private void Update()
     {
-        if (gameState == GameState.CorrectState) HandleCorrectState();
-        if (gameState == GameState.QuestionPromptState) HandleQuestionState();
-        if (gameState == GameState.IncorrectState) HandleIncorrectState();
-        if (gameState == GameState.ExitableState) HandleExitableState();
-        if (gameState == GameState.LoseState) HandleLoseState();
+        if (gameState == GameState.CorrectState)
+        {
+            HandleCorrectState();
+        }
+        if (gameState == GameState.QuestionPromptState)
+        {
+            HandleQuestionState();
+        }
+        if (gameState == GameState.IncorrectState)
+        {
+            HandleIncorrectState();
+        }
+        if (gameState == GameState.ExitableState)
+        {
+            HandleExitableState();
+        }
+        if (gameState == GameState.LoseState)
+        {
+            HandleLoseState();
+        }
     }
 
     private void HandleQuestionState()
