@@ -747,6 +747,7 @@ MonoBehaviour:
   - {fileID: 838040607}
   defaultXValue: -9.5
   forwardXValue: -7.5
+  _performanceHitmarkerPrefab: {fileID: 1700543811061834232, guid: e6df8cc3723b94bd59ed460b3f5607d7, type: 3}
 --- !u!1 &838040604
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,6 +796,7 @@ MonoBehaviour:
   stats:
     Name: Chef
     MaxHP: 0
+    BaseAttack: 0
   _myAttacks: []
   _turnOrderPortrait: {fileID: 8020143640844766479, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
   _unitRenderer: {fileID: 1008280945}
@@ -846,6 +848,7 @@ MonoBehaviour:
   stats:
     Name: Hank
     MaxHP: 50
+    BaseAttack: 0
   _myAttacks:
   - {fileID: 2239378836579480902, guid: 26fb51b7b127d4e369df409d974cc684, type: 3}
   _turnOrderPortrait: {fileID: -5962389079421231736, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
@@ -1311,6 +1314,7 @@ MonoBehaviour:
   stats:
     Name: Veal
     MaxHP: 50
+    BaseAttack: 0
   _myAttacks: []
   _turnOrderPortrait: {fileID: -6251682230944352461, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
   _unitRenderer: {fileID: 1033670932}
@@ -1615,6 +1619,7 @@ MonoBehaviour:
   stats:
     Name: Saturn
     MaxHP: 50
+    BaseAttack: 0
   _myAttacks: []
   _turnOrderPortrait: {fileID: -1259408508766424310, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
   _unitRenderer: {fileID: 526970955}

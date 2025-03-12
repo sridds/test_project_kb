@@ -19,6 +19,7 @@ public class BattleUIHandler : MonoBehaviour
     private StatCardUI _statCardUI;
 
     private List<Image> turnOrderImages = new List<Image>();
+    private List<StatCardUI> statCards = new List<StatCardUI>();
 
     void Start()
     {
@@ -26,11 +27,27 @@ public class BattleUIHandler : MonoBehaviour
 
         BattleHandler.Instance.OnTurnOrderUpdated += TurnOrderUpdated;
         BattleHandler.Instance.OnBattleStart += SetupBattleUI;
+        BattleHandler.Instance.OnBattleStateUpdated += BattleStateUpdated;
     }
 
     private void SetupBattleUI()
     {
         SetupStatCards();
+    }
+
+    private void BattleStateUpdated(BattleHandler.EBattleState battleState)
+    {
+        if (battleState == BattleHandler.EBattleState.PlayerTurn)
+        {
+            SetStatCardVisibility(true);
+            SetTurnOrderVisibility(true);
+        }
+
+        else
+        {
+            SetStatCardVisibility(false);
+            SetTurnOrderVisibility(false);
+        }
     }
 
     private void SetupStatCards()
@@ -40,6 +57,27 @@ public class BattleUIHandler : MonoBehaviour
             // Create and initialize a new stat card
             StatCardUI statCard = Instantiate(_statCardUI, _statHolder);
             statCard.Initialize(BattleHandler.Instance.PartyInBattle[i]);
+            statCards.Add(statCard);
+
+            statCard.gameObject.SetActive(false);
+        }
+    }
+
+    private void SetStatCardVisibility(bool visible)
+    {
+        for(int i = 0; i < statCards.Count; i++)
+        {
+            statCards[i].gameObject.SetActive(visible);
+        }
+    }
+
+    private void SetTurnOrderVisibility(bool visible)
+    {
+        _turnOrderUIHolder.gameObject.SetActive(visible);
+
+        for (int i = 0; i < turnOrderImages.Count; i++)
+        {
+            turnOrderImages[i].gameObject.SetActive(visible);
         }
     }
 

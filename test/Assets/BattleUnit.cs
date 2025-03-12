@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,6 +33,8 @@ public abstract class BattleUnit : MonoBehaviour, IUnit
     [SerializeField]
     protected SpriteRenderer _unitRenderer;
 
+    protected UnitAttack currentAttack;
+
     private void Start()
     {
         // Setup health
@@ -45,8 +47,21 @@ public abstract class BattleUnit : MonoBehaviour, IUnit
         SetRendererEnabled(false);
 
         UnitAttack attack = Instantiate(_myAttacks[index], transform.position, Quaternion.identity);
-        attack.Execute(target);
+        attack.Execute(this, target);
+        attack.OnAttackEnded += HandleAttackEnd;
+
+        currentAttack = attack;
     }
+
+    private void HandleAttackEnd()
+    {
+        SetRendererEnabled(true);
+
+        currentAttack.OnAttackEnded -= HandleAttackEnd;
+        Destroy(currentAttack.gameObject);
+    }
+
+    public virtual void UpdateAttackState() { }
 
     public void SetRendererEnabled(bool enabled) => _unitRenderer.enabled = enabled;
 
@@ -58,4 +73,5 @@ public struct Stats
 {
     public string Name;
     public int MaxHP;
+    public int BaseAttack;
 }

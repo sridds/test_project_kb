@@ -23,6 +23,11 @@ public class BattleHandler : MonoBehaviour
     #region Private Fields
     private EBattleState battleState;
     private StateMachine currentBattleState;
+    private BattleUnit currentAttackingUnit;
+    private List<BattleUnit> turnOrder = new List<BattleUnit>();
+
+    private bool attackFlagDebug;
+    private bool flag2;
     #endregion
 
     #region Accessors
@@ -30,16 +35,6 @@ public class BattleHandler : MonoBehaviour
     public List<PartyMemberUnit> PartyInBattle { get { return partyUnits; } }
     public List<EnemyUnit> EnemiesInBattle { get { return enemyUnits; } }
     #endregion
-
-    [Header("DEBUG")]
-    [SerializeField] private List<PartyMemberUnit> partyUnits = new List<PartyMemberUnit>();
-    [SerializeField] private List<EnemyUnit> enemyUnits = new List<EnemyUnit>();
-
-    [Header("Modifiers")]
-    [SerializeField] private float defaultXValue = -7.5f;
-    [SerializeField] private float forwardXValue = -6.5f;
-
-    private List<BattleUnit> turnOrder = new List<BattleUnit>();
 
     #region Events
     public delegate void BattleStart();
@@ -51,6 +46,17 @@ public class BattleHandler : MonoBehaviour
     public delegate void TurnOrderUpdated(List<BattleUnit> newTurnOrder);
     public TurnOrderUpdated OnTurnOrderUpdated;
     #endregion
+
+    [Header("DEBUG")]
+    [SerializeField] private List<PartyMemberUnit> partyUnits = new List<PartyMemberUnit>();
+    [SerializeField] private List<EnemyUnit> enemyUnits = new List<EnemyUnit>();
+
+    [Header("Modifiers")]
+    [SerializeField] private float defaultXValue = -7.5f;
+    [SerializeField] private float forwardXValue = -6.5f;
+
+    [Header("References")]
+    [SerializeField] private PerformanceHitmarker _performanceHitmarkerPrefab;
 
     private void Awake()
     {
@@ -64,20 +70,21 @@ public class BattleHandler : MonoBehaviour
         }
     }
 
-    private bool attackFlagDebug;
-    private bool flag2;
-
-    private void Start()
+    private void InitializeStateMachine()
     {
-        currentBattleState = new StateMachine();
-
         B_PlayerTurnState playerTurnState = new B_PlayerTurnState(currentBattleState, this);
         B_EnemyTurnState enemyTurnState = new B_EnemyTurnState(currentBattleState, this);
         B_Attacking attackState = new B_Attacking(currentBattleState, this);
 
-        // Add transitions
-        currentBattleState.AddTransition(playerTurnState, attackState, new FuncPredicate(() => attackFlagDebug));
-        currentBattleState.AddTransition(attackState, enemyTurnState, new FuncPredicate(() => flag2));
+        // If the battle state has not yet been initialized
+        if (currentBattleState == null)
+        {
+            currentBattleState = new StateMachine();
+
+            // Add transitions
+            currentBattleState.AddTransition(playerTurnState, attackState, new FuncPredicate(() => attackFlagDebug));
+            currentBattleState.AddTransition(attackState, enemyTurnState, new FuncPredicate(() => flag2));
+        }
 
         // Set state immediately
         currentBattleState.SetState(playerTurnState);
@@ -85,15 +92,15 @@ public class BattleHandler : MonoBehaviour
 
     public void StartBattle()
     {
-        // Update the turn state
-        UpdateBattleState(EBattleState.PlayerTurn);
-
         // Initalize turn order
         turnOrder = new List<BattleUnit>();
+
         foreach (PartyMemberUnit u in partyUnits) turnOrder.Add(u);
         foreach (EnemyUnit e in enemyUnits) turnOrder.Add(e);
+
         OnTurnOrderUpdated?.Invoke(turnOrder);
         OnBattleStart?.Invoke();
+        InitializeStateMachine();
 
         // Update the order at which the party members are arranged
         UpdateOrder();
@@ -111,9 +118,11 @@ public class BattleHandler : MonoBehaviour
         }
     }
 
-    private void SpawnAttack(int index)
+    #region [STATE] Player Turn
+    public void EnterPlayerTurn()
     {
-        partyUnits[0].HandleAttack(index, enemyUnits[0]);
+        // Update the turn state
+        UpdateBattleState(EBattleState.PlayerTurn);
     }
 
     public void UpdatePlayerTurn()
@@ -121,31 +130,59 @@ public class BattleHandler : MonoBehaviour
         // Debug key for spawning an attack
         if (Input.GetKeyDown(KeyCode.D))
         {
+            currentAttackingUnit = partyUnits[0];
             SpawnAttack(0);
+            attackFlagDebug = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) SwitchOrderLeft();
-        if (Input.GetKeyDown(KeyCode.RightArrow)) SwitchOrderRight();
+        // switch order
+        //if (Input.GetKeyDown(KeyCode.LeftArrow)) SwitchOrderLeft();
+        //if (Input.GetKeyDown(KeyCode.RightArrow)) SwitchOrderRight();
+    }
+    #endregion
+
+    #region [STATE] Enemy Turn
+    public void EnterEnemyTurn()
+    {
+        // Update the turn state
+        UpdateBattleState(EBattleState.EnemyTurn);
     }
 
     public void UpdateEnemyTurn()
     {
+        partyUnits[0].UpdateDefendState();
 
+        currentAttackingUnit.UpdateAttackState();
+    }
+    #endregion
+
+    #region [STATE] Attacking
+    public void EnterAttackingState()
+    {
+        // Update the turn state
+        UpdateBattleState(EBattleState.Attacking);
     }
 
     public void UpdateAttackingState()
     {
+        currentAttackingUnit.UpdateAttackState();
+    }
 
+    private void SpawnAttack(int index)
+    {
+        partyUnits[0].HandleAttack(index, enemyUnits[0]);
+    }
+    #endregion
+
+    public void RegisterEnemyHit(PartyMemberUnit attacker, EnemyUnit target, EAttackPerformance performance)
+    {
+        target.MyHealth.TakeDamage(attacker.MyStats.BaseAttack);
+
+        PerformanceHitmarker hitmarker = Instantiate(_performanceHitmarkerPrefab, target.transform.position, Quaternion.identity);
+        hitmarker.SetText(performance.ToString());
     }
 
     #region Helpers
-    public void UpdateBattleState(EBattleState state)
-    {
-        battleState = state;
-
-        OnBattleStateUpdated?.Invoke(state);
-    }
-
     private void SwitchOrderLeft()
     {
         PartyMemberUnit[] temp = new PartyMemberUnit[partyUnits.Count];
@@ -191,6 +228,13 @@ public class BattleHandler : MonoBehaviour
             partyUnits[i].transform.DOMove(new Vector3(defaultXValue, (i - (partyUnits.Count / 2.0f)) * 4), 0.3f).SetEase(Ease.OutQuad);
         }
     }
+
+    public void UpdateBattleState(EBattleState state)
+    {
+        battleState = state;
+
+        OnBattleStateUpdated?.Invoke(state);
+    }
     #endregion
 }
 
@@ -208,6 +252,8 @@ public class B_PlayerTurnState : B_BattleState
     public override void OnEnter()
     {
         Debug.Log("Entered player turn state");
+
+        handler.EnterPlayerTurn();
     }
 
     public override void Update()
@@ -223,6 +269,8 @@ public class B_EnemyTurnState : B_BattleState
     public override void OnEnter()
     {
         Debug.Log("Entered enemy turn state");
+
+        handler.EnterEnemyTurn();
     }
 
     public override void Update()
@@ -238,6 +286,8 @@ public class B_Attacking : B_BattleState
     public override void OnEnter()
     {
         Debug.Log("Entered attack turn state");
+
+        handler.EnterAttackingState();
     }
 
     public override void Update()
