@@ -46,11 +46,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Question Screen
+  - name: Background Elements
+    uniqueID: 4226025279
+    locked: 0
+  - name: Shadows
+    uniqueID: 1356006691
+    locked: 0
+  - name: Units
     uniqueID: 3394474607
     locked: 0
-  - name: Player
-    uniqueID: 4226025279
+  - name: World UI
+    uniqueID: 1862123355
     locked: 0
   m_RenderingLayers:
   - Default
