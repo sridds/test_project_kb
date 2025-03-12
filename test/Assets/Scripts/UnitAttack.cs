@@ -3,11 +3,29 @@ using System;
 
 public abstract class UnitAttack : MonoBehaviour
 {
+    protected BattleUnit unit;
+    protected BattleUnit target;
+
     public Action OnAttackEnded;
 
-    public abstract void Execute(BattleUnit unit, BattleUnit target);
+    public void Init(BattleUnit unit, BattleUnit target)
+    {
+        this.unit = unit;
+        this.target = target;
 
-    public virtual void RegisterInput() { }
+        Execute();
+    }
+
+    public abstract void Execute();
+}
+
+public abstract class PartyMemberAttack : UnitAttack
+{
+    public abstract void RegisterInput();
+}
+
+public abstract class EnemyAttack : UnitAttack
+{
 }
 
 public enum EAttackPerformance

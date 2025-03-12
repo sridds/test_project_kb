@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using System;
 
-public class BaseAttack : UnitAttack
+public class BaseAttack : PartyMemberAttack
 {
     [SerializeField]
     private Animator _animator;
@@ -31,14 +31,10 @@ public class BaseAttack : UnitAttack
     private bool attackWindowOpen;
     private bool swingFlag;
     private Vector2 startPos;
-    private BattleUnit unit;
-    private BattleUnit target;
     private Coroutine attackCoroutine;
 
-    public override void Execute(BattleUnit unit, BattleUnit target)
+    public override void Execute()
     {
-        this.unit = unit;
-        this.target = target;
         attackCoroutine = StartCoroutine(IAttack());
     }
 

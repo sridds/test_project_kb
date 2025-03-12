@@ -14,7 +14,6 @@ public abstract class BattleUnit : MonoBehaviour, IUnit
     public Stats MyStats => stats;
     public Health MyHealth => health;
     public Sprite MyOrderPortrait => _turnOrderPortrait;
-    public List<UnitAttack> MyAttacks => _myAttacks;
     #endregion
 
     #region Private Fields
@@ -25,15 +24,10 @@ public abstract class BattleUnit : MonoBehaviour, IUnit
     protected Stats stats;
 
     [SerializeField]
-    protected List<UnitAttack> _myAttacks = new List<UnitAttack>(); // this would probably be a list of structs -- the unit attack and the level at which you need to be to use it
-
-    [SerializeField]
     protected Sprite _turnOrderPortrait;
 
     [SerializeField]
     protected SpriteRenderer _unitRenderer;
-
-    protected UnitAttack currentAttack;
 
     private void Start()
     {
@@ -41,25 +35,7 @@ public abstract class BattleUnit : MonoBehaviour, IUnit
         health = new Health(stats.MaxHP);
     }
 
-    public void HandleAttack(int index, EnemyUnit target)
-    {
-        // Create attack animation and hide the battle sprite
-        SetRendererEnabled(false);
-
-        UnitAttack attack = Instantiate(_myAttacks[index], transform.position, Quaternion.identity);
-        attack.Execute(this, target);
-        attack.OnAttackEnded += HandleAttackEnd;
-
-        currentAttack = attack;
-    }
-
-    private void HandleAttackEnd()
-    {
-        SetRendererEnabled(true);
-
-        currentAttack.OnAttackEnded -= HandleAttackEnd;
-        Destroy(currentAttack.gameObject);
-    }
+    public abstract void HandleAttack(int attackIndex, BattleUnit target);
 
     public virtual void UpdateAttackState() { }
 
