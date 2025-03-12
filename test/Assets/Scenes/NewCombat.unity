@@ -747,7 +747,9 @@ MonoBehaviour:
   - {fileID: 838040607}
   defaultXValue: -9.5
   forwardXValue: -7.5
+  maxPerformanceMultiplier: 2
   _performanceHitmarkerPrefab: {fileID: 1700543811061834232, guid: e6df8cc3723b94bd59ed460b3f5607d7, type: 3}
+  _damageHitmarkerPrefab: {fileID: 0}
 --- !u!1 &838040604
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,11 +797,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
     Name: Chef
-    MaxHP: 0
-    BaseAttack: 0
-  _myAttacks: []
+    MaxHP: 100
+    BaseAttack: 3
+    BaseDefense: 2
   _turnOrderPortrait: {fileID: 8020143640844766479, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
   _unitRenderer: {fileID: 1008280945}
+  _holder: {fileID: 1008280944}
+  _damageSprite: {fileID: -1699395460, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
+  _defaultSprite: {fileID: 92115415, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
 --- !u!1 &902917156
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,11 +853,12 @@ MonoBehaviour:
   stats:
     Name: Hank
     MaxHP: 50
-    BaseAttack: 0
-  _myAttacks:
-  - {fileID: 2239378836579480902, guid: 26fb51b7b127d4e369df409d974cc684, type: 3}
+    BaseAttack: 4
+    BaseDefense: 2
   _turnOrderPortrait: {fileID: -5962389079421231736, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
   _unitRenderer: {fileID: 1075185070}
+  _myAttacks:
+  - {fileID: 2239378836579480902, guid: 26fb51b7b127d4e369df409d974cc684, type: 3}
 --- !u!1 &1008280943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,9 +1321,11 @@ MonoBehaviour:
     Name: Veal
     MaxHP: 50
     BaseAttack: 0
-  _myAttacks: []
+    BaseDefense: 0
   _turnOrderPortrait: {fileID: -6251682230944352461, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
   _unitRenderer: {fileID: 1033670932}
+  _myAttacks:
+  - {fileID: 2239378836579480902, guid: 26fb51b7b127d4e369df409d974cc684, type: 3}
 --- !u!1 &1226359848
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,9 +1628,11 @@ MonoBehaviour:
     Name: Saturn
     MaxHP: 50
     BaseAttack: 0
-  _myAttacks: []
+    BaseDefense: 0
   _turnOrderPortrait: {fileID: -1259408508766424310, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
   _unitRenderer: {fileID: 526970955}
+  _myAttacks:
+  - {fileID: 2239378836579480902, guid: 26fb51b7b127d4e369df409d974cc684, type: 3}
 --- !u!1 &1748620607
 GameObject:
   m_ObjectHideFlags: 0

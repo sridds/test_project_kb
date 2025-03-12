@@ -46,7 +46,7 @@ public class BattleUIHandler : MonoBehaviour
         else
         {
             SetStatCardVisibility(false);
-            SetTurnOrderVisibility(false);
+            //SetTurnOrderVisibility(false);
         }
     }
 

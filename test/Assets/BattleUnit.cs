@@ -20,6 +20,7 @@ public abstract class BattleUnit : MonoBehaviour, IUnit
     private Health health;
     #endregion
 
+    #region Inspector Fields
     [SerializeField]
     protected Stats stats;
 
@@ -28,20 +29,27 @@ public abstract class BattleUnit : MonoBehaviour, IUnit
 
     [SerializeField]
     protected SpriteRenderer _unitRenderer;
+    #endregion
 
     private void Start()
     {
         // Setup health
         health = new Health(stats.MaxHP);
+
+        health.OnHealthUpdated += HandleHealthUpdate;
     }
+
+    public abstract void HandleHealthUpdate(int oldHealth, int newHealth);
 
     public abstract void HandleAttack(int attackIndex, BattleUnit target);
 
     public virtual void UpdateAttackState() { }
 
+    #region Helpers
     public void SetRendererEnabled(bool enabled) => _unitRenderer.enabled = enabled;
 
     public Vector2 GetSpriteSize() => _unitRenderer.bounds.size;
+    #endregion
 }
 
 [System.Serializable]
@@ -50,4 +58,5 @@ public struct Stats
     public string Name;
     public int MaxHP;
     public int BaseAttack;
+    public int BaseDefense;
 }

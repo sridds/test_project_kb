@@ -40,19 +40,27 @@ public class BaseAttack : PartyMemberAttack
 
     private IEnumerator IAttack()
     {
+        // Walk
         _animator.Play(_walkHash);
+
+        // Setup start and end pos
         startPos = transform.position;
         Vector2 targetPos = new Vector2(target.transform.position.x - (target.GetSpriteSize().x / 2.0f), target.transform.position.y - (target.GetSpriteSize().y / 2.0f));
 
-        transform.DOMove(targetPos, _walkUpTime).SetEase(Ease.Linear);
-        yield return new WaitForSeconds(_walkUpTime);
+        // Move to position
+        yield return transform.DOMove(targetPos, _walkUpTime).SetEase(Ease.Linear).WaitForCompletion();
 
-        OpenAttackWindow();
+        // Open attack window
+        attackWindowOpen = true;
         attackWindowTimestamp = Time.time;
         _animator.Play(_windupHash);
-        yield return new WaitForSeconds(_attackWindow);
-        CloseAttackWindow();
 
+        // Wait and close attack window
+        yield return new WaitForSeconds(_attackWindow);
+        attackWindowOpen = false;
+
+        // Miss attack
+        BattleHandler.Instance.RegisterMiss(target as EnemyUnit);
         _animator.Play(_missHash);
         attackCoroutine = null;
 
@@ -63,6 +71,7 @@ public class BaseAttack : PartyMemberAttack
     {
         yield return new WaitForSeconds(0.5f);
 
+        // Move back to starting position
         transform.DOMove(startPos, _walkUpTime).SetEase(Ease.Linear);
         _animator.Play(_walkHash);
         yield return new WaitForSeconds(_walkUpTime);
@@ -72,30 +81,18 @@ public class BaseAttack : PartyMemberAttack
 
     public override void RegisterInput()
     {
-        if (attackWindowOpen)
-        {
-            attackWindowOpen = false;
+        if (!attackWindowOpen) return;
 
-            float performanceValueRaw = Mathf.Lerp(0, Enum.GetNames(typeof(EAttackPerformance)).Length - 1, (Time.time - attackWindowTimestamp) / _attackWindow);
-            EAttackPerformance attackPerformance = (EAttackPerformance)Mathf.RoundToInt(performanceValueRaw);
-            BattleHandler.Instance.RegisterEnemyHit(unit as PartyMemberUnit, target as EnemyUnit, attackPerformance);
-
-            _animator.Play(_swingHash);
-
-            StopCoroutine(attackCoroutine);
-            attackCoroutine = null;
-
-            StartCoroutine(IEndAttack());
-        }
-    }
-
-    public void OpenAttackWindow()
-    {
-        attackWindowOpen = true;
-    }
-
-    public void CloseAttackWindow()
-    {
+        // Register hit
         attackWindowOpen = false;
+        BattleHandler.Instance.RegisterEnemyHit(unit as PartyMemberUnit, target as EnemyUnit, GetPerformance());
+
+        _animator.Play(_swingHash);
+        StopCoroutine(attackCoroutine);
+        attackCoroutine = null;
+
+        StartCoroutine(IEndAttack());
     }
+
+    public override EAttackPerformance GetPerformance() => LerpAttackPerformance((Time.time - attackWindowTimestamp) / _attackWindow);
 }

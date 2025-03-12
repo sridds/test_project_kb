@@ -6,19 +6,18 @@ using System;
 public class PartyMemberUnit : BattleUnit
 {
     public List<PartyMemberAttack> MyAttacks => _myAttacks;
+    public PartyMemberAttack CurrentAttack => currentAttack;
 
     [SerializeField]
     private List<PartyMemberAttack> _myAttacks = new List<PartyMemberAttack>(); // this would probably be a list of structs -- the unit attack and the level at which you need to be to use it
 
     private PartyMemberAttack currentAttack;
 
+    // During an update, the player can press Z during an attack
     public override void UpdateAttackState()
     {
-        // take input
-
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            Debug.Log("ht key");
             currentAttack.RegisterInput();
         }
     }
@@ -28,6 +27,7 @@ public class PartyMemberUnit : BattleUnit
         // Create attack animation and hide the battle sprite
         SetRendererEnabled(false);
 
+        // Initalize attack
         PartyMemberAttack attack = Instantiate(_myAttacks[attackIndex], transform.position, Quaternion.identity);
         attack.Init(this, target);
         attack.OnAttackEnded += HandleAttackEnd;
@@ -41,6 +41,9 @@ public class PartyMemberUnit : BattleUnit
 
         currentAttack.OnAttackEnded -= HandleAttackEnd;
         Destroy(currentAttack.gameObject);
+
+        // Advance to the next turn
+        BattleHandler.Instance.AdvanceNextTurn();
     }
 
     public void UpdateDefendState()
@@ -53,6 +56,15 @@ public class PartyMemberUnit : BattleUnit
         }
 
         if(Input.GetKeyDown(KeyCode.X))
+        {
+
+        }
+    }
+
+    public override void HandleHealthUpdate(int oldHealth, int newHealth)
+    {
+        // Damage Taken
+        if(newHealth < oldHealth)
         {
 
         }

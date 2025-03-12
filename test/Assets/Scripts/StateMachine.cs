@@ -28,6 +28,11 @@ namespace Hank.Systems.StateMachine
 
         public void SetState(IState state)
         {
+            ChangeState(state);
+        }
+
+        public void SetStateImmediate(IState state)
+        {
             current = nodes[state.GetType()];
             current.State?.OnEnter();
         }
