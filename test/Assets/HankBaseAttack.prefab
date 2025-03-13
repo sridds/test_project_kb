@@ -46,13 +46,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248f60c50572542499f5d4df919f1136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackDamageBonus: 0
   _animator: {fileID: 504036090756781062}
+  _renderer: {fileID: 1537032247457671871}
   _walkHash: Walk
   _windupHash: Windup
   _missHash: Miss
   _swingHash: Swing
   _attackWindow: 1
-  _walkUpTime: 1.5
+  _walkUpTime: 1.2
 --- !u!95 &504036090756781062
 Animator:
   serializedVersion: 7

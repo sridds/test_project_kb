@@ -14,6 +14,9 @@ public class EnemyUnit : BattleUnit
     [SerializeField]
     private Sprite _defaultSprite;
 
+    [SerializeField]
+    private UnitFlasher _flasher;
+
     public override void StartAttack(int attackIndex, BattleUnit target)
     {
 
@@ -26,6 +29,12 @@ public class EnemyUnit : BattleUnit
         {
             StartCoroutine(IDamageEffects());
         }
+    }
+
+    public void SetTarget(bool isTarget)
+    {
+        if(isTarget) _flasher.EnableFlash();
+        else _flasher.DisableFlashing();
     }
 
     private IEnumerator IDamageEffects()

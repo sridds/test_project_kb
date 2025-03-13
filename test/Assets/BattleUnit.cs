@@ -29,6 +29,9 @@ public abstract class BattleUnit : MonoBehaviour, IUnit
 
     [SerializeField]
     protected SpriteRenderer _unitRenderer;
+
+    [SerializeField]
+    protected float _feetPos;
     #endregion
 
     public delegate void AttackFinished();
@@ -57,6 +60,8 @@ public abstract class BattleUnit : MonoBehaviour, IUnit
     public void SetRendererEnabled(bool enabled) => _unitRenderer.enabled = enabled;
 
     public Vector2 GetSpriteSize() => _unitRenderer.bounds.size;
+
+    public float GetFeetPos() => _feetPos;
     #endregion
 }
 

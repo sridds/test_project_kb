@@ -63,6 +63,12 @@ public class BattleHandler : MonoBehaviour
     [SerializeField] private PerformanceHitmarker _performanceHitmarkerPrefab;
     [SerializeField] private PerformanceHitmarker _damageHitmarkerPrefab;
 
+    // Order #1
+    // - Whoever's turn it is, select option
+    // - Repeat until all party members have selected
+    // - Select frontmost party member
+    // - When it's the enemies turn, execute all party member actions
+
     private void Awake()
     {
         // Initialize static instance
@@ -84,12 +90,14 @@ public class BattleHandler : MonoBehaviour
 
             // Add transitions
             currentBattleState.AddTransition(playerTurnState, attackState, new FuncPredicate(() => playerAttackFlag));
-            //currentBattleState.AddTransition(attackState, enemyTurnState, new FuncPredicate(() => playerAttackEndedFlag));
+            currentBattleState.AddTransition(attackState, playerTurnState, new FuncPredicate(() => !playerAttackFlag && IsPartyMembersTurn()));
         }
 
         // Set state immediately
         currentBattleState.SetStateImmediate(playerTurnState);
     }
+
+    private bool IsPartyMembersTurn() => turnOrder[0] is PartyMemberUnit;
 
     public void StartBattle()
     {
@@ -133,32 +141,40 @@ public class BattleHandler : MonoBehaviour
         UpdateBattleState(EBattleState.PlayerTurn);
     }
 
+    public void SetTargetOverlayEnabled(int index)
+    {
+        for(int i = 0; i < enemyUnits.Count; i++)
+        {
+            if(i == index)
+            {
+                enemyUnits[i].SetTarget(true);
+                continue;
+            }
+
+            enemyUnits[i].SetTarget(false);
+        }
+    }
+
+    public void DisableAllTargetOverlays()
+    {
+        foreach(EnemyUnit enemy in enemyUnits)
+        {
+            enemy.SetTarget(false);
+        }
+    }
+
     public void UpdatePlayerTurn()
     {
-        // Debug key for spawning an attack
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            TurnAttack();
-        }
-
         // switch order
         //if (Input.GetKeyDown(KeyCode.LeftArrow)) SwitchOrderLeft();
         //if (Input.GetKeyDown(KeyCode.RightArrow)) SwitchOrderRight();
     }
 
-    private void TurnAttack()
+    public void HandleBash(EnemyUnit target)
     {
         currentAttackingUnit = turnOrder[0];
-
-        if (turnOrder[0] is PartyMemberUnit)
-        {
-            SpawnAttack(turnOrder[0], enemyUnits[0], 0);
-            playerAttackFlag = true;
-        }
-        else if (turnOrder[0] is EnemyUnit)
-        {
-            SpawnAttack(turnOrder[0], partyUnits[Random.Range(0, partyUnits.Count)], 0);
-        }
+        SpawnAttack(turnOrder[0], target, 0);
+        playerAttackFlag = true;
     }
 
     public void AdvanceNextTurn()
@@ -167,9 +183,8 @@ public class BattleHandler : MonoBehaviour
         BattleUnit unit = turnOrder[0];
         turnOrder.RemoveAt(0);
         turnOrder.Add(unit);
+        playerAttackFlag = false;
         OnTurnOrderUpdated?.Invoke(turnOrder);
-
-        TurnAttack();
     }
     #endregion
 

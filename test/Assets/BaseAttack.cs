@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using System;
+using UnityEngine.UIElements;
 
 public class BaseAttack : PartyMemberAttack
 {
     [SerializeField]
     private Animator _animator;
+
+    [SerializeField]
+    private SpriteRenderer _renderer;
 
     [SerializeField]
     private string _walkHash = "Walk";
@@ -45,9 +49,10 @@ public class BaseAttack : PartyMemberAttack
 
         // Setup start and end pos
         startPos = transform.position;
-        Vector2 targetPos = new Vector2(target.transform.position.x - (target.GetSpriteSize().x / 2.0f), target.transform.position.y - (target.GetSpriteSize().y / 2.0f));
+        Vector2 targetPos = new Vector2(target.transform.position.x - (target.GetSpriteSize().x / 2.0f), target.transform.position.y - (target.GetFeetPos()));
 
         // Move to position
+        _renderer.flipX = false;
         yield return transform.DOMove(targetPos, _walkUpTime).SetEase(Ease.Linear).WaitForCompletion();
 
         // Open attack window
@@ -74,6 +79,7 @@ public class BaseAttack : PartyMemberAttack
         // Move back to starting position
         transform.DOMove(startPos, _walkUpTime).SetEase(Ease.Linear);
         _animator.Play(_walkHash);
+        _renderer.flipX = true;
         yield return new WaitForSeconds(_walkUpTime);
 
         EndAttack();
