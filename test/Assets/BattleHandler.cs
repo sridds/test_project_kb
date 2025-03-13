@@ -202,7 +202,14 @@ public class BattleHandler : MonoBehaviour
 
     private void SpawnAttack(BattleUnit unit, BattleUnit target, int index)
     {
-        unit.HandleAttack(index, target);
+        unit.StartAttack(index, target);
+
+        unit.OnAttackFinished += AttackCompleted;
+    }
+
+    private void AttackCompleted()
+    {
+        AdvanceNextTurn();
     }
     #endregion
 

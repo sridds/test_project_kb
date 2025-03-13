@@ -12,11 +12,16 @@ public class BattleUIHandler : MonoBehaviour
     [SerializeField]
     private Image _turnOrderPrefab;
 
+    [Header("Action Menu")]
     [SerializeField]
-    private RectTransform _statHolder;
+    private Menu _actionMenu;
 
+    [Header("Stat Card")]
     [SerializeField]
     private StatCardUI _statCardUI;
+
+    [SerializeField]
+    private RectTransform _statHolder;
 
     private List<Image> turnOrderImages = new List<Image>();
     private List<StatCardUI> statCards = new List<StatCardUI>();
@@ -30,6 +35,14 @@ public class BattleUIHandler : MonoBehaviour
         BattleHandler.Instance.OnBattleStateUpdated += BattleStateUpdated;
     }
 
+    private void Update()
+    {
+        if(BattleHandler.Instance.BattleState == BattleHandler.EBattleState.PlayerTurn)
+        {
+            _actionMenu.UpdateMenu();
+        }
+    }
+
     private void SetupBattleUI()
     {
         SetupStatCards();
@@ -41,12 +54,13 @@ public class BattleUIHandler : MonoBehaviour
         {
             SetStatCardVisibility(true);
             SetTurnOrderVisibility(true);
+            SetSkillMenuVisibility(true);
         }
 
         else
         {
             SetStatCardVisibility(false);
-            //SetTurnOrderVisibility(false);
+            SetSkillMenuVisibility(false);
         }
     }
 
@@ -79,6 +93,12 @@ public class BattleUIHandler : MonoBehaviour
         {
             turnOrderImages[i].gameObject.SetActive(visible);
         }
+    }
+
+    private void SetSkillMenuVisibility(bool visible)
+    {
+        _actionMenu.SetVisibility(true);
+        _actionMenu.SetInteractable(true);
     }
 
     private void TurnOrderUpdated(List<BattleUnit> order)

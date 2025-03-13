@@ -6,14 +6,17 @@ public abstract class UnitAttack : MonoBehaviour
     protected BattleUnit unit;
     protected BattleUnit target;
 
-    public Action OnAttackEnded;
-
     public void Init(BattleUnit unit, BattleUnit target)
     {
         this.unit = unit;
         this.target = target;
 
         Execute();
+    }
+
+    public virtual void EndAttack()
+    {
+        unit.EndAttack();
     }
 
     public abstract void Execute();

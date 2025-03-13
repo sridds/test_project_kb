@@ -14,7 +14,7 @@ public class EnemyUnit : BattleUnit
     [SerializeField]
     private Sprite _defaultSprite;
 
-    public override void HandleAttack(int attackIndex, BattleUnit target)
+    public override void StartAttack(int attackIndex, BattleUnit target)
     {
 
     }

@@ -31,6 +31,9 @@ public abstract class BattleUnit : MonoBehaviour, IUnit
     protected SpriteRenderer _unitRenderer;
     #endregion
 
+    public delegate void AttackFinished();
+    public AttackFinished OnAttackFinished;
+
     private void Start()
     {
         // Setup health
@@ -41,9 +44,14 @@ public abstract class BattleUnit : MonoBehaviour, IUnit
 
     public abstract void HandleHealthUpdate(int oldHealth, int newHealth);
 
-    public abstract void HandleAttack(int attackIndex, BattleUnit target);
+    public abstract void StartAttack(int attackIndex, BattleUnit target);
 
     public virtual void UpdateAttackState() { }
+
+    public virtual void EndAttack()
+    {
+        OnAttackFinished?.Invoke();
+    }
 
     #region Helpers
     public void SetRendererEnabled(bool enabled) => _unitRenderer.enabled = enabled;

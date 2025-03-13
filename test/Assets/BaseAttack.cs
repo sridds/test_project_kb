@@ -76,7 +76,7 @@ public class BaseAttack : PartyMemberAttack
         _animator.Play(_walkHash);
         yield return new WaitForSeconds(_walkUpTime);
 
-        OnAttackEnded?.Invoke();
+        EndAttack();
     }
 
     public override void RegisterInput()

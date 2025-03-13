@@ -22,7 +22,7 @@ public class PartyMemberUnit : BattleUnit
         }
     }
 
-    public override void HandleAttack(int attackIndex, BattleUnit target)
+    public override void StartAttack(int attackIndex, BattleUnit target)
     {
         // Create attack animation and hide the battle sprite
         SetRendererEnabled(false);
@@ -30,20 +30,17 @@ public class PartyMemberUnit : BattleUnit
         // Initalize attack
         PartyMemberAttack attack = Instantiate(_myAttacks[attackIndex], transform.position, Quaternion.identity);
         attack.Init(this, target);
-        attack.OnAttackEnded += HandleAttackEnd;
 
         currentAttack = attack;
     }
 
-    private void HandleAttackEnd()
+    public override void EndAttack()
     {
         SetRendererEnabled(true);
-
-        currentAttack.OnAttackEnded -= HandleAttackEnd;
         Destroy(currentAttack.gameObject);
 
         // Advance to the next turn
-        BattleHandler.Instance.AdvanceNextTurn();
+        base.EndAttack();
     }
 
     public void UpdateDefendState()
