@@ -91,6 +91,8 @@ public class BattleHandler : MonoBehaviour
             // Add transitions
             currentBattleState.AddTransition(playerTurnState, attackState, new FuncPredicate(() => playerAttackFlag));
             currentBattleState.AddTransition(attackState, playerTurnState, new FuncPredicate(() => !playerAttackFlag && IsPartyMembersTurn()));
+            currentBattleState.AddTransition(attackState, enemyTurnState, new FuncPredicate(() => !IsPartyMembersTurn()));
+            currentBattleState.AddTransition(enemyTurnState, playerTurnState, new FuncPredicate(() => IsPartyMembersTurn()));
         }
 
         // Set state immediately
@@ -179,18 +181,34 @@ public class BattleHandler : MonoBehaviour
 
     public void AdvanceNextTurn()
     {
+        Debug.Log("supper giga fart");
+
         // take out turn and add to end
         BattleUnit unit = turnOrder[0];
         turnOrder.RemoveAt(0);
         turnOrder.Add(unit);
         playerAttackFlag = false;
         OnTurnOrderUpdated?.Invoke(turnOrder);
+
+        if(turnOrder[0] is EnemyUnit)
+        {
+            SpawnEnemyAttack();
+        }
+    }
+
+    private void SpawnEnemyAttack()
+    {
+        currentAttackingUnit = turnOrder[0];
+        SpawnAttack(turnOrder[0], partyUnits[Random.Range(0, partyUnits.Count)], 0);
+
     }
     #endregion
 
     #region [STATE] Enemy Turn
     public void EnterEnemyTurn()
     {
+        //SpawnEnemyAttack();
+
         // Update the turn state
         UpdateBattleState(EBattleState.EnemyTurn);
     }
@@ -224,6 +242,9 @@ public class BattleHandler : MonoBehaviour
 
     private void AttackCompleted()
     {
+        currentAttackingUnit.OnAttackFinished -= AttackCompleted;
+        currentAttackingUnit = null;
+
         AdvanceNextTurn();
     }
     #endregion

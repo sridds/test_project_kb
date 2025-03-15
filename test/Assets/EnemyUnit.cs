@@ -17,9 +17,30 @@ public class EnemyUnit : BattleUnit
     [SerializeField]
     private UnitFlasher _flasher;
 
+    [SerializeField]
+    private List<EnemyAttack> _myAttacks = new List<EnemyAttack>();
+
+    private EnemyAttack currentAttack;
+
     public override void StartAttack(int attackIndex, BattleUnit target)
     {
+        // Create attack animation and hide the battle sprite
+        SetRendererEnabled(false);
 
+        // Initalize attack
+        EnemyAttack attack = Instantiate(_myAttacks[attackIndex], transform.position, Quaternion.identity);
+        attack.Init(this, target);
+
+        currentAttack = attack;
+    }
+
+    public override void EndAttack()
+    {
+        SetRendererEnabled(true);
+        Destroy(currentAttack.gameObject);
+
+        // Advance to the next turn
+        base.EndAttack();
     }
 
     public override void HandleHealthUpdate(int oldHealth, int newHealth)
