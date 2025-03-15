@@ -65,7 +65,7 @@ public class BaseAttack : PartyMemberAttack
         attackWindowOpen = false;
 
         // Miss attack
-        BattleHandler.Instance.RegisterMiss(target as EnemyUnit);
+        //BattleHandler.Instance.RegisterMiss(target as EnemyUnit);
         _animator.Play(_missHash);
         attackCoroutine = null;
 
@@ -91,7 +91,7 @@ public class BaseAttack : PartyMemberAttack
 
         // Register hit
         attackWindowOpen = false;
-        BattleHandler.Instance.RegisterEnemyHit(unit as PartyMemberUnit, target as EnemyUnit, GetPerformance());
+        //BattleHandler.Instance.RegisterEnemyHit(unit as PartyMemberUnit, target as EnemyUnit, GetPerformance());
 
         _animator.Play(_swingHash);
         StopCoroutine(attackCoroutine);

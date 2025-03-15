@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Hank.Battles;
 
 // Battle UI handles all UI, then sends a payload back to the battle handler
 
@@ -46,27 +47,61 @@ public class BattleUIHandler : MonoBehaviour
     {
         _turnOrderUIHolder.gameObject.SetActive(false);
 
-        BattleHandler.Instance.OnTurnOrderUpdated += TurnOrderUpdated;
-        BattleHandler.Instance.OnBattleStart += SetupBattleUI;
-        BattleHandler.Instance.OnBattleStateUpdated += BattleStateUpdated;
+        //_actionMenu.OnMenuItemSelected += ActionItemSelected;
+        //_targetMenu.OnMenuItemHovered += UpdateEnemyTargetHovered;
+        //_targetMenu.OnMenuItemSelected += SelectTargetEnemy;
 
-        _actionMenu.OnMenuItemSelected += ActionItemSelected;
-        _targetMenu.OnMenuItemHovered += UpdateEnemyTargetHovered;
-        _targetMenu.OnMenuItemSelected += SelectTargetEnemy;
-
-        HideAllPlayerMenus();
-    }
-
-    private void HideAllPlayerMenus()
-    {
-        SetSkillMenuVisibility(false);
-        CloseTargetMenu();
-        BattleHandler.Instance.DisableAllTargetOverlays();
+        //HideAllPlayerMenus();
     }
 
     private void LateUpdate()
     {
-        if(BattleHandler.Instance.BattleState == BattleHandler.EBattleState.PlayerTurn)
+        _actionMenu.UpdateMenu();
+    }
+
+    public void SetupBattleUI(Battle currentBattle)
+    {
+        // Setup stat cards
+        for (int i = 0; i < currentBattle.PartyInBattle.Count; i++)
+        {
+            // Create and initialize a new stat card
+            StatCardUI statCard = Instantiate(_statCardUI, _statHolder);
+
+            // Initialize stat card
+            statCard.Initialize(currentBattle.PartyInBattle[i]);
+            statCards.Add(statCard);
+
+            statCard.gameObject.SetActive(false);
+        }
+    }
+
+    public void OpenPartyMenus(PartyMemberUnit partyMember)
+    {
+        _actionMenu.SetVisibility(true);
+        _actionMenu.SetInteractable(true);
+
+        // Open all relevant party member menus
+    }
+
+    public void ClosePartyMenus()
+    {
+        _actionMenu.SetVisibility(false);
+        _actionMenu.SetInteractable(false);
+
+        // Close all relevant party member menus
+    }
+
+    /*
+    private void HideAllPlayerMenus()
+    {
+        SetSkillMenuVisibility(false);
+        CloseTargetMenu();
+        //BattleHandler.Instance.DisableAllTargetOverlays();
+    }
+
+    private void LateUpdate()
+    {
+        if(BattleHandlerV2.Instance.CurrentBattleState == BattleHandlerV2.EBattleState.WaitingForPlayer)
         {
             switch (turnSubstate)
             {
@@ -78,7 +113,7 @@ public class BattleUIHandler : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.X))
                     {
                         SwitchToSubstate(EUISubstate.ActionSelection);
-                        BattleHandler.Instance.DisableAllTargetOverlays();
+                        //BattleHandlerV2.Instance.DisableAllTargetOverlays();
                     }
 
                     _targetMenu.UpdateMenu();
@@ -89,15 +124,15 @@ public class BattleUIHandler : MonoBehaviour
 
     private void SelectTargetEnemy(int selectionIndex)
     {
-        BattleHandler.Instance.HandleBash(BattleHandler.Instance.EnemiesInBattle[selectionIndex]);
+        //BattleHandler.Instance.HandleBash(BattleHandler.Instance.EnemiesInBattle[selectionIndex]);
     }
 
     private void UpdateEnemyTargetHovered(int selectionIndex)
     {
-        BattleHandler.Instance.SetTargetOverlayEnabled(selectionIndex);
+        //BattleHandler.Instance.SetTargetOverlayEnabled(selectionIndex);
     }
 
-    private void SetupBattleUI()
+    public void SetupBattleUI()
     {
         SetupStatCards();
         SetupTargets();
@@ -105,7 +140,7 @@ public class BattleUIHandler : MonoBehaviour
 
     private void SetupTargets()
     {
-        foreach(EnemyUnit enemy in BattleHandler.Instance.EnemiesInBattle)
+        foreach(EnemyUnit enemy in BattleHandlerV2.Instance.EnemiesInBattle)
         {
             _targetMenu.AddMenuOption(_targetOptionPrefab, enemy.MyStats.Name);
         }
@@ -137,7 +172,7 @@ public class BattleUIHandler : MonoBehaviour
         }
     }
 
-    private void BattleStateUpdated(BattleHandler.EBattleState battleState)
+    private void BattleStateUpdated(BattleHandlerV2.EBattleState battleState)
     {
         if (battleState == BattleHandler.EBattleState.PlayerTurn)
         {
@@ -195,6 +230,7 @@ public class BattleUIHandler : MonoBehaviour
 
             statCard.gameObject.SetActive(false);
         }
+        
     }
 
     private void SetStatCardVisibility(bool visible)
@@ -248,4 +284,5 @@ public class BattleUIHandler : MonoBehaviour
             }
         }
     }
+    */
 }

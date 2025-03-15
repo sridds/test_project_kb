@@ -9,6 +9,7 @@ public class BattleCamera : MonoBehaviour
     [SerializeField]
     private float _moveEasingTime = 1.5f;
 
+    /*
     private void Start()
     {
         BattleHandler.Instance.OnBattleStateUpdated += BattleStateUpdate;
@@ -27,5 +28,5 @@ public class BattleCamera : MonoBehaviour
             transform.DOKill(false);
             transform.DOMoveX(0.0f, _moveEasingTime).SetEase(Ease.OutQuad);
         }
-    }
+    }*/
 }

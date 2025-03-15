@@ -34,6 +34,11 @@ public class PartyMemberUnit : BattleUnit
         currentAttack = attack;
     }
 
+    public void UseItem()
+    {
+        Debug.Log("I just used an item lowkey gangnam style");
+    }
+
     public override void EndAttack()
     {
         SetRendererEnabled(true);
