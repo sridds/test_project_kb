@@ -52,6 +52,11 @@ public class Menu : MonoBehaviour
         lastIndex = index;
     }
 
+    public void Select()
+    {
+        OnMenuItemSelected?.Invoke(index);
+    }
+
     private void GetInput()
     {
         if (_options.Count == 0) return;
@@ -59,14 +64,14 @@ public class Menu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow)) index++;
         else if (Input.GetKeyDown(KeyCode.UpArrow)) index--;
 
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            OnMenuItemSelected?.Invoke(index);
-        }
-
         // Ensure index doesn't go out of range
         if (index < 0) index = _options.Count - 1;
         index %= _options.Count;
+    }
+
+    public void SetIndex(int index)
+    {
+        this.index = index;
     }
 
     private void HoverOption()

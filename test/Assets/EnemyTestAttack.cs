@@ -38,7 +38,7 @@ public class EnemyTestAttack : EnemyAttack
 
         // Setup start and end pos
         Vector2 startPos = transform.position;
-        Vector2 targetPos = new Vector2(target.transform.position.x + (target.GetSpriteSize().x / 2.0f), target.transform.position.y - (target.GetFeetPos()));
+        Vector2 targetPos = new Vector2(target.transform.position.x + (target.GetSpriteSize().x / 2.0f), target.transform.position.y);
 
         // Move to position
         _renderer.flipX = true;

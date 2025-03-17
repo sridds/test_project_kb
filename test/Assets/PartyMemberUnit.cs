@@ -39,13 +39,12 @@ public class PartyMemberUnit : BattleUnit
         Debug.Log("I just used an item lowkey gangnam style");
     }
 
-    public override void EndAttack()
+    protected override void HandleAttackEnding()
     {
-        SetRendererEnabled(true);
         Destroy(currentAttack.gameObject);
 
         // Advance to the next turn
-        base.EndAttack();
+        base.HandleAttackEnding();
     }
 
     public void UpdateDefendState()

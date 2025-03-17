@@ -34,13 +34,12 @@ public class EnemyUnit : BattleUnit
         currentAttack = attack;
     }
 
-    public override void EndAttack()
+    protected override void HandleAttackEnding()
     {
-        SetRendererEnabled(true);
         Destroy(currentAttack.gameObject);
 
         // Advance to the next turn
-        base.EndAttack();
+        base.HandleAttackEnding();
     }
 
     public override void HandleHealthUpdate(int oldHealth, int newHealth)

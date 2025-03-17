@@ -49,7 +49,7 @@ public class BaseAttack : PartyMemberAttack
 
         // Setup start and end pos
         startPos = transform.position;
-        Vector2 targetPos = new Vector2(target.transform.position.x - (target.GetSpriteSize().x / 2.0f), target.transform.position.y - (target.GetFeetPos()));
+        Vector2 targetPos = new Vector2(target.transform.position.x - (target.GetSpriteSize().x / 2.0f), target.transform.position.y);
 
         // Move to position
         _renderer.flipX = false;

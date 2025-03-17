@@ -29,9 +29,6 @@ public abstract class BattleUnit : MonoBehaviour, IUnit
 
     [SerializeField]
     protected SpriteRenderer _unitRenderer;
-
-    [SerializeField]
-    protected float _feetPos;
     #endregion
 
     public delegate void AttackFinished();
@@ -51,17 +48,21 @@ public abstract class BattleUnit : MonoBehaviour, IUnit
 
     public virtual void UpdateAttackState() { }
 
-    public virtual void EndAttack()
+    public void EndAttack()
     {
+        HandleAttackEnding();
         OnAttackFinished?.Invoke();
+    }
+
+    protected virtual void HandleAttackEnding()
+    {
+        SetRendererEnabled(true);
     }
 
     #region Helpers
     public void SetRendererEnabled(bool enabled) => _unitRenderer.enabled = enabled;
 
     public Vector2 GetSpriteSize() => _unitRenderer.bounds.size;
-
-    public float GetFeetPos() => _feetPos;
     #endregion
 }
 
