@@ -5,6 +5,7 @@ using System.Linq;
 using System;
 using Random = UnityEngine.Random;
 using DG.Tweening;
+using UnityEngine.UI;
 
 /* 
 
@@ -29,6 +30,7 @@ using DG.Tweening;
 1. What happens when a party member LEADER is downed during an attack?
 2. Is switching an enjoyable spin on combat? (takes prototyping)
 3. Should party members have differing options in their skill menus? (like how only Kris can ACT in DR)
+4. Status effects?
 
 - Remember the following -
 
@@ -37,7 +39,47 @@ using DG.Tweening;
 3. You can figure out special battle events later
 4. Just get the main flow working and have a couple fun attacks designed
 
+- Paper Mario Notes
+
+1. You can change the order you attack in with a button press (probably to complement the execution order)
+2. Action gets chosen and is immediately executed rather than picking all of them at once
+3. Party members look dreary when low health
+4. Sleeping shows the amount of turns before wearing off
+5. Depending on if the enemy or player strikes first, the music changes intro
+
+
+- Idea #2 -
+
+Design Goal: Encourage the player to strategize to resolve battles as quickly as possible. Gimmicky and quirky attacks.
+
+* Some enemies have heavy attacks that warn the player one turn in advance -- knock the enemies focus!
+
+1. Intro / Flavor Text
+2. Choose Party Commands (or switch)
+
+[Bash] - A punch attack that can only hit grounded enemies
+[Skills] - Special moves that cost SP (cumilative). Some special moves involve other party members. Using special moves with party members ALSO uses up their turn!
+[Bag]
+[Tactics]
+    - Defend (increases SP and defence for one turn)
+    - Flee (lose money)
+
+* Switching does not cost a turn and it can be done whenever
+
+3. Check for win / lose state
+
+4. Enemy dialogue
+5. Enemies attack
+    - An enemy can only pick one target at a time.
+    - If an attack downs a party member, the attack ends.
+
+6. Check for win / lose state
+
+- Game Over (show death screen)
+- Win (show results screen)
+
  */
+
 
 namespace Hank.Battles
 {
@@ -149,6 +191,7 @@ namespace Hank.Battles
 
             // Setup UI
             _battleTurnBuilder.SetupBattleUI(currentBattle);
+            _battleTurnBuilder.ResetTurnMenuData();
         }
 
         public bool IsPartyWon()
@@ -216,12 +259,8 @@ namespace Hank.Battles
         {
             Debug.Log($"Waiting for player...");
 
-            // Reset values
-            partyMemberTurnIndex = 0;
-            _battleTurnBuilder.ResetTurnMenuData();
-
             // Open UI
-            _battleTurnBuilder.SetPartyMember(rotationOrder[partyMemberTurnIndex]);
+            _battleTurnBuilder.SetPartyMember(currentBattle.PartyInBattle[partyMemberTurnIndex]);
             _battleTurnBuilder.OpenPartyMenus();
         }
 
@@ -255,10 +294,18 @@ namespace Hank.Battles
             partyMemberTurnIndex = index;
 
             // If we've gone back far enough, show the intro flavor text again
-            if (partyMemberTurnIndex < 0) SetState(EBattleState.Intro);
+            if (partyMemberTurnIndex < 0)
+            {
+                partyMemberTurnIndex = 0;
+                SetState(EBattleState.Intro);
+            }
 
             // If we've gone over all party members, execute their actions
-            else if (partyMemberTurnIndex > rotationOrder.Count - 1) SetState(EBattleState.ChoosingLeader);
+            else if (partyMemberTurnIndex > rotationOrder.Count - 1)
+            {
+                partyMemberTurnIndex = rotationOrder.Count - 1;
+                SetState(EBattleState.ChoosingLeader);
+            }
 
             // Otherwise, set the party member
             else _battleTurnBuilder.SetPartyMember(rotationOrder[partyMemberTurnIndex]);
@@ -289,6 +336,8 @@ namespace Hank.Battles
 
             // Select leader
             if (Input.GetKeyDown(KeyCode.Z)) SetState(EBattleState.ExecutingPartyTurn);
+
+            if (Input.GetKeyDown(KeyCode.X)) SetState(EBattleState.WaitingForPlayer);
         }
 
         public void ExitChoosingLeaderState()
@@ -312,24 +361,48 @@ namespace Hank.Battles
         private IEnumerator IExecutePartyTurn()
         {
             // Handle each party member in the rotation order
-            for(int i = 0; i < rotationOrder.Count; i++)
+            for(int i = 0; i < currentBattle.PartyInBattle.Count; i++)
             {
-                TurnMenuData currentData = _battleTurnBuilder.PartyTurnDataPairs[rotationOrder[i]];
+                TurnMenuData currentData = _battleTurnBuilder.PartyTurnDataPairs[currentBattle.PartyInBattle[i]];
+                currentBattle.PartyInBattle[i].SetRendererEnabled(false);
 
+                // Perform battle action
                 switch(currentData.BattleAction)
                 {
+                    // each one of these will instantiate a gameobject animation, which this coroutine waits for
                     case EBattleAction.Bash:
-                        Debug.Log($"{rotationOrder[i].MyStats.Name} used BASH!");
+                        // yield return currentBattle.PartyInBattle[i].SpawnBashAction();
+
+                        // - Battle unit renderer needs to be disabled
+                        // - Start action animation
+                        // - Re-enable unit renderer once finished
+
+                        Debug.Log($"{currentBattle.PartyInBattle[i].MyStats.Name} used BASH!");
                         break;
                     case EBattleAction.Skill:
-                        Debug.Log($"{rotationOrder[i].MyStats.Name} used SKILL!");
+                        // yield return currentBattle.PartyInBattle[i].SpawnSkillAction(int skillIndex);
+
+                        Debug.Log($"{currentBattle.PartyInBattle[i].MyStats.Name} used SKILL!");
                         break;
                     case EBattleAction.Bag:
-                        Debug.Log($"{rotationOrder[i].MyStats.Name} used BAG!");
+                        // yield return currentBattle.PartyInBattle[i].SpawnBagAction(int bagIndex);
+
+                        Debug.Log($"{currentBattle.PartyInBattle[i].MyStats.Name} used BAG!");
+
+                        /* SETH THOUGHTS
+                        1. Inventory will be shared among all party members
+                            - I really hate how Mother 3's inventory works. It's so atrocious. Moving items from one party member to another 
+                            - For this, there will probably have to be a PartyManager class to actually properly manage the party.
+                            - In this class, the inventory will be held.
+                            - Don't show equipment or weapons inside battle, I don't fw it
+                        2. Consumable items will play a short little animation when consumed. Nothing too crazy.
+                        3. Anything that isn't a consuma
+                        */
                         break;
                 }
 
                 yield return new WaitForSeconds(1);
+                currentBattle.PartyInBattle[i].SetRendererEnabled(true);
             }
 
             SetState(EBattleState.ExecutingEnemyTurn);
@@ -342,7 +415,9 @@ namespace Hank.Battles
 
         public void ExitPartyTurnState()
         {
-
+            // Reset turn data once exiting the party turn
+            partyMemberTurnIndex = 0;
+            _battleTurnBuilder.ResetTurnMenuData();
         }
         #endregion
 
@@ -358,6 +433,7 @@ namespace Hank.Battles
         {
             BattleUnit currentUnit = null;
 
+            // check for status effects first
             for (int i = 0; i < currentBattle.EnemiesInBattle.Count; i++)
             {
                 Debug.Log($"{currentBattle.EnemiesInBattle[i].MyStats.Name} is attacking {currentBattle.Leader}!");
@@ -467,6 +543,27 @@ namespace Hank.Battles
         #endregion
 
         #region Damage / Hits
+        public void RegisterPartyMemberHit(EnemyUnit attackingUnit, PartyMemberUnit attackedUnit, int rawDamage)
+        {
+            RegisterUnitDamage(attackingUnit, attackedUnit, rawDamage, 1.0f);
+
+            // create hitmarker
+        }
+
+        public void RegisterEnemyHit(PartyMemberUnit attackingUnit, EnemyUnit attackedUnit, int rawDamage, EAttackPerformance performance)
+        {
+            RegisterUnitDamage(attackingUnit, attackedUnit, rawDamage, GetPerformanceMultiplier(performance));
+
+            // create damage hitmarker
+            // show performance
+        }
+
+        private void RegisterUnitDamage(BattleUnit attackingUnit, BattleUnit attackedUnit, int rawDamage, float performanceMultiplier)
+        {
+            int damage = CalculateDamage(rawDamage, attackingUnit.MyStats.BaseAttack, attackedUnit.MyStats.BaseDefense, performanceMultiplier);
+            attackedUnit.MyHealth.TakeDamage(damage);
+        }
+
         private int CalculateDamage(int rawAttackDamage, int attackStat, int defenseStat, float performanceMultiplier)
         {
             int rawDamage = rawAttackDamage + attackStat;

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using Hank.Battles;
+using TMPro;
 using System;
 
 public class BattleTurnBuilder : MonoBehaviour
@@ -36,6 +37,9 @@ public class BattleTurnBuilder : MonoBehaviour
     private Image _turnOrderPrefab;
 
     [Header("Action Menu")]
+    [SerializeField]
+    private TextMeshProUGUI _partyHeaderText;
+
     [SerializeField]
     private Menu _actionMenu;
 
@@ -138,6 +142,7 @@ public class BattleTurnBuilder : MonoBehaviour
 
         // Ensures that the option is saved while the user is deciding their moves, making it easier to immediately jump to where they last were
         _actionMenu.SetIndex(partyTurnDataPairs[currentPartyMember].SavedActionIndex);
+        _partyHeaderText.text = currentPartyMember.MyStats.Name;
 
         Debug.Log($"Changing party member: {partyMember.MyStats.Name}, Action index: {partyTurnDataPairs[currentPartyMember].SavedActionIndex}");
     }
