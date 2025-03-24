@@ -37,12 +37,30 @@ public abstract class BattleUnit : MonoBehaviour, IUnit
     public delegate void ActionComplete();
     public ActionComplete OnActionComplete;
 
+    protected bool isDead;
+
     private void Awake()
     {
         // Setup health
         health = new Health(stats.MaxHP);
 
         health.OnHealthUpdated += HandleHealthUpdate;
+        health.OnHealthDepleted += HandleDeath;
+    }
+
+    public virtual void Cleanup()
+    {
+        Destroy(gameObject);
+    }
+
+    public virtual bool CheckForDeath()
+    {
+        return isDead;
+    }
+
+    public virtual void HandleDeath()
+    {
+        isDead = true;
     }
 
     public abstract void HandleHealthUpdate(int oldHealth, int newHealth);

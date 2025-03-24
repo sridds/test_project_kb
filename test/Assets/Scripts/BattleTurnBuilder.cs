@@ -130,7 +130,7 @@ public class BattleTurnBuilder : MonoBehaviour
         else
         {
             targetIndex %= BattleHandler.Instance.CurrentBattle.EnemiesInBattle.Count;
-
+            
             if (targetIndex < 0) targetIndex = BattleHandler.Instance.CurrentBattle.EnemiesInBattle.Count - 1;
 
             UpdateEnemyTarget();
@@ -143,14 +143,13 @@ public class BattleTurnBuilder : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
+            Debug.Log($"Index: {i}, Party member name {BattleHandler.Instance.CurrentBattle.PartyInBattle[i].MyStats.Name}");
             if (i == targetIndex)
             {
-                Debug.Log("index is target " + i);
                 BattleHandler.Instance.CurrentBattle.PartyInBattle[i].SetTarget(true);
             }
             else
             {
-                Debug.Log("index is NOT target " + i);
                 BattleHandler.Instance.CurrentBattle.PartyInBattle[i].SetTarget(false);
             }
         }
@@ -185,7 +184,15 @@ public class BattleTurnBuilder : MonoBehaviour
             return true;
         }
 
-        if(turnSubstate == EUISubstate.BagSelection)
+        if (turnSubstate == EUISubstate.ItemTargetSelection)
+        {
+            turnSubstate = EUISubstate.BagSelection;
+            CloseTargetMenu();
+
+            return true;
+        }
+
+        if (turnSubstate == EUISubstate.BagSelection)
         {
             _actionMenu.SetLightDisable(false);
             turnSubstate = EUISubstate.ActionSelection;
@@ -250,7 +257,7 @@ public class BattleTurnBuilder : MonoBehaviour
         else if(turnSubstate == EUISubstate.BagSelection)
         {
             turnSubstate = EUISubstate.ItemTargetSelection;
-            targetIndex = 0;
+            targetIndex = BattleHandler.Instance.CurrentBattle.PartyInBattle.IndexOf(currentPartyMember);
             UpdatePartyTarget();
 
             return true;
@@ -258,9 +265,10 @@ public class BattleTurnBuilder : MonoBehaviour
 
         else if (turnSubstate == EUISubstate.ItemTargetSelection)
         {
-            currentTurnData.Target = BattleHandler.Instance.CurrentBattle.EnemiesInBattle[targetIndex];
+            currentTurnData.Target = BattleHandler.Instance.CurrentBattle.PartyInBattle[targetIndex];
             currentTurnData.SelectionIndex = _itemsMenu.CurrentIndex;
             _actionMenu.SetLightDisable(false);
+            CloseTargetMenu();
             CloseItemsMenu();
         }
 
@@ -287,6 +295,11 @@ public class BattleTurnBuilder : MonoBehaviour
         for (int i = 0; i < BattleHandler.Instance.CurrentBattle.EnemiesInBattle.Count; i++)
         {
             BattleHandler.Instance.CurrentBattle.EnemiesInBattle[i].SetTarget(false);
+        }
+
+        for (int i = 0; i < BattleHandler.Instance.CurrentBattle.PartyInBattle.Count; i++)
+        {
+            BattleHandler.Instance.CurrentBattle.PartyInBattle[i].SetTarget(false);
         }
     }
 
@@ -340,10 +353,10 @@ public class BattleTurnBuilder : MonoBehaviour
         currentPartyMember = null;
     }
 
-    public void OpenFlavorText(EDialogueAppearance appearance)
+    public void OpenFlavorText(string text, EDialogueAppearance appearance)
     {
         _battleDialogueHolder.gameObject.SetActive(true);
-        _battleDialogueWriter.QueueDialoguePayload(new DialogueData() { Text = "Enemies approach Hank!", Appearance = appearance });
+        _battleDialogueWriter.QueueDialoguePayload(new DialogueData() { Text = text, Appearance = appearance });
     }
 
     public void HideFlavorText()

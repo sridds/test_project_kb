@@ -73,9 +73,8 @@ namespace Hank.Battles
         }
         #endregion
 
-
         #region [ITEM]
-        public void StartUsingItem(int itemIndex)
+        public void StartUsingItem(int itemIndex, BattleUnit target)
         {
             Debug.Log($"fuck {itemIndex}");
 
@@ -86,7 +85,7 @@ namespace Hank.Battles
             if (item is Consumable)
             {
                 ConsumeItem consumeAction = Instantiate(_eatAction, transform.position, Quaternion.identity);
-                consumeAction.Initialize(this, item as Consumable);
+                consumeAction.Initialize(this, target, item as Consumable);
                 consumeAction.StartAction();
                 consumeAction.OnActionComplete += HandleActionEnding;
 

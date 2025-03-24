@@ -6,6 +6,7 @@ using System;
 using Random = UnityEngine.Random;
 using DG.Tweening;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 /* 
 - Remember the following -
@@ -121,6 +122,7 @@ namespace Hank.Battles
             battleStateValuePairs.Add(EBattleState.WaitingForPlayer, new B_WaitingForPlayer(this));
             battleStateValuePairs.Add(EBattleState.ExecutingPartyTurn, new B_ExecutingPartyTurn(this));
             battleStateValuePairs.Add(EBattleState.ExecutingEnemyTurn, new B_ExecutingEnemyTurn(this));
+            battleStateValuePairs.Add(EBattleState.BattleComplete, new B_BattleWon(this));
         }
 
         private void Update()
@@ -146,7 +148,7 @@ namespace Hank.Battles
 
             // Clear and register all units
             partyTurnDataPairs.Clear();
-            foreach(PartyMemberUnit unit in party)
+            foreach (PartyMemberUnit unit in party)
             {
                 partyTurnDataPairs.Add(unit, new TurnData());
             }
@@ -186,17 +188,17 @@ namespace Hank.Battles
         public void EnterIntroState()
         {
             // If we haven't seen the intro, show it
-            if(!hasPlayedIntro) StartCoroutine(IPlayIntro());
+            if (!hasPlayedIntro) StartCoroutine(IPlayIntro());
 
             // Otherwise, we're coming back to the intro state, so immediately show the flavor text (dont make the player sit through the typewriting)
-            else _battleTurnBuilder.OpenFlavorText(EDialogueAppearance.Immediate);
+            else _battleTurnBuilder.OpenFlavorText("Enemies approach Hank!", EDialogueAppearance.Immediate);
         }
 
         public void UpdateIntroState()
         {
             if (!hasPlayedIntro) return;
 
-            if(Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 // Immediately enter next state, doesn't matter if player continues text or not
                 SetState(EBattleState.WaitingForPlayer);
@@ -219,7 +221,7 @@ namespace Hank.Battles
             hasPlayedIntro = true;
 
             UpdatePartyArrangement();
-            _battleTurnBuilder.OpenFlavorText(EDialogueAppearance.Typewriter);
+            _battleTurnBuilder.OpenFlavorText("Enemies approach Hank!", EDialogueAppearance.Typewriter);
         }
         #endregion
 
@@ -228,7 +230,7 @@ namespace Hank.Battles
         {
             Debug.Log($"Waiting for player...");
 
-            for(int i = 0; i < currentBattle.PartyInBattle.Count; i++)
+            for (int i = 0; i < currentBattle.PartyInBattle.Count; i++)
             {
                 Debug.Log($"NAME: {currentBattle.PartyInBattle[i]}, {partyTurnDataPairs[currentBattle.PartyInBattle[i]].IsTurnUsed}");
                 currentBattle.PartyInBattle[i].SetDecommissionedVisual(partyTurnDataPairs[currentBattle.PartyInBattle[i]].IsTurnUsed);
@@ -237,7 +239,7 @@ namespace Hank.Battles
             // Get current index
             partyMemberTurnIndex = -1;
             partyMemberTurnIndex = GetNextValidIndex();
-            
+
             _battleTurnBuilder.SetPartyMember(currentBattle.PartyInBattle[partyMemberTurnIndex]);
             _battleTurnBuilder.OpenPartyMenus();
 
@@ -263,7 +265,7 @@ namespace Hank.Battles
             }
 
             // If there are no more options to select, continue through the turn index
-            if(Input.GetKeyDown(KeyCode.Z) && !_battleTurnBuilder.TrySelectOption())
+            if (Input.GetKeyDown(KeyCode.Z) && !_battleTurnBuilder.TrySelectOption())
             {
                 partyTurnDataPairs[GetCurrentPartyMember()] = _battleTurnBuilder.currentTurnData;
                 partyTurnDataPairs[GetCurrentPartyMember()].IsTurnUsed = true;
@@ -345,8 +347,7 @@ namespace Hank.Battles
 
         public void HandleItem()
         {
-
-            GetCurrentPartyMember().StartUsingItem(partyTurnDataPairs[GetCurrentPartyMember()].SelectionIndex);
+            GetCurrentPartyMember().StartUsingItem(partyTurnDataPairs[GetCurrentPartyMember()].SelectionIndex, partyTurnDataPairs[GetCurrentPartyMember()].Target);
             GetCurrentPartyMember().OnActionComplete += OnActionComplete;
         }
 
@@ -355,6 +356,25 @@ namespace Hank.Battles
             // Deregister from events
             GetCurrentPartyMember().OnActionComplete -= OnActionComplete;
             GetCurrentPartyMember().transform.DOMoveX(_defaultXValue, _rotationSpeed).SetEase(Ease.OutQuad);
+
+            // Check if any enemies died
+            for(int i = 0; i < currentBattle.EnemiesInBattle.Count; i++)
+            {
+                if (currentBattle.EnemiesInBattle[i].CheckForDeath())
+                {
+                    currentBattle.EnemiesInBattle[i].Cleanup();
+                    currentBattle.DeregisterEnemyUnit(i);
+
+                    i--;
+                }
+            }
+
+            // Check for win state
+            if (IsPartyWon())
+            {
+                SetState(EBattleState.BattleComplete);
+                return;
+            }
 
             // Change state accordingly
             if (CurrentBattle.PartyInBattle.All(unit => partyTurnDataPairs[unit].IsTurnUsed)) SetState(EBattleState.ExecutingEnemyTurn);
@@ -391,7 +411,7 @@ namespace Hank.Battles
             // 1 - The party has the chance of dying here, so check for death
 
             // Leader - Dodge
-            if(Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 //currentPartyMember.AlternateDodge();
             }
@@ -409,6 +429,25 @@ namespace Hank.Battles
         {
         }
 
+        #endregion
+
+        #region [STATE] Battle Won State
+        public void EnterBattleCompleteState()
+        {
+            Debug.Log("Battle complete!");
+
+            _battleTurnBuilder.OpenFlavorText("You won!", EDialogueAppearance.Typewriter);
+        }
+
+        public void UpdateBattleCompleteState()
+        {
+
+        }
+
+        public void ExitBattleCompleteState()
+        {
+
+        }
         #endregion
         #endregion
 
@@ -435,7 +474,7 @@ namespace Hank.Battles
 
         public void UpdatePartyArrangement()
         {
-            for(int i = 0; i < currentBattle.PartyInBattle.Count; i++)
+            for (int i = 0; i < currentBattle.PartyInBattle.Count; i++)
             {
                 currentBattle.PartyInBattle[i].transform.DOKill(false);
 
@@ -560,6 +599,11 @@ namespace Hank.Battles
 
             OnEnemyUnitAdded?.Invoke(unit);
         }
+
+        public void DeregisterEnemyUnit(int index)
+        {
+            enemies.RemoveAt(index);
+        }
     }
 
     #region States
@@ -608,6 +652,15 @@ namespace Hank.Battles
         public override void EnterState() => battleHandler.EnterEnemyTurnState();
         public override void Update() => battleHandler.UpdateEnemyTurnState();
         public override void ExitState() => battleHandler.ExitEnemyTurnState();
+    }
+
+    public class B_BattleWon : BattleState
+    {
+        public B_BattleWon(BattleHandler handler) : base(handler) { }
+
+        public override void EnterState() => battleHandler.EnterBattleCompleteState();
+        public override void Update() => battleHandler.UpdateBattleCompleteState();
+        public override void ExitState() => battleHandler.ExitBattleCompleteState();
     }
     #endregion
 }

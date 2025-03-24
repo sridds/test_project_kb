@@ -27,16 +27,16 @@ public class UnitFlasher : MonoBehaviour
         if (!isFlashing) return;
 
         timer += Time.deltaTime;
-        _unitRenderer.material.SetFloat("_Multiplier", (Mathf.Cos(timer * _targetFlashSpeed) / 2f) + 0.5f);
+        _unitRenderer.material.SetFloat("_Multiplier", (Mathf.Sin(timer * _targetFlashSpeed) / 2f) + 0.5f);
     }
 
     public void EnableFlash()
     {
         isFlashing = true;
 
-        timer = 0.0f;
+        timer = Mathf.PI * _targetFlashSpeed;
         _unitRenderer.material = _flashMaterial;
-        _unitRenderer.material.SetFloat("_Multiplier", 0.0f);
+        _unitRenderer.material.SetFloat("_Multiplier", timer);
     }
 
     public void DisableFlashing()
