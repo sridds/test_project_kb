@@ -6,7 +6,6 @@ using System;
 using Random = UnityEngine.Random;
 using DG.Tweening;
 using UnityEngine.UI;
-using static UnityEngine.EventSystems.EventTrigger;
 
 /* 
 - Remember the following -
@@ -76,6 +75,7 @@ namespace Hank.Battles
         [Header("DEBUG")]
         [SerializeField] private PartyMemberUnit[] partyUnits;
         [SerializeField] private EnemyUnit[] enemyUnits;
+        [SerializeField] private string battleFlavorText = "Here comes trouble";
 
         [Header("Modifiers")]
         [SerializeField] private float _defaultXValue = -7.5f;
@@ -86,6 +86,7 @@ namespace Hank.Battles
         [SerializeField] private BattleTurnBuilder _battleTurnBuilder;
         [SerializeField] private PerformanceHitmarker _performanceHitmarker;
         [SerializeField] private HealthValueMarker _healthHitmarker;
+        [SerializeField] private BattleUI _battleUI;
 
         #region Private Fields
         private static BattleHandler instance;
@@ -162,7 +163,9 @@ namespace Hank.Battles
             battleStateValuePairs[currentBattleState]?.EnterState();
 
             // Setup UI
-            _battleTurnBuilder.SetupBattleUI(currentBattle);
+            //_battleTurnBuilder.SetupBattleUI(currentBattle);
+
+            _battleUI.Setup(currentBattle);
         }
 
         public bool IsPartyWon()
@@ -191,7 +194,7 @@ namespace Hank.Battles
             if (!hasPlayedIntro) StartCoroutine(IPlayIntro());
 
             // Otherwise, we're coming back to the intro state, so immediately show the flavor text (dont make the player sit through the typewriting)
-            else _battleTurnBuilder.OpenFlavorText("Enemies approach Hank!", EDialogueAppearance.Immediate);
+            else _battleUI.ShowDialogue(new DialogueData() { Text = battleFlavorText, Appearance = EDialogueAppearance.Immediate });
         }
 
         public void UpdateIntroState()
@@ -202,7 +205,7 @@ namespace Hank.Battles
             {
                 // Immediately enter next state, doesn't matter if player continues text or not
                 SetState(EBattleState.WaitingForPlayer);
-                _battleTurnBuilder.HideFlavorText();
+                //_battleTurnBuilder.HideFlavorText();
             }
         }
 
@@ -221,7 +224,7 @@ namespace Hank.Battles
             hasPlayedIntro = true;
 
             UpdatePartyArrangement();
-            _battleTurnBuilder.OpenFlavorText("Enemies approach Hank!", EDialogueAppearance.Typewriter);
+            _battleUI.ShowDialogue(new DialogueData() { Text = battleFlavorText, Appearance = EDialogueAppearance.Typewriter });
         }
         #endregion
 
@@ -240,28 +243,28 @@ namespace Hank.Battles
             partyMemberTurnIndex = -1;
             partyMemberTurnIndex = GetNextValidIndex();
 
-            _battleTurnBuilder.SetPartyMember(currentBattle.PartyInBattle[partyMemberTurnIndex]);
-            _battleTurnBuilder.OpenPartyMenus();
+            //_battleTurnBuilder.SetPartyMember(currentBattle.PartyInBattle[partyMemberTurnIndex]);
+            //_battleTurnBuilder.OpenPartyMenus();
 
             UpdatePartyArrangement();
         }
 
         public void UpdateWaitingState()
         {
-            _battleTurnBuilder.UpdateMenus();
+            //_battleTurnBuilder.UpdateMenus();
 
             // Rotate order
             if (Input.GetKeyDown(KeyCode.C) && !_battleTurnBuilder.IsInSubmenu())
             {
                 // Get the next available index 
                 partyMemberTurnIndex = GetNextValidIndex();
-                _battleTurnBuilder.SetPartyMember(GetCurrentPartyMember());
+                //_battleTurnBuilder.SetPartyMember(GetCurrentPartyMember());
                 UpdatePartyArrangement();
             }
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                _battleTurnBuilder.TryBackup();
+                //_battleTurnBuilder.TryBackup();
             }
 
             // If there are no more options to select, continue through the turn index
@@ -277,7 +280,7 @@ namespace Hank.Battles
         public void ExitWaitingState()
         {
             // 1 - Close menus
-            _battleTurnBuilder.ClosePartyMenus();
+            //_battleTurnBuilder.ClosePartyMenus();
         }
         #endregion
 
@@ -436,7 +439,7 @@ namespace Hank.Battles
         {
             Debug.Log("Battle complete!");
 
-            _battleTurnBuilder.OpenFlavorText("You won!", EDialogueAppearance.Typewriter);
+            //_battleTurnBuilder.OpenFlavorText("You won!", EDialogueAppearance.Typewriter);
         }
 
         public void UpdateBattleCompleteState()

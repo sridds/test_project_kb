@@ -32,6 +32,11 @@ public class DialogueTextWriter : MonoBehaviour
     public QueueEmpty OnQueueEmpty;
     public Continue OnContinue;
 
+    private void Awake()
+    {
+        Cleanup();
+    }
+
     // Called externally to update the current text
     public void TryContinue()
     {
@@ -45,7 +50,7 @@ public class DialogueTextWriter : MonoBehaviour
         }
 
         // Close
-        else if (dialoguePayload.Count == 0)
+        else if (activeDialogueCoroutine == null && dialoguePayload.Count == 0)
         {
             Debug.Log($"Failed to continue, dialogue queue is empty!");
 

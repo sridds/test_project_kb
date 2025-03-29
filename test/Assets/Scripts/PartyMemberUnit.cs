@@ -10,6 +10,10 @@ namespace Hank.Battles
     {
         public List<UnitAttack> MySkills => _skills;
         public UnitAction CurrentAction => currentAction;
+        public UnitVisualGuide VisualGuide => _visualGuide;
+
+        [SerializeField]
+        private UnitVisualGuide _visualGuide;
 
         [SerializeField]
         private UnitAttack _bashAttack;
