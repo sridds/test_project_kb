@@ -66,6 +66,7 @@ namespace Hank.Battles
         {
             Inactive,           // No battle currently active
             Intro,              // Play dope ass intro animation
+            ChoosingLeader,     // Choosing the leader of the attack
             WaitingForPlayer,   // Player deciding turn
             ExecutingPartyTurn, // Executing party members turn
             ExecutingEnemyTurn, // Executing enemies turn
@@ -163,8 +164,6 @@ namespace Hank.Battles
             battleStateValuePairs[currentBattleState]?.EnterState();
 
             // Setup UI
-            //_battleTurnBuilder.SetupBattleUI(currentBattle);
-
             _battleUI.Setup(currentBattle);
         }
 
@@ -224,6 +223,9 @@ namespace Hank.Battles
             hasPlayedIntro = true;
 
             UpdatePartyArrangement();
+
+            // Update UI
+            _battleUI.OpenContainers();
             _battleUI.ShowDialogue(new DialogueData() { Text = battleFlavorText, Appearance = EDialogueAppearance.Typewriter });
         }
         #endregion
@@ -282,6 +284,24 @@ namespace Hank.Battles
             // 1 - Close menus
             //_battleTurnBuilder.ClosePartyMenus();
         }
+        #endregion
+
+        #region [STATE] Choosing Party Member
+        public void EnterChoosingLeaderState()
+        {
+
+        }
+
+        public void UpdateChoosingLeaderState()
+        {
+
+        }
+
+        public void ExitChoosingLeaderState()
+        {
+
+        }
+
         #endregion
 
         #region [STATE] Executing Party Turn State
@@ -628,6 +648,15 @@ namespace Hank.Battles
         public override void EnterState() => battleHandler.EnterIntroState();
         public override void Update() => battleHandler.UpdateIntroState();
         public override void ExitState() => battleHandler.ExitIntroState();
+    }
+
+    public class B_ChoosingLeader : BattleState
+    {
+        public B_ChoosingLeader(BattleHandler handler) : base(handler) { }
+
+        public override void EnterState() => battleHandler.EnterChoosingLeaderState();
+        public override void Update() => battleHandler.UpdateChoosingLeaderState();
+        public override void ExitState() => battleHandler.ExitChoosingLeaderState();
     }
 
     public class B_WaitingForPlayer : BattleState

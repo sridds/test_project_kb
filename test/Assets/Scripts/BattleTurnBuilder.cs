@@ -76,7 +76,7 @@ public class BattleTurnBuilder : MonoBehaviour
     #region MonoBehaviour
     void Start()
     {
-        CloseAllPlayerMenus();
+        //CloseAllPlayerMenus();
     }
     #endregion
 

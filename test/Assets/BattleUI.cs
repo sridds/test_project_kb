@@ -69,7 +69,7 @@ namespace Hank.Battles
         {
             _statCards = new StatCard[currentBattle.PartyInBattle.Count];
 
-            for(int i = 0; i < currentBattle.PartyInBattle.Count; i++)
+            for (int i = 0; i < currentBattle.PartyInBattle.Count; i++)
             {
                 // Instantiate and setup stat card
                 StatCard card = Instantiate(_statCardPrefab, _headerContainer);
@@ -77,13 +77,18 @@ namespace Hank.Battles
 
                 _statCards[i] = card;
             }
+        }
 
+        public void OpenContainers()
+        {
             _headerContainer.gameObject.SetActive(true);
             _menuContainer.gameObject.SetActive(true);
         }
 
         public void ShowDialogue(DialogueData dialogueData)
         {
+            OpenContainers();
+
             _dialogueContainer.gameObject.SetActive(true);
             _dialogueTextWriter.QueueDialoguePayload(dialogueData);
         }
