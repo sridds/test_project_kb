@@ -18,7 +18,7 @@ public struct DialogueData
 public class DialogueTextWriter : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI _textUI;
+    private TMP_Text _textUI;
 
     [SerializeField]
     private float _defaultTextSpeed;
@@ -32,11 +32,6 @@ public class DialogueTextWriter : MonoBehaviour
     public QueueEmpty OnQueueEmpty;
     public Continue OnContinue;
 
-    private void Awake()
-    {
-        Cleanup();
-    }
-
     // Called externally to update the current text
     public void TryContinue()
     {
@@ -47,6 +42,8 @@ public class DialogueTextWriter : MonoBehaviour
 
             activeDialogueCoroutine = StartCoroutine(IHandleText(dialoguePayload.Dequeue()));
             OnContinue?.Invoke();
+
+            lastCount = dialoguePayload.Count;
         }
 
         // Close
@@ -56,18 +53,17 @@ public class DialogueTextWriter : MonoBehaviour
 
             Clear();
             OnQueueEmpty?.Invoke();
+
+            lastCount = dialoguePayload.Count;
         }
     }
 
-    public void TrySkip()
-    {
-        Debug.Log($"Haven't written the code for skipping text yet :p");
-    }
 
+    int lastCount = 0;
     public void QueueDialoguePayload(DialogueData data)
     {
         // If we can, immediately start handling the text
-        if (activeDialogueCoroutine == null)
+        if (activeDialogueCoroutine == null && lastCount == 0)
         {
             activeDialogueCoroutine = StartCoroutine(IHandleText(data));
         }
@@ -76,6 +72,8 @@ public class DialogueTextWriter : MonoBehaviour
         {
             dialoguePayload.Enqueue(data);
         }
+
+        lastCount = dialoguePayload.Count;
     }
 
     public void Cleanup()
@@ -90,17 +88,16 @@ public class DialogueTextWriter : MonoBehaviour
         Clear();
         yield return null;
 
-        if(data.Appearance == EDialogueAppearance.Immediate)
+        if (data.Appearance == EDialogueAppearance.Immediate)
         {
             _textUI.text = data.Text;
         }
-        else if(data.Appearance == EDialogueAppearance.Typewriter)
+        else if (data.Appearance == EDialogueAppearance.Typewriter)
         {
             // Default typewriter effect
             for (int i = 0; i < data.Text.Length; i++)
             {
                 _textUI.text += data.Text[i];
-
                 yield return new WaitForSeconds(_defaultTextSpeed);
             }
         }

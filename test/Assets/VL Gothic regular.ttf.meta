@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1264f3db3307f4551a7d0dca9c4c7908
+guid: b2491610a0e02474485c82fa80e1b928
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - 32bitoperator
+  - VL Gothic
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

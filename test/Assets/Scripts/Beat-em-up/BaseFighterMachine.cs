@@ -17,7 +17,9 @@ namespace Hank.BeatEmUp
         #endregion
 
         #region Inspector Fields
+        [Header("Modifiers")]
         [SerializeField] private float _moveSpeed;
+        [SerializeField] private Transform _shadow;
         #endregion
 
         #region Members
@@ -35,6 +37,16 @@ namespace Hank.BeatEmUp
         private void Start()
         {
             stateMachine = new StateMachine();
+
+            // Create states
+            Idle idle = new Idle(stateMachine);
+            Walk walk = new Walk(stateMachine);
+
+            // Add transitions
+            stateMachine.AddTransition(idle, walk, new FuncPredicate(() => true));
+
+            // Set state immediately
+            stateMachine.SetState(idle);
         }
 
         private void Update()
@@ -71,23 +83,35 @@ namespace Hank.BeatEmUp
         }
     }
 
-    public class S_Idle
+    public class Idle : BaseState
     {
+        public Idle(StateMachine stateMachine) : base(stateMachine) { }
 
+        public override void OnEnter()
+        {
+        }
+
+        public override void Update()
+        {
+        }
+
+        public override void OnExit()
+        {
+        }
     }
 
-    public class S_Walk
+    public class Walk : BaseState
     {
-
+        public Walk(StateMachine stateMachine) : base(stateMachine) { }
     }
 
-    public class S_Jump
+    public class Jump : BaseState
     {
-
+        public Jump(StateMachine stateMachine) : base(stateMachine) { }
     }
 
-    public class S_Land
+    public class Land : BaseState
     {
-
+        public Land(StateMachine stateMachine) : base(stateMachine) { }
     }
 }
