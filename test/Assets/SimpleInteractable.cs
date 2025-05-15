@@ -1,0 +1,40 @@
+using UnityEngine;
+
+public abstract class Interactable : MonoBehaviour
+{
+    protected bool isInteracting;
+    public bool IsInteracting { get { return isInteracting; } }
+
+    public void Interact()
+    {
+        if (isInteracting) return;
+
+        isInteracting = true;
+
+        HandleInteraction();
+    }
+
+    protected virtual void HandleInteraction() { }
+}
+
+public class SimpleInteractable : Interactable
+{
+    public DialogueData[] Data;
+
+    private DialogueHandler handler;
+
+    protected override void HandleInteraction()
+    {
+        if(handler == null) handler = FindFirstObjectByType<DialogueHandler>();
+
+        handler.HandleDialogue(Data);
+
+        handler.Writer.OnQueueEmpty += FinishInteraction;
+    }
+
+    private void FinishInteraction()
+    {
+        isInteracting = false;
+        handler.Writer.OnQueueEmpty -= FinishInteraction;
+    }
+}
