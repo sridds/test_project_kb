@@ -27,6 +27,7 @@ public class SimpleInteractable : Interactable
     {
         if(handler == null) handler = FindFirstObjectByType<DialogueHandler>();
 
+        GameManager.Instance.ChangeGameState(GameManager.EGameState.Cutscene);
         handler.HandleDialogue(Data);
 
         handler.OnQueueEmpty += FinishInteraction;
@@ -36,5 +37,6 @@ public class SimpleInteractable : Interactable
     {
         isInteracting = false;
         handler.OnQueueEmpty -= FinishInteraction;
+        GameManager.Instance.ChangeGameState(GameManager.EGameState.Playing);
     }
 }

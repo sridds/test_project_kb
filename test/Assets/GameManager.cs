@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     public enum EGameState
     {
         Playing,    // can enter cutscene, can enter battle, can pause
@@ -16,9 +17,23 @@ public class GameManager : MonoBehaviour
     public delegate void GameStateUpdated(EGameState state);
     public GameStateUpdated OnGameStateUpdated;
 
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        Debug.Log(Instance.gameObject.name);
+    }
+
     public void ChangeGameState(EGameState state)
     {
         this.state = state;
-        OnGameStateUpdated(state);
+        OnGameStateUpdated?.Invoke(state);
     }
 }

@@ -25,6 +25,12 @@ public class UnitMovement : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.GameState != GameManager.EGameState.Playing)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         // Get axis
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
