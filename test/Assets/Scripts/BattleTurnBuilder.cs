@@ -356,7 +356,7 @@ public class BattleTurnBuilder : MonoBehaviour
     public void OpenFlavorText(string text, EDialogueAppearance appearance)
     {
         _battleDialogueHolder.gameObject.SetActive(true);
-        _battleDialogueWriter.QueueDialoguePayload(new DialogueData() { Text = text, Appearance = appearance });
+        //_battleDialogueWriter.QueueDialoguePayload(new DialogueData() { Text = text, Appearance = appearance });
     }
 
     public void HideFlavorText()

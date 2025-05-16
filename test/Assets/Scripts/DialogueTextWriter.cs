@@ -40,77 +40,33 @@ public class DialogueTextWriter : MonoBehaviour
     private Coroutine activeDialogueCoroutine;
     private DialogueData currentDialogueData;
 
-    private Queue<DialogueData> dialoguePayload = new Queue<DialogueData>();
-
-    public delegate void QueueEmpty();
-    public delegate void Continue();
-
-    public QueueEmpty OnQueueEmpty;
-    public Continue OnContinue;
+    public delegate void DialogueFinished(DialogueData data);
+    public DialogueFinished OnDialogueFinished;
 
     public bool IsWriting { get { return isWriting; } }
 
-    // Called externally to update the current text
-    public void TryContinue()
+    public void WriteDialogue(DialogueData data)
     {
-        // Continue to next line
-        if (activeDialogueCoroutine == null && dialoguePayload.Count > 0)
-        {
-            Debug.Log($"Continued to next dialogue: " + dialoguePayload.Peek());
+        // Stop coroutine if one is currently running
+        if(activeDialogueCoroutine != null) StopCoroutine(activeDialogueCoroutine);
 
-            activeDialogueCoroutine = StartCoroutine(IHandleText(dialoguePayload.Dequeue()));
-            OnContinue?.Invoke();
-
-            lastCount = dialoguePayload.Count;
-        }
-
-        // Close
-        else if (activeDialogueCoroutine == null && dialoguePayload.Count == 0)
-        {
-            Debug.Log($"Failed to continue, dialogue queue is empty!");
-
-            Clear();
-            OnQueueEmpty?.Invoke();
-            currentDialogueData = null;
-
-            lastCount = dialoguePayload.Count;
-        }
+        currentDialogueData = data;
+        activeDialogueCoroutine = StartCoroutine(IHandleText(data));
     }
 
-    public void TrySkip()
+    public void SkipToEnd()
     {
-        if (!isWriting || !currentDialogueData.AllowSkip) return;
-
-        // Skip to end of line
         StopCoroutine(activeDialogueCoroutine);
+        isWriting = false;
         _textUI.text = GetFullText(currentDialogueData);
 
         activeDialogueCoroutine = null;
-        isWriting = false;
-    }
-
-    int lastCount = 0;
-    public void QueueDialoguePayload(DialogueData data)
-    {
-        // If we can, immediately start handling the text
-        if (activeDialogueCoroutine == null && lastCount == 0)
-        {
-            activeDialogueCoroutine = StartCoroutine(IHandleText(data));
-        }
-        // Otherwise, add to the queue
-        else
-        {
-            dialoguePayload.Enqueue(data);
-        }
-
-        lastCount = dialoguePayload.Count;
     }
 
     public void Cleanup()
     {
         Clear();
         activeDialogueCoroutine = null;
-        dialoguePayload.Clear();
     }
 
     private string GetFullText(DialogueData data)

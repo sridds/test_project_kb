@@ -90,7 +90,7 @@ namespace Hank.Battles
             OpenContainers();
 
             _dialogueContainer.gameObject.SetActive(true);
-            _dialogueTextWriter.QueueDialoguePayload(dialogueData);
+            //_dialogueTextWriter.QueueDialoguePayload(dialogueData);
         }
 
         public void Cleanup()

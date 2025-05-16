@@ -29,12 +29,12 @@ public class SimpleInteractable : Interactable
 
         handler.HandleDialogue(Data);
 
-        handler.Writer.OnQueueEmpty += FinishInteraction;
+        handler.OnQueueEmpty += FinishInteraction;
     }
 
     private void FinishInteraction()
     {
         isInteracting = false;
-        handler.Writer.OnQueueEmpty -= FinishInteraction;
+        handler.OnQueueEmpty -= FinishInteraction;
     }
 }
