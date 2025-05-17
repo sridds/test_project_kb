@@ -22,13 +22,12 @@ public class GameManager : MonoBehaviour
         if(Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(this);
         }
         else
         {
             Destroy(gameObject);
         }
-
-        Debug.Log(Instance.gameObject.name);
     }
 
     public void ChangeGameState(EGameState state)
