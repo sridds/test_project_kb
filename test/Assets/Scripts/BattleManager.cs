@@ -1,4 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
+using DG.Tweening;
+using Hank.Battles;
 using UnityEngine;
 
 /* 
@@ -44,26 +47,26 @@ public class BattleManager : MonoBehaviour
     }
 
     [SerializeField]
-    private BattleUnit _partyLeader;
-
-    [SerializeField]
-    private BattleUnit _partySupport;
-
-    [SerializeField]
     private AudioSource _source;
 
     [SerializeField]
     private AudioClip _battleIntroClip;
 
-    [SerializeField]
-    private float _xOffset;
+    [Header("Modifiers")]
+    [SerializeField] private float _defaultXValue = -7.5f;
+
+    [SerializeField] private float _forwardXValue = -6.5f;
 
     [SerializeField]
     private float _partySpacing;
 
+    private int partyMemberTurnIndex;
+
     public void StartBattle()
     {
         StartCoroutine(IPlayBattleIntro());
+
+        // Retrieve party equivalent of party on screen
     }
 
     private IEnumerator IPlayBattleIntro()
@@ -124,5 +127,8 @@ public class BattleManager : MonoBehaviour
     {
 
     }
+    #endregion
+
+    #region Internal Helper Functions
     #endregion
 }

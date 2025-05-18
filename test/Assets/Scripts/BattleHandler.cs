@@ -563,7 +563,7 @@ namespace Hank.Battles
             // create damage hitmarker
             // show performance
             PerformanceHitmarker hitmarker = Instantiate(_performanceHitmarker, attackedUnit.transform.position, Quaternion.identity);
-            hitmarker.SetText(performance.ToString());
+            //hitmarker.SetText(performance.ToString());
         }
 
         private void RegisterUnitDamage(BattleUnit attackingUnit, BattleUnit attackedUnit, int rawDamage, float performanceMultiplier)
