@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using Hank.Battles;
 using UnityEngine;
 
 /* 
@@ -41,6 +40,22 @@ For sake of this system, I'm assuming there will always be two party members
  * 
  */
 
+[System.Serializable]
+public class Battle
+{
+    [System.Serializable]
+    public struct EnemyFormation
+    {
+        [Tooltip("The offset from the chosen battle position on screen (controlled by BattleManager)")]
+        public Vector2 SpawnOffset;
+
+        [Tooltip("The enemy to spawn")]
+        public Unit EnemyUnit;
+    }
+
+    public EnemyFormation[] EnemyUnitFormations;
+}
+
 public class BattleManager : MonoBehaviour
 {
     private const float MAX_PERFORMANCE_DAMAGE_MULTIPLIER = 1.5f;
@@ -64,27 +79,43 @@ public class BattleManager : MonoBehaviour
 
     [Header("Modifiers")]
     [SerializeField] private float _defaultXValue = -7.5f;
-
     [SerializeField] private float _forwardXValue = -6.5f;
-
-    [SerializeField]
-    private float _partySpacing;
+    [SerializeField] private float _enemyDefaultXValue = 7.5f;
+    [SerializeField] private float _partySpacing;
 
     private int partyMemberTurnIndex;
+    private Battle currentBattle;
 
-    public void StartBattle()
+    #region Events
+    public delegate void EnemiesMovingIntoFormation();
+    public EnemiesMovingIntoFormation OnEnemiesMovingIntoFormation;
+    #endregion
+
+    public void StartBattle(Vector2 enemyStartPoint, Battle battle)
     {
-        StartCoroutine(IPlayBattleIntro());
+        currentBattle = battle;
+        StartCoroutine(IPlayBattleIntro(enemyStartPoint));
 
         // Retrieve party equivalent of party on screen
     }
 
-    private IEnumerator IPlayBattleIntro()
+    private IEnumerator IPlayBattleIntro(Vector2 startPoint)
     {
         GameManager.Instance.ChangeGameState(GameManager.EGameState.Battle);
 
         _source.PlayOneShot(_battleIntroClip);
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.8f);
+        OnEnemiesMovingIntoFormation?.Invoke();
+
+        // Spawn all enemies and move them into formation
+        foreach (Battle.EnemyFormation formation in currentBattle.EnemyUnitFormations)
+        {
+            Unit enemyUnit = Instantiate(formation.EnemyUnit, startPoint, Quaternion.identity);
+            enemyUnit.transform.DOMove(new Vector2(_enemyDefaultXValue + formation.SpawnOffset.x, formation.SpawnOffset.y), 0.4f).SetEase(Ease.OutQuad);
+        }
+
+        yield return new WaitForSeconds(0.4f);
+
         AudioManager.Instance.PlayDefaultBattleMusic();
     }
 

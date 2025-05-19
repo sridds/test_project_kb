@@ -305,6 +305,7 @@ public class BattleTurnBuilder : MonoBehaviour
 
     public void SetupBattleUI(Battle currentBattle)
     {
+        /*
         // Setup stat cards
         for (int i = 0; i < currentBattle.PartyInBattle.Count; i++)
         {
@@ -316,7 +317,7 @@ public class BattleTurnBuilder : MonoBehaviour
             statCards.Add(statCard);
 
             statCard.gameObject.SetActive(false);
-        }
+        }*/
     }
 
     public void SetPartyMember(PartyMemberUnit partyMember)

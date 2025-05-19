@@ -51,8 +51,11 @@ TagManager:
   - name: Unit Trails
     uniqueID: 945740635
     locked: 0
-  - name: Units
+  - name: Field Units
     uniqueID: 3394474607
+    locked: 0
+  - name: Battle Units
+    uniqueID: 1152909539
     locked: 0
   - name: World UI
     uniqueID: 1862123355

@@ -8,6 +8,9 @@ public class FieldEnemy : MonoBehaviour
     private const float TRAIL_AMPLITUDE = 0.1f;
 
     [SerializeField]
+    private BattleSO _myBattle;
+
+    [SerializeField]
     private SpriteRenderer _renderer;
 
     [SerializeField]
@@ -62,7 +65,14 @@ public class FieldEnemy : MonoBehaviour
         _renderer.sprite = _shockedSprite;
         _renderer.transform.DOShakePosition(0.3f, new Vector3(0.4f, 0.0f), 40).SetEase(Ease.OutQuad);
 
-        FindFirstObjectByType<BattleManager>().StartBattle();
+        FindFirstObjectByType<BattleManager>().OnEnemiesMovingIntoFormation += Cleanup;
+        FindFirstObjectByType<BattleManager>().StartBattle(transform.position, _myBattle.battle);
+    }
+
+    private void Cleanup()
+    {
+        FindFirstObjectByType<BattleManager>().OnEnemiesMovingIntoFormation -= Cleanup;
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
