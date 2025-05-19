@@ -14,11 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battle:
     EnemyUnitFormations:
-    - SpawnOffset: {x: 0, y: 2}
+    - SpawnOffset: {x: 0, y: 4}
       EnemyUnit: {fileID: 1203901729713348933, guid: b40a6834a80f81b48bf2f50cc4718249, type: 3}
-    - SpawnOffset: {x: -1, y: -2}
+    - SpawnOffset: {x: -1, y: 0}
       EnemyUnit: {fileID: 1203901729713348933, guid: b40a6834a80f81b48bf2f50cc4718249, type: 3}
     FlavorTextAppearanceType: 0
     FlavorText:
-    - Rocks and stones.
-    - Stonemen surround Hank.
+    - Appearance: 0
+      Text: Rocks.& Oh,& and some stones.
+      Portrait: []
+      Blit: {fileID: 8300000, guid: 1af02243aacc8a2448ca8e60eaaac98f, type: 3}
+      AllowSkip: 1
+    - Appearance: 0
+      Text: YEAH.& I'M NOT SUPPOSED TO BE HERE YET...& WHAT ABOUT IT?!
+      Portrait:
+      - {fileID: -122163789, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
+      - {fileID: 2143409813, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
+      Blit: {fileID: 8300000, guid: f9df848e000acd84998ba5cc894a091f, type: 3}
+      AllowSkip: 1
+    - Appearance: 0
+      Text: Stoners all around.
+      Portrait:
+      - {fileID: 0}
+      Blit: {fileID: 8300000, guid: 1af02243aacc8a2448ca8e60eaaac98f, type: 3}
+      AllowSkip: 1

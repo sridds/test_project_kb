@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-using static DialogueHandler;
 
 public class DialogueHandler : MonoBehaviour
 {

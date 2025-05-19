@@ -701,6 +701,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 385855312}
+  - component: {fileID: 385855319}
   - component: {fileID: 385855313}
   - component: {fileID: 385855317}
   - component: {fileID: 385855315}
@@ -816,7 +817,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 0
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &385855317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -859,6 +860,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &385855319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385855309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52023b05780d8464e91ec7ffdec35914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myBattleUnit: {fileID: 8699407710356236257, guid: e26f46d728ba341448bc691a0cf2690d, type: 3}
 --- !u!1 &459328242
 GameObject:
   m_ObjectHideFlags: 0
@@ -2788,7 +2802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca572054f63e0c243bc35e8d46c30a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hankUnit: {fileID: 8699407710356236257, guid: e26f46d728ba341448bc691a0cf2690d, type: 3}
+  _battleUI: {fileID: 2130588419}
   _defaultXValue: -7.5
   _forwardXValue: -6.5
   _enemyDefaultXValue: 7.5
@@ -3716,6 +3730,7 @@ GameObject:
   - component: {fileID: 2130588418}
   - component: {fileID: 2130588417}
   - component: {fileID: 2130588416}
+  - component: {fileID: 2130588419}
   - component: {fileID: 2130588414}
   m_Layer: 5
   m_Name: Battle UI
@@ -3891,6 +3906,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130588412}
   m_CullTransparentMesh: 1
+--- !u!114 &2130588419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130588412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada5e9943a8a27547aea6c4973a5cfdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _writer: {fileID: 2130588416}
+  _dialogueBox: {fileID: 923137003}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

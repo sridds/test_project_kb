@@ -62,11 +62,12 @@ public class Battle
 
     public EnemyFormation[] EnemyUnitFormations;
     public EFlavorTextAppearanceType FlavorTextAppearanceType;
-    public string[] FlavorText;
+    public DialogueData[] FlavorText;
 }
 
 public class BattleManager : MonoBehaviour
 {
+    #region Fields
     private const float MAX_PERFORMANCE_DAMAGE_MULTIPLIER = 1.5f;
 
     public enum EBattleState
@@ -80,8 +81,9 @@ public class BattleManager : MonoBehaviour
         Outro
     }
 
+    #region Public Fields
     [Header("References")]
-    [SerializeField] private PartyUnit _hankUnit;
+    [SerializeField] private BattleUIHandler _battleUI;
 
     [Header("Modifiers")]
     [SerializeField] private float _defaultXValue = -7.5f;
@@ -95,9 +97,15 @@ public class BattleManager : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource _source;
     [SerializeField] private AudioClip _battleIntroClip;
+    #endregion
 
+    #region Private Fields
     private int partyMemberTurnIndex;
+    private int turnNumber;
     private Battle currentBattle;
+    private EBattleState currentBattleState;
+    private Dictionary<EBattleState, BattleState> battleStateValuePairs = new Dictionary<EBattleState, BattleState>();
+    #endregion
 
     #region Events
     public delegate void UnitFormation();
@@ -106,28 +114,57 @@ public class BattleManager : MonoBehaviour
     public delegate void IntroFinished();
     public IntroFinished OnIntroFinished;
     #endregion
+    #endregion
+
+    private void Awake()
+    {
+        // Initialize state machine
+        battleStateValuePairs.Add(EBattleState.None, null);
+        battleStateValuePairs.Add(EBattleState.Intro, new B_Intro(this));
+        battleStateValuePairs.Add(EBattleState.WaitingForPlayer, new B_WaitingForPlayer(this));
+        battleStateValuePairs.Add(EBattleState.ExecutingPlayerTurn, new B_ExecutingPartyTurn(this));
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+
+        if (currentBattleState == EBattleState.None) return;
+          
+        battleStateValuePairs[currentBattleState]?.Update();
+    }
 
     public void StartBattle(Vector2 enemyStartPoint, Battle battle)
     {
-        partyMemberTurnIndex = 0;
-        currentBattle = battle;
-        StartCoroutine(IPlayBattleIntro(enemyStartPoint));
+        // Reset values
+        Cleanup();
 
-        // Retrieve party equivalent of party on screen
+        currentBattle = battle;
+        SetState(EBattleState.Intro);
+        StartCoroutine(IPlayBattleIntro(enemyStartPoint));
+        GameManager.Instance.ChangeGameState(GameManager.EGameState.Battle);
+    }
+
+    private void Cleanup()
+    {
+        turnNumber = 0;
+        partyMemberTurnIndex = 0;
     }
 
     private IEnumerator IPlayBattleIntro(Vector2 startPoint)
     {
         AudioManager.Instance.PauseMusic();
-        GameManager.Instance.ChangeGameState(GameManager.EGameState.Battle);
 
         _source.PlayOneShot(_battleIntroClip);
         yield return new WaitForSeconds(0.8f);
         OnUnitsFormation?.Invoke();
 
-        // Spawn party and move into formation
-        Unit hankUnit = Instantiate(_hankUnit, FindObjectOfType<HankAnimationHelper>().transform.position, Quaternion.identity);
-        hankUnit.transform.DOMove(new Vector2(_defaultXValue, 0.0f), 0.4f).SetEase(Ease.OutQuad);
+        // Find all party members on the field and create their battle versions
+        foreach(FieldPartyMember partyMember in FindObjectsByType<FieldPartyMember>(FindObjectsSortMode.None))
+        {
+            PartyUnit partyUnit = Instantiate(partyMember.MyBattleUnit, partyMember.transform.position, Quaternion.identity);
+            partyUnit.transform.DOMove(new Vector2(_defaultXValue, 0.0f), 0.4f).SetEase(Ease.OutQuad);
+        }
 
         // Spawn all enemies and move them into formation
         foreach (Battle.EnemyFormation formation in currentBattle.EnemyUnitFormations)
@@ -142,60 +179,112 @@ public class BattleManager : MonoBehaviour
 
         // Intro finished, play music
         AudioManager.Instance.PlayDefaultBattleMusic();
+
+        // Finish intro
         OnIntroFinished?.Invoke();
+        SetState(EBattleState.WaitingForPlayer);
     }
+
+
+    #region Intro State
+    public void EnterIntroState()
+    {
+
+    }
+
+    #endregion
 
     #region Waiting For Player State
-    private void EnterWaitingForPlayerState()
+    public void EnterWaitingForPlayerState()
+    {
+        // Show the current flavor text
+        _battleUI.ShowFlavorText(currentBattle.FlavorText, currentBattle.FlavorTextAppearanceType, turnNumber);
+    }
+
+    public void UpdateWaitingForPlayerState()
     {
 
     }
 
-    private void UpdateWaitingForPlayerState()
-    {
-
-    }
-
-    private void ExitWaitingForPlayerState()
+    public void ExitWaitingForPlayerState()
     {
 
     }
     #endregion
 
     #region Executing Player State
-    private void EnterExecutingPlayerState()
+    public void EnterExecutingPlayerState()
     {
 
     }
 
-    private void UpdateExecutingPlayerState()
+    public void UpdateExecutingPlayerState()
     {
 
     }
 
-    private void ExitExecutingPlayerState()
-    {
-
-    }
-    #endregion
-
-    #region Dialogue State
-    private void EnterDialogueState()
-    {
-
-    }
-
-    private void UpdateDialogueState()
-    {
-
-    }
-
-    private void ExitDialogueState()
+    public void ExitExecutingPlayerState()
     {
 
     }
     #endregion
 
     #region Internal Helper Functions
+    private void SetState(EBattleState state)
+    {
+        Debug.Log($"Setting current EBattleState [{currentBattleState}] to {state}");
+
+        // Don't bother if its the same state
+        if (currentBattleState == state) return;
+
+        EBattleState previousState = currentBattleState;
+
+        // Exit current state and enter new one
+        battleStateValuePairs[previousState]?.ExitState();
+        battleStateValuePairs[state]?.EnterState();
+
+        // Set an invoke events
+        currentBattleState = state;
+        //OnBattleStateUpdated?.Invoke(previousState, state);
+    }
     #endregion
 }
+
+#region States
+public class BattleState
+{
+    protected BattleManager battleHandler;
+
+    public BattleState(BattleManager handler) => battleHandler = handler;
+
+    public virtual void EnterState() { }
+    public virtual void ExitState() { }
+    public virtual void Update() { }
+}
+
+public class B_Intro : BattleState
+{
+    public B_Intro(BattleManager handler) : base(handler) { }
+
+    public override void EnterState() => battleHandler.EnterIntroState();
+}
+
+public class B_WaitingForPlayer : BattleState
+{
+    public B_WaitingForPlayer(BattleManager handler) : base(handler) { }
+
+    public override void EnterState() => battleHandler.EnterWaitingForPlayerState();
+    public override void Update() => battleHandler.UpdateWaitingForPlayerState();
+    public override void ExitState() => battleHandler.ExitWaitingForPlayerState();
+}
+
+public class B_ExecutingPartyTurn : BattleState
+{
+    public B_ExecutingPartyTurn(BattleManager handler) : base(handler) { }
+
+    public override void EnterState() => battleHandler.EnterExecutingPlayerState();
+    public override void Update() => battleHandler.UpdateExecutingPlayerState();
+    public override void ExitState() => battleHandler.ExitExecutingPlayerState();
+}
+
+#endregion
