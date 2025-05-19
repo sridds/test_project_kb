@@ -65,13 +65,13 @@ public class FieldEnemy : MonoBehaviour
         _renderer.sprite = _shockedSprite;
         _renderer.transform.DOShakePosition(0.3f, new Vector3(0.4f, 0.0f), 40).SetEase(Ease.OutQuad);
 
-        FindFirstObjectByType<BattleManager>().OnEnemiesMovingIntoFormation += Cleanup;
+        FindFirstObjectByType<BattleManager>().OnUnitsFormation += Cleanup;
         FindFirstObjectByType<BattleManager>().StartBattle(transform.position, _myBattle.battle);
     }
 
     private void Cleanup()
     {
-        FindFirstObjectByType<BattleManager>().OnEnemiesMovingIntoFormation -= Cleanup;
+        FindFirstObjectByType<BattleManager>().OnUnitsFormation -= Cleanup;
         Destroy(gameObject);
     }
 

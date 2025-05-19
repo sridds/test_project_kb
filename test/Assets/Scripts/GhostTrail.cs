@@ -24,7 +24,7 @@ public class GhostTrail : MonoBehaviour
         if (lastPos != transform.position && timer > _spawnInterval)
         {
             // Create new trail
-            GhostTrailObject trail = Instantiate(_ghostTrailObjectPrefab, transform.position, Quaternion.identity);
+            GhostTrailObject trail = Instantiate(_ghostTrailObjectPrefab, _renderer.transform.position, Quaternion.identity);
             trail.gameObject.name = gameObject.name + "(Trail)";
             trail.spriteRenderer.sprite = _renderer.sprite;
             trail.spriteRenderer.color = _renderer.color;

@@ -27,6 +27,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PauseMusic()
+    {
+        _musicSource.Pause();
+    }
+
     public void PlayDefaultBattleMusic()
     {
         _musicSource.clip = _defaultBattleMusic;

@@ -54,6 +54,9 @@ TagManager:
   - name: Field Units
     uniqueID: 3394474607
     locked: 0
+  - name: Battle Background Elements
+    uniqueID: 701680175
+    locked: 0
   - name: Battle Units
     uniqueID: 1152909539
     locked: 0

@@ -18,3 +18,7 @@ MonoBehaviour:
       EnemyUnit: {fileID: 1203901729713348933, guid: b40a6834a80f81b48bf2f50cc4718249, type: 3}
     - SpawnOffset: {x: -1, y: -2}
       EnemyUnit: {fileID: 1203901729713348933, guid: b40a6834a80f81b48bf2f50cc4718249, type: 3}
+    FlavorTextAppearanceType: 0
+    FlavorText:
+    - Rocks and stones.
+    - Stonemen surround Hank.
