@@ -85,7 +85,7 @@ namespace Hank.Battles
 
         [Header("References")]
         [SerializeField] private BattleTurnBuilder _battleTurnBuilder;
-        [SerializeField] private PerformanceHitmarker _performanceHitmarker;
+        //[SerializeField] private PerformanceHitmarker _performanceHitmarker;
         [SerializeField] private HealthValueMarker _healthHitmarker;
         [SerializeField] private BattleUI _battleUI;
 
@@ -562,7 +562,7 @@ namespace Hank.Battles
 
             // create damage hitmarker
             // show performance
-            PerformanceHitmarker hitmarker = Instantiate(_performanceHitmarker, attackedUnit.transform.position, Quaternion.identity);
+            //PerformanceHitmarker hitmarker = Instantiate(_performanceHitmarker, attackedUnit.transform.position, Quaternion.identity);
             //hitmarker.SetText(performance.ToString());
         }
 

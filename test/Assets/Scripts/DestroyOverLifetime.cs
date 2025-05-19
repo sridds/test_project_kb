@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 
-public class PerformanceHitmarker : MonoBehaviour
+public class DestroyOverLifetime : MonoBehaviour
 {
     [SerializeField]
     private float _lifetime = 1.0f;

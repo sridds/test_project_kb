@@ -7,6 +7,9 @@ public class OKPerformanceHelper : MonoBehaviour
     [SerializeField]
     private SpriteRenderer[] _letters;
 
+    [SerializeField]
+    private float _lifeTime = 1.0f;
+
     private void Start()
     {
         StartCoroutine(IPlayAnimation());
@@ -34,6 +37,20 @@ public class OKPerformanceHelper : MonoBehaviour
             _letters[i].transform.DOScale(1.0f, 0.2f).SetEase(Ease.OutQuad);
         }
 
-        yield return null;
+        yield return new WaitForSeconds(_lifeTime);
+
+        for (int i = 0; i < _letters.Length; i++)
+        {
+            _letters[i].transform.parent.DOScaleY(1.6f, 0.3f);
+            _letters[i].transform.parent.DOScaleX(0.4f, 0.3f);
+            _letters[i].transform.parent.DOLocalMoveY(1.5f, 0.5f);
+            _letters[i].DOFade(0.0f, 0.3f);
+
+            yield return new WaitForSeconds(0.03f);
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        Destroy(gameObject);
     }
 }

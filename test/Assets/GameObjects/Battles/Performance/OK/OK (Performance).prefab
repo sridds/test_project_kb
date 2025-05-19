@@ -81,6 +81,7 @@ MonoBehaviour:
   _letters:
   - {fileID: 8066403176681340296}
   - {fileID: 1992006516724005673}
+  _lifeTime: 1
 --- !u!1 &3476400922325013968
 GameObject:
   m_ObjectHideFlags: 0

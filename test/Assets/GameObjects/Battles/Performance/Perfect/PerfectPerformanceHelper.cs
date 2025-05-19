@@ -1,12 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
-using UnityEditor;
 
 public class PerfectPerformanceHelper : MonoBehaviour
 {
     [SerializeField]
     private SpriteRenderer[] _letters;
+
+    [SerializeField]
+    private float _lifeTime;
 
     private void Start()
     {
@@ -41,5 +43,21 @@ public class PerfectPerformanceHelper : MonoBehaviour
 
             yield return new WaitForSeconds(0.02f);
         }
+
+        yield return new WaitForSeconds(_lifeTime);
+
+        for (int i = 0; i < _letters.Length; i++)
+        {
+            _letters[i].transform.DOScaleY(1.6f, 0.3f);
+            _letters[i].transform.DOScaleX(0.4f, 0.3f);
+            _letters[i].transform.DOLocalMoveY(1.5f, 0.5f);
+            _letters[i].DOFade(0.0f, 0.3f);
+
+            yield return new WaitForSeconds(0.03f);
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        Destroy(gameObject);
     }
 }
