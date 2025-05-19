@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using System.Collections;
 
 public class UnitFlasher : MonoBehaviour
 {
@@ -27,14 +28,31 @@ public class UnitFlasher : MonoBehaviour
         if (!isFlashing) return;
 
         timer += Time.deltaTime;
-        _unitRenderer.material.SetFloat("_Multiplier", (Mathf.Sin(timer * _targetFlashSpeed) / 2f) + 0.5f);
+
+        // this makes it so it always starts at 0
+        float frequency = (3 * Mathf.PI) / (_targetFlashSpeed * 2.0f);
+
+        _unitRenderer.material.SetFloat("_Multiplier", (Mathf.Sin((timer + frequency) * _targetFlashSpeed) / 2.0f) + 0.5f);
+    }
+
+    public void DamageFlash(float duration)
+    {
+        StopAllCoroutines();
+        StartCoroutine(IFlash(duration));
+    }
+
+    private IEnumerator IFlash(float duration)
+    {
+        _unitRenderer.material.SetFloat("_Multiplier", 1.0f);
+        yield return new WaitForSeconds(duration);
+        _unitRenderer.material.SetFloat("_Multiplier", 0.0f);
     }
 
     public void EnableFlash()
     {
         isFlashing = true;
 
-        timer = Mathf.PI * _targetFlashSpeed;
+        timer = 0.0f;
         _unitRenderer.material = _flashMaterial;
         _unitRenderer.material.SetFloat("_Multiplier", timer);
     }

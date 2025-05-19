@@ -31,6 +31,16 @@ For sake of this system, I'm assuming there will always be two party members
  * - All actions execute some kind of animation before completing
  */
 
+/* Target - Enum (All Party, All Enemies, One Enemy Unit, One Party Unit)
+ * - Enemies can have multiple target spots without being multiple enemies, but they are listed in parenthesis
+ * - Status effects show how many turns remain until it wears off
+ * - 
+ * 
+ * 
+ * 
+ * 
+ */
+
 public class BattleManager : MonoBehaviour
 {
     private const float MAX_PERFORMANCE_DAMAGE_MULTIPLIER = 1.5f;
