@@ -78,6 +78,7 @@ public class DamageHelper : MonoBehaviour
 
     private void Update()
     {
+        /*
         // debug - start chain
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -91,7 +92,7 @@ public class DamageHelper : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             EndDamageChain(FindFirstObjectByType<FieldEnemy>().gameObject);
-        }
+        }*/
     }
 
     public void DamageChain(GameObject key, int value, Vector3 hitPoint)

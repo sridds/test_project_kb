@@ -30,4 +30,10 @@ public class Unit : MonoBehaviour
     }
 
     protected virtual void OnDamaged(int damage) { }
+
+    public void SetTarget(bool target)
+    {
+        if (target) _flasher.EnableFlash();
+        else _flasher.DisableFlashing();
+    }
 }
