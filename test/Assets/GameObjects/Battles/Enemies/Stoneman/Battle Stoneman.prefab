@@ -173,6 +173,7 @@ MonoBehaviour:
     BaseAttack: 5
     BaseDefense: 5
   _renderer: {fileID: 8623600541953560929}
+  _spriteHolder: {fileID: 4184986585984264351}
   _idleSprite: {fileID: 8020143640844766479, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
   _hurtSprite: {fileID: -6251682230944352461, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
   _shakeFrequency: 10

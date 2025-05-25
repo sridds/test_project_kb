@@ -47,7 +47,7 @@ public class DamageHelper : MonoBehaviour
     private AudioClip _okClip;
 
     // replace gameobject later w enemy script
-    private Dictionary<GameObject, int> damageChains = new Dictionary<GameObject, int>();
+    private Dictionary<Unit, int> damageChains = new Dictionary<Unit, int>();
 
     public void SpawnPerformanceHitmarker(EDamagePerformance performance, Vector2 point)
     {
@@ -76,26 +76,7 @@ public class DamageHelper : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        /*
-        // debug - start chain
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Vector3 hit = FindFirstObjectByType<FieldEnemy>().transform.position + new Vector3(Random.insideUnitCircle.x, Random.insideUnitCircle.y);
-
-            DamageChain(FindFirstObjectByType<FieldEnemy>().gameObject, Random.Range(5, 15), hit);
-
-            SpawnPerformanceHitmarker((EDamagePerformance)Random.Range(0, 4), hit + new Vector3(0, 3.0f));
-        }
-        // debug - end chain
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            EndDamageChain(FindFirstObjectByType<FieldEnemy>().gameObject);
-        }*/
-    }
-
-    public void DamageChain(GameObject key, int value, Vector3 hitPoint)
+    public void DamageChain(Unit key, int value, Vector3 hitPoint)
     {
         // Spawn hitmarker at object position
 
@@ -113,13 +94,16 @@ public class DamageHelper : MonoBehaviour
         }
     }
 
-    public void EndDamageChain(GameObject key)
+    public void EndDamageChain(Unit key, bool displayTotal = true)
     {
         if (!damageChains.ContainsKey(key)) return;
 
         // show total damage
-        DamageTotal total = Instantiate(_damageTotalPrefab, key.transform.position, Quaternion.identity);
-        total.Numbers.SetValue(damageChains[key]);
+        if (displayTotal)
+        {
+            DamageTotal total = Instantiate(_damageTotalPrefab, key.transform.position, Quaternion.identity);
+            total.Numbers.SetValue(damageChains[key]);
+        }
 
         damageChains.Remove(key);
     }

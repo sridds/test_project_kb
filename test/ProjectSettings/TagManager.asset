@@ -60,6 +60,9 @@ TagManager:
   - name: Battle Units
     uniqueID: 1152909539
     locked: 0
+  - name: Minigames
+    uniqueID: 734855497
+    locked: 0
   - name: World UI
     uniqueID: 1862123355
     locked: 0

@@ -7,6 +7,9 @@ public class EnemyUnit : Unit
     [SerializeField]
     private SpriteRenderer _renderer;
 
+    [SerializeField]
+    private Transform _spriteHolder;
+
     [Header("Basic Animation")]
     [SerializeField]
     private Sprite _idleSprite;
@@ -39,16 +42,16 @@ public class EnemyUnit : Unit
         float val = Mathf.Sign(Mathf.Sin(timer * _shakeFrequency)) * 0.03f;
         val += 0.03f;
 
-        _renderer.transform.localPosition = new Vector3(val, 0.0f);
+        _spriteHolder.transform.localPosition = new Vector3(val, 0.0f);
     }
 
     private IEnumerator ITakeHit()
     {
         _renderer.transform.DOKill(true);
-        _renderer.transform.DOShakePosition(0.2f, new Vector3(0.5f, 0.0f), 45);
+        _renderer.transform.DOShakePosition(0.4f, new Vector3(0.8f, 0.0f), 45);
         _renderer.sprite = _hurtSprite;
         _flasher.DamageFlash(0.1f);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.4f);
         _renderer.sprite = _idleSprite;
     }
 }

@@ -16,7 +16,7 @@ public class BattleSkillMenu : MonoBehaviour
     [SerializeField] private Skill[] _testSkills;
 
     [SerializeField] private TextMeshProUGUI _skillDescriptionText;
-    [SerializeField] private TextMeshProUGUI _skillBonusText;
+    [SerializeField] private TextMeshProUGUI _costText;
 
     private int skillIndex;
 
