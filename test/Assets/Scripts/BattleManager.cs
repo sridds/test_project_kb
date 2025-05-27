@@ -128,9 +128,20 @@ public class BattleManager : MonoBehaviour
         battleStateValuePairs.Add(EBattleState.ExecutingPlayerTurn, new B_ExecutingPartyTurn(this));
     }
 
+    public HankStandardAttack attack;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        
+        // Test attack
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            _activePartyUnits[0].gameObject.SetActive(false);
+            attack.gameObject.SetActive(true);
+            attack.Setup(_activeEnemyUnits.ToArray());
+        }
+
 
         if (currentBattleState == EBattleState.None) return;
           
