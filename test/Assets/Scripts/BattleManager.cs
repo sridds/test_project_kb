@@ -100,7 +100,7 @@ public class BattleManager : MonoBehaviour
     #endregion
 
     #region Private Fields
-    private List<PartyUnit> _activePartyUnits;
+    private List<PartyMember> _activePartyUnits;
     private List<EnemyUnit> _activeEnemyUnits;
 
     private int partyMemberTurnIndex;
@@ -128,23 +128,25 @@ public class BattleManager : MonoBehaviour
         battleStateValuePairs.Add(EBattleState.ExecutingPlayerTurn, new B_ExecutingPartyTurn(this));
     }
 
-    public HankStandardAttack attack;
-
     private void Update()
     {
+        // Debug Restart
         if (Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
         
         // Test attack
+
+        /*
         if (Input.GetKeyDown(KeyCode.E))
         {
             _activePartyUnits[0].gameObject.SetActive(false);
             attack.gameObject.SetActive(true);
             attack.Setup(_activeEnemyUnits.ToArray());
-        }
+        }*/
 
 
         if (currentBattleState == EBattleState.None) return;
           
+        // Update current battle state
         battleStateValuePairs[currentBattleState]?.Update();
     }
 
@@ -153,6 +155,7 @@ public class BattleManager : MonoBehaviour
         // Reset values
         Cleanup();
 
+        // Play battle intro and ensure a smooth transition into battle
         currentBattle = battle;
         SetState(EBattleState.Intro);
         StartCoroutine(IPlayBattleIntro(enemyStartPoint));
@@ -164,35 +167,45 @@ public class BattleManager : MonoBehaviour
         turnNumber = 0;
         partyMemberTurnIndex = 0;
 
-        _activePartyUnits = new List<PartyUnit>();
+        _activePartyUnits = new List<PartyMember>();
         _activeEnemyUnits = new List<EnemyUnit>();
     }
 
-    private IEnumerator IPlayBattleIntro(Vector2 startPoint)
+    private void SpawnParty()
     {
-        AudioManager.Instance.PauseMusic();
-
-        _source.PlayOneShot(_battleIntroClip);
-        yield return new WaitForSeconds(0.8f);
-        OnUnitsFormation?.Invoke();
-
         // Find all party members on the field and create their battle versions
-        foreach(FieldPartyMember partyMember in FindObjectsByType<FieldPartyMember>(FindObjectsSortMode.None))
+        foreach (FieldPartyMember partyMember in FindObjectsByType<FieldPartyMember>(FindObjectsSortMode.None))
         {
-            PartyUnit partyUnit = Instantiate(partyMember.MyBattleUnit, partyMember.transform.position, Quaternion.identity);
-            partyUnit.transform.DOMove(new Vector2(_defaultXValue, 0.0f), 0.4f).SetEase(Ease.OutQuad);
+            //PartyMember partyUnit = Instantiate(partyMember.MyBattleUnit, partyMember.transform.position, Quaternion.identity);
+            //partyUnit.transform.DOMove(new Vector2(_defaultXValue, 0.0f), 0.4f).SetEase(Ease.OutQuad);
 
-            _activePartyUnits.Add(partyUnit);
+            //_activePartyUnits.Add(partyUnit);
         }
+    }
 
+    private void SpawnEnemies(Vector2 originPoint)
+    {
         // Spawn all enemies and move them into formation
         foreach (Battle.EnemyFormation formation in currentBattle.EnemyUnitFormations)
         {
-            EnemyUnit enemyUnit = Instantiate(formation.EnemyUnit, startPoint, Quaternion.identity);
+            EnemyUnit enemyUnit = Instantiate(formation.EnemyUnit, originPoint, Quaternion.identity);
             enemyUnit.transform.DOMove(new Vector2(_enemyDefaultXValue + formation.SpawnOffset.x, formation.SpawnOffset.y), 0.4f).SetEase(Ease.OutQuad);
 
             _activeEnemyUnits.Add(enemyUnit);
         }
+    }
+
+    private IEnumerator IPlayBattleIntro(Vector2 contactPoint)
+    {
+        // Pause whatever music is currently playing
+        AudioManager.Instance.PauseMusic();
+        _source.PlayOneShot(_battleIntroClip);
+        yield return new WaitForSeconds(0.8f);
+
+        // Party / enemies enter formation
+        OnUnitsFormation?.Invoke();
+        SpawnParty();
+        SpawnEnemies(contactPoint);
 
         // Fade background in
         _background.DOFade(1.0f, 0.4f).SetEase(Ease.OutQuad);
@@ -284,9 +297,9 @@ public class BattleManager : MonoBehaviour
 
     private void TargetAllParty()
     {
-        foreach (PartyUnit partyMember in _activePartyUnits)
+        foreach (PartyMember partyMember in _activePartyUnits)
         {
-            partyMember.SetTarget(true);
+            //partyMember.SetTarget(true);
         }
     }
 
@@ -297,9 +310,9 @@ public class BattleManager : MonoBehaviour
             enemy.SetTarget(false);
         }
 
-        foreach (PartyUnit partyMember in _activePartyUnits)
+        foreach (PartyMember partyMember in _activePartyUnits)
         {
-            partyMember.SetTarget(false);
+            //partyMember.SetTarget(false);
         }
     }
     #endregion

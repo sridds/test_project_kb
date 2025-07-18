@@ -1,5 +1,13 @@
 using UnityEngine;
 
+public enum EDirectionFacing
+{
+    Left,
+    Right,
+    Up,
+    Down
+}
+
 public class UnitMovement : MonoBehaviour
 {
     [SerializeField]
@@ -8,15 +16,22 @@ public class UnitMovement : MonoBehaviour
     [SerializeField]
     private float _runSpeed;
 
+    [SerializeField]
+    private SpriteRenderer _testSpr;
+
+    [SerializeField]
+    private Sprite[] _testDir;
+
     private Rigidbody2D rb;
     private Vector2 frameInput;
     private bool isRunning;
     private bool isMoving;
+    private EDirectionFacing direction;
 
     public bool IsRunning { get { return isRunning; } }
     public bool IsMoving { get { return isMoving; } }
     public Vector2 Velocity { get { return rb.linearVelocity; } }
-
+    public EDirectionFacing Direction { get { return direction; } }
 
     private void Start()
     {
@@ -34,13 +49,25 @@ public class UnitMovement : MonoBehaviour
         // Get axis
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
-
         frameInput = new Vector2(x, y);
+
+        // Set current direction
+        if(Mathf.Abs(frameInput.normalized.x) == 1)
+        {
+            direction = frameInput.x > 0 ? EDirectionFacing.Right : EDirectionFacing.Left;
+        }
+        else if(Mathf.Abs(frameInput.normalized.y) == 1)
+        {
+            direction = frameInput.y > 0 ? EDirectionFacing.Up : EDirectionFacing.Down;
+        }
 
         // Get speed
         isRunning = Input.GetKey(KeyCode.X);
-        float speed = isRunning ? _runSpeed : _unitSpeed;
+    }
 
+    private void FixedUpdate()
+    {
+        float speed = isRunning ? _runSpeed : _unitSpeed;
         rb.linearVelocity = new Vector2(frameInput.x, frameInput.y).normalized * speed;
     }
 

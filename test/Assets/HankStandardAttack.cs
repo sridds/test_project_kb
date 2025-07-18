@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 using System;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// Rev up car, honk twice, heavy bash into foe!
@@ -118,32 +119,37 @@ public class HankStandardAttack : MonoBehaviour
         // Get target
         Vector3 target = targets[0].transform.position;
 
-        // Start revving and drive
+        // okay here's what i'm thinking
+        // revving the car like crazy during a progress bar
+        // then let go to send the car toward the enemy
+        // depending on the time frame you let go you either
+
+        if(Random.Range(0, 3) == 2)
+        {
+            StartCoroutine(IMiss(target));
+        }
+        else
+        {
+            StartCoroutine(IHit(targets[0]));
+        }
+        //StartCoroutine(IMiss(target));
+    }
+
+    private IEnumerator IMiss(Vector2 point)
+    {
+        // Start revving
         yield return new WaitForSeconds(0.3f);
         _trail.enabled = true;
+
+        // Drive
+        yield return _car.StartCoroutine(_car.INormalDrive(point));
         _revvingSource.DOPitch(1.5f, 0.7f).SetEase(Ease.InQuad);
-        yield return _car.StartCoroutine(_car.INormalDrive(target));
-        
-        yield return new WaitForSeconds(0.4f);
-        OpenAttackWindow();
+        _revvingSource.DOFade(0.0f, 1.0f);
 
-        yield return new WaitForSeconds(_attackWindow);
+        yield return new WaitForSeconds(0.15f);
 
-        // Hit something
-        if(!isAttackWindowOpen)
-        {
-            _trail.enabled = false;
-            _carTransform.DOShakePosition(0.5f, 1.0f, 35);
-
-            FindObjectOfType<DamageHelper>().SpawnPerformanceHitmarker(GetPerformance(), _carTransform.position + new Vector3(0.0f, 3.0f));
-            FindObjectOfType<DamageHelper>().DamageChain(FindFirstObjectByType<EnemyUnit>(), 15, target);
-            targets[0].MyHealth.TakeDamage(15);
-
-            // Jump out of car
-            yield return new WaitForSeconds(0.3f);
-        }
-
-        Vector2 jumpOffPoint = target - new Vector3(4.0f, 3.0f);
+        // Jump off car
+        Vector2 jumpOffPoint = point - new Vector2(4.0f, 3.0f);
         _source.PlayOneShot(_jumpClip);
         _renderer.sortingOrder = 3;
         _renderer.sprite = _hankJumpSprite;
@@ -152,45 +158,42 @@ public class HankStandardAttack : MonoBehaviour
         _renderer.sprite = _hankIdleSprite;
 
         // Miss
-        if (isAttackWindowOpen)
+        yield return new WaitForSeconds(0.2f);
+        _source.PlayOneShot(_missCarClip);
+
+        // Hank turns around and looks at what he just did
+        _renderer.transform.parent.DORotate(new Vector3(0, 0, 5.0f), 0.15f, RotateMode.LocalAxisAdd).SetEase(Ease.InQuad);
+        yield return _renderer.transform.parent.DOLocalMoveX(-0.3f, 0.1f).SetEase(Ease.InQuad).WaitForCompletion();
+        _renderer.sprite = _hankDisgustedSprite;
+        _renderer.transform.parent.DOLocalMoveX(0.0f, 0.1f).SetEase(Ease.OutQuad);
+        yield return new WaitForSeconds(0.05f);
+        _renderer.transform.parent.DORotate(new Vector3(0, 0, -5.0f), 0.15f, RotateMode.LocalAxisAdd).SetEase(Ease.OutQuad);
+
+        // Hank moves his eyes back and forth
+        yield return new WaitForSeconds(0.4f);
+        for (int i = 0; i < 4; i++)
         {
-            yield return new WaitForSeconds(0.2f);
-            _source.PlayOneShot(_missCarClip);
-
-            // Hank turns around and looks at what he just did
-            _renderer.transform.parent.DORotate(new Vector3(0, 0, 5.0f), 0.15f, RotateMode.LocalAxisAdd).SetEase(Ease.InQuad);
-            yield return _renderer.transform.parent.DOLocalMoveX(-0.3f, 0.1f).SetEase(Ease.InQuad).WaitForCompletion();
-            _renderer.sprite = _hankDisgustedSprite;
-            _renderer.transform.parent.DOLocalMoveX(0.0f, 0.1f).SetEase(Ease.OutQuad);
-            yield return new WaitForSeconds(0.05f);
-            _renderer.transform.parent.DORotate(new Vector3(0, 0, -5.0f), 0.15f, RotateMode.LocalAxisAdd).SetEase(Ease.OutQuad);
-
-            // Hank moves his eyes back and forth
-            yield return new WaitForSeconds(0.4f);
-            for (int i = 0; i < 4; i++)
+            if (i % 2 == 0)
             {
-                if(i % 2 == 0)
-                {
-                    _renderer.sprite = _hankDisgustedSpriteAlt;
-                }
-                else
-                {
-                    _renderer.sprite = _hankDisgustedSprite;
-                }
-                yield return new WaitForSeconds(0.1f);
+                _renderer.sprite = _hankDisgustedSpriteAlt;
             }
-
-            yield return new WaitForSeconds(0.2f);
-
-            // Hank turns back around
-            _renderer.transform.parent.DORotate(new Vector3(0, 0, -5.0f), 0.15f, RotateMode.LocalAxisAdd).SetEase(Ease.InQuad);
-            yield return _renderer.transform.parent.DOLocalMoveX(0.3f, 0.1f).SetEase(Ease.InQuad).WaitForCompletion();
-            _renderer.sprite = _hankIdleSprite;
-            _renderer.flipX = true;
-            _renderer.transform.parent.DOLocalMoveX(0.0f, 0.1f).SetEase(Ease.OutQuad);
-            yield return new WaitForSeconds(0.05f);
-            _renderer.transform.parent.DORotate(new Vector3(0, 0, 5.0f), 0.15f, RotateMode.LocalAxisAdd).SetEase(Ease.OutQuad);
+            else
+            {
+                _renderer.sprite = _hankDisgustedSprite;
+            }
+            yield return new WaitForSeconds(0.1f);
         }
+
+        yield return new WaitForSeconds(0.2f);
+
+        // Hank turns back around
+        _renderer.transform.parent.DORotate(new Vector3(0, 0, -5.0f), 0.15f, RotateMode.LocalAxisAdd).SetEase(Ease.InQuad);
+        yield return _renderer.transform.parent.DOLocalMoveX(0.3f, 0.1f).SetEase(Ease.InQuad).WaitForCompletion();
+        _renderer.sprite = _hankIdleSprite;
+        _renderer.flipX = true;
+        _renderer.transform.parent.DOLocalMoveX(0.0f, 0.1f).SetEase(Ease.OutQuad);
+        yield return new WaitForSeconds(0.05f);
+        _renderer.transform.parent.DORotate(new Vector3(0, 0, 5.0f), 0.15f, RotateMode.LocalAxisAdd).SetEase(Ease.OutQuad);
 
         _renderer.flipX = true;
         yield return new WaitForSeconds(0.3f);
@@ -200,6 +203,11 @@ public class HankStandardAttack : MonoBehaviour
         yield return _hankTransform.DOMove(transform.position, 0.7f).SetEase(Ease.Linear).WaitForCompletion();
         _hankAnimator.Play("Car_Hank_Idle");
         _renderer.flipX = false;
+    }
+
+    private IEnumerator IHit(EnemyUnit hit)
+    {
+        yield return null;
     }
 
     public void Footstep()

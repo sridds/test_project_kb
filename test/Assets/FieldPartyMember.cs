@@ -3,7 +3,9 @@ using UnityEngine;
 public class FieldPartyMember : MonoBehaviour
 {
     [SerializeField]
-    private PartyUnit _myBattleUnit;
+    private PartyDataObject _myDataObject;
 
-    public PartyUnit MyBattleUnit { get { return _myBattleUnit; }}
+    #region - Accessors -
+    public PartyDataObject myDataObject { get { return _myDataObject; }}
+    #endregion
 }

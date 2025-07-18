@@ -16,7 +16,7 @@ public class DialogueData
     [TextArea]
     public string Text;
     public Sprite[] Portrait;
-    public AudioClip Blit;
+    public AudioStream Blit;
 
     [Header("Advanced Settings")]
     public bool AllowSkip = true;
@@ -116,7 +116,7 @@ public class DialogueTextWriter : MonoBehaviour
                 // Play type writer sound
                 if(data.Blit != null && data.Text[i] != ' ')
                 {
-                    _source.PlayOneShot(data.Blit);
+                    AudioManager.Instance.PlaySound(data.Blit);
                 }
 
                 _textUI.text += data.Text[i];

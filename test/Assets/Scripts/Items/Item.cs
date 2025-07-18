@@ -1,8 +1,11 @@
 using UnityEngine;
 
-public abstract class Item : ScriptableObject
+namespace Hank.Unused
 {
-    public string ItemName;
-    public string ItemDescription;
-    public Sprite ItemUISprite;
+    public abstract class Item : ScriptableObject
+    {
+        public string ItemName;
+        public string ItemDescription;
+        public Sprite ItemUISprite;
+    }
 }

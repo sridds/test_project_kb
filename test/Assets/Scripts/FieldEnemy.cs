@@ -14,6 +14,9 @@ public class FieldEnemy : MonoBehaviour
     private SpriteRenderer _renderer;
 
     [SerializeField]
+    private SpriteRenderer _auraTrailPrefab;
+
+    [SerializeField]
     private Sprite _shockedSprite;
 
     private SpriteRenderer[] _hostileRenderers;
@@ -34,10 +37,8 @@ public class FieldEnemy : MonoBehaviour
 
     private SpriteRenderer CreateTrail(Vector3 offset)
     {
-        GameObject go = new GameObject("Trail");
-        SpriteRenderer renderer = go.AddComponent<SpriteRenderer>();
-        go.transform.position = transform.position + offset;
-        go.transform.SetParent(transform);
+        SpriteRenderer renderer = Instantiate(_auraTrailPrefab, transform.position + offset, Quaternion.identity);
+        renderer.transform.SetParent(transform);
         renderer.color = hostileColor;
 
         return renderer;

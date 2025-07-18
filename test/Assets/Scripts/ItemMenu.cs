@@ -40,12 +40,13 @@ public class ItemMenu : MonoBehaviour
 
     private void UpdateItems()
     {
+        /*
         for(int i = 0; i < PartyManager.Instance.Bag.MaxSize(); i++)
         {
             MenuOption option = Instantiate(_optionPrefab, _optionHolder);
             options.Add(option);
             option.gameObject.SetActive(false);
-        }
+        }*/
     }
 
     public void UpdateMenu()
@@ -56,6 +57,7 @@ public class ItemMenu : MonoBehaviour
 
     private void GetInput()
     {
+        /*
         if (options.Count == 0) return;
 
         // Get next index
@@ -67,11 +69,12 @@ public class ItemMenu : MonoBehaviour
         if (currentIndex < 0) currentIndex = 0;
         if (currentIndex > PartyManager.Instance.Bag.Count() - 1) currentIndex = PartyManager.Instance.Bag.Count() - 1;
 
-        AdjustMenu();
+        AdjustMenu();*/
     }
 
     private void AdjustMenu()
     {
+        /*
         int page = (currentIndex / _maxOptionsShownAtOnce);
         int itemCount = PartyManager.Instance.Bag.Count();
 
@@ -118,7 +121,7 @@ public class ItemMenu : MonoBehaviour
         else
         {
             _downArrowIndicator.SetActive(true);
-        }
+        }*/
     }
 
     public void SetIndex(int index)

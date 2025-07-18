@@ -84,6 +84,7 @@ namespace Hank.Battles
 
             // Create attack animation and hide the battle sprite
             SetRendererEnabled(false);
+            /*
             PartyManager.Instance.Bag.TryRemoveItem(itemIndex, out Item item);
 
             if (item is Consumable)
@@ -94,7 +95,7 @@ namespace Hank.Battles
                 consumeAction.OnActionComplete += HandleActionEnding;
 
                 currentAction = consumeAction;
-            }
+            }*/
         }
         #endregion
 

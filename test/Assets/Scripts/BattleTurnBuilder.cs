@@ -87,6 +87,7 @@ public class BattleTurnBuilder : MonoBehaviour
     // Bash, Skills, Bag
     public void UpdateMenus()
     {
+        /*
         switch(turnSubstate)
         {
             case EUISubstate.ActionSelection:
@@ -109,7 +110,7 @@ public class BattleTurnBuilder : MonoBehaviour
             case EUISubstate.ItemTargetSelection:
                 SelectTarget(true);
                 break;
-        }
+        }*/
     }
 
     private void SelectTarget(bool isPartyTarget)
@@ -334,6 +335,7 @@ public class BattleTurnBuilder : MonoBehaviour
     #region Menu Opening / Closing
     public void OpenPartyMenus()
     {
+        /*
         _actionMenu.SetVisibility(true);
         _actionMenu.SetInteractable(true);
 
@@ -342,7 +344,7 @@ public class BattleTurnBuilder : MonoBehaviour
         {
             _actionMenu.SetOptionActive(false, 1);
             return;
-        }
+        }*/
     }
 
     public void ClosePartyMenus()

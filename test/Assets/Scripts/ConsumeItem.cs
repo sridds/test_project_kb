@@ -23,7 +23,7 @@ namespace Hank.Battles
         {
             yield return null;
 
-            BattleHandler.Instance.RegisterUnitHeal(target, consumable.HealAmount);
+            //BattleHandler.Instance.RegisterUnitHeal(target, consumable.HealAmount);
 
             yield return new WaitForSeconds(1);
             OnActionComplete?.Invoke();
