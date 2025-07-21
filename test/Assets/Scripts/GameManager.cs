@@ -12,10 +12,15 @@ public class GameManager : MonoBehaviour
     }
 
     private EGameState state;
+
+    #region - Accessors -
     public EGameState GameState { get { return state; } }
-    
+    #endregion
+
+    #region - Delegates -
     public delegate void GameStateUpdated(EGameState state);
     public GameStateUpdated OnGameStateUpdated;
+    #endregion
 
     private void Awake()
     {
@@ -34,5 +39,10 @@ public class GameManager : MonoBehaviour
     {
         this.state = state;
         OnGameStateUpdated?.Invoke(state);
+    }
+
+    public void RoomChanged(Room newRoom)
+    {
+        
     }
 }

@@ -14,6 +14,11 @@ public class SaveManager
 
     public static string SaveFilePath() => Application.persistentDataPath + "/save" + ".save";
 
+    public static void DeleteData()
+    {
+        File.Delete(SaveFilePath());
+    }
+
     public static void Save()
     {
         HandleSave();

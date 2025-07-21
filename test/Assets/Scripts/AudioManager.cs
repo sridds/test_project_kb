@@ -1,9 +1,11 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
+    [Header("References")]
     [SerializeField]
     private AudioSource _soundSource;
 
@@ -12,11 +14,14 @@ public class AudioManager : MonoBehaviour
 
     [Header("Defaults")]
     [SerializeField]
-    private AudioClip _defaultBattleMusic;
-
+    private MusicStream _defaultBattleMusic;
     [SerializeField]
-    private AudioClip _areaMusic;
+    private MusicStream _defaultAreaMusic;
+    
 
+    private MusicStream currentMusicTrack;
+    public MusicStream CurrentMusicTrack { get { return currentMusicTrack; } }
+    public MusicStream DefaultAreaMusic { get { return _defaultAreaMusic; } }
 
     private void Awake()
     {
@@ -31,16 +36,25 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void FadeOutMusic(float duration)
+    {
+        _musicSource.DOFade(0.0f, duration);
+    }
+
     public void PlaySound(AudioStream stream)
     {
         _soundSource.pitch = stream.GetPitch();
         _soundSource.PlayOneShot(stream.GetClip(), stream.volumeScale);
     }
 
-    public void PlayTrack(AudioClip clip)
+    public void PlayTrack(MusicStream clip)
     {
+        currentMusicTrack = clip;
+
         _musicSource.mute = false;
-        _musicSource.clip = clip;
+        _musicSource.pitch = clip.defaultPitch;
+        _musicSource.volume = clip.volumeScale;
+        _musicSource.clip = clip.mainTrack;
         _musicSource.Play();
     }
 
@@ -51,7 +65,11 @@ public class AudioManager : MonoBehaviour
 
     public void PlayDefaultBattleMusic()
     {
-        _musicSource.clip = _defaultBattleMusic;
+        currentMusicTrack = _defaultBattleMusic;
+
+        _musicSource.clip = _defaultBattleMusic.mainTrack;
+        _musicSource.pitch = _defaultBattleMusic.defaultPitch;
+        _musicSource.volume = _defaultBattleMusic.volumeScale;
         _musicSource.Play();
     }
 }

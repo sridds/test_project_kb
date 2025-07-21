@@ -109,7 +109,7 @@ public class DialogueTextWriter : MonoBehaviour
             {
                 if(data.Text[i] == '&')
                 {
-                    yield return new WaitForSeconds(_defaultWaitTime);
+                    yield return new WaitForSecondsRealtime(_defaultWaitTime);
                     continue;
                 }
 
@@ -120,7 +120,7 @@ public class DialogueTextWriter : MonoBehaviour
                 }
 
                 _textUI.text += data.Text[i];
-                yield return new WaitForSeconds(_defaultTextSpeed);
+                yield return new WaitForSecondsRealtime(_defaultTextSpeed);
             }
         }
 

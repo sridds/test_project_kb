@@ -3,19 +3,13 @@ using System.Collections.Generic;
 
 public class Party : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private FollowerManager _followers;
-
     [Header("Settings")]
     [SerializeField] private int _maxInventorySize = 12;
     [SerializeField] private int _maxKeyItemSlots = 12;
     [SerializeField] private int _maxEquippables = 48;
-    [SerializeField] private Consumable _testConsumable;
-    [SerializeField] private Key _testKey;
 
     private int money;
-    private List<PartyMember> partyMembers = new List<PartyMember>();
-
+    private Dictionary<PartyDataObject, PartyMember> party = new Dictionary<PartyDataObject, PartyMember>();
     private Consumable[] myInventory;
     private Key[] keys;
 
@@ -23,6 +17,9 @@ public class Party : MonoBehaviour
     public int Money => money;
     public Consumable[] Bag => myInventory;
     #endregion
+
+    public delegate void MoneyValueChanged(int oldValue, int newValue);
+    public MoneyValueChanged OnMoneyValueChanged;
 
     private void Awake()
     {
@@ -36,6 +33,18 @@ public class Party : MonoBehaviour
         keys = new Key[_maxKeyItemSlots];
     }
 
+    public void AddMoney(int amount)
+    {
+        money += amount;
+        OnMoneyValueChanged?.Invoke(money - amount, money);
+    }
+
+    public void TakeMoney(int amount)
+    {
+        money -= amount;
+        OnMoneyValueChanged?.Invoke(money + amount, money);
+    }
+
     // When registering a party member from data, this function needs to know where to spawn the party member
     public void RegisterPartyMember(PartyDataObject data, Vector2 spawnPoint)
     {
@@ -44,26 +53,24 @@ public class Party : MonoBehaviour
         // Create party member on field
         FieldPartyMember fieldMember = Instantiate(data.DefaultPrefab, transform);
         fieldMember.transform.position = spawnPoint;
-
-        // Immediately add follower
-        //_followers.AddFollower(fieldMember.myFollower);
     }
 
     // Adds member to the party
     public void RegisterPartyMember(FieldPartyMember fieldMember)
     {
         CreatePartyMemberFromData(fieldMember.myDataObject);
-        //_followers.AddFollower(fieldMember.myFollower);
     }
 
     // Create / load party member data and add to the list of party members. This function will handle loading data from file aswell
     private void CreatePartyMemberFromData(PartyDataObject data)
     {
         PartyMember partyMember = new PartyMember(data, _maxEquippables);
-        partyMembers.Add(partyMember);
+        party.Add(data, partyMember);
 
         Debug.Log($"Registered new party member: [{data.DefaultStats.Name}]");
     }
+
+    public PartyMember GetPartyMember(PartyDataObject obj) => party[obj];
 }
 
 public class PartyMember

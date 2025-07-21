@@ -14,27 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battle:
     EnemyUnitFormations:
-    - SpawnOffset: {x: 0, y: 4}
+    - SpawnOffset: {x: 0, y: 2}
       EnemyUnit: {fileID: 1203901729713348933, guid: b40a6834a80f81b48bf2f50cc4718249, type: 3}
-    - SpawnOffset: {x: -1, y: 0}
+    - SpawnOffset: {x: -1, y: -2}
       EnemyUnit: {fileID: 1203901729713348933, guid: b40a6834a80f81b48bf2f50cc4718249, type: 3}
     FlavorTextAppearanceType: 0
     FlavorText:
     - Appearance: 0
-      Text: Rocks.& Oh,& and some stones.
+      Text: Battle test
       Portrait: []
-      Blit: {fileID: 0}
+      Blit: {fileID: 11400000, guid: 4b262f4734edf3c409f922dec45bfccf, type: 2}
       AllowSkip: 1
     - Appearance: 0
       Text: YEAH.& I'M NOT SUPPOSED TO BE HERE YET...& WHAT ABOUT IT?!
       Portrait:
       - {fileID: -122163789, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
       - {fileID: 2143409813, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
-      Blit: {fileID: 8300000, guid: f9df848e000acd84998ba5cc894a091f, type: 3}
+      Blit: {fileID: 11400000, guid: 870001e5c661da040a2495412892a0e1, type: 2}
       AllowSkip: 1
     - Appearance: 0
       Text: Stoners all around.
       Portrait:
       - {fileID: 0}
-      Blit: {fileID: 0}
+      Blit: {fileID: 11400000, guid: 4b262f4734edf3c409f922dec45bfccf, type: 2}
       AllowSkip: 1

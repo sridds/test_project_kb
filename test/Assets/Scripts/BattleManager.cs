@@ -183,13 +183,13 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    private void SpawnEnemies(Vector2 originPoint)
+    private void SpawnEnemies(Vector2 originPoint, Vector2 battleOrigin)
     {
         // Spawn all enemies and move them into formation
         foreach (Battle.EnemyFormation formation in currentBattle.EnemyUnitFormations)
         {
             EnemyUnit enemyUnit = Instantiate(formation.EnemyUnit, originPoint, Quaternion.identity);
-            enemyUnit.transform.DOMove(new Vector2(_enemyDefaultXValue + formation.SpawnOffset.x, formation.SpawnOffset.y), 0.4f).SetEase(Ease.OutQuad);
+            enemyUnit.transform.DOMove(battleOrigin + new Vector2(_enemyDefaultXValue + formation.SpawnOffset.x, formation.SpawnOffset.y), 0.4f).SetEase(Ease.OutQuad);
 
             _activeEnemyUnits.Add(enemyUnit);
         }
@@ -197,6 +197,9 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator IPlayBattleIntro(Vector2 contactPoint)
     {
+        Vector2 pos = Camera.main.transform.position;
+        transform.position = pos;
+
         // Pause whatever music is currently playing
         AudioManager.Instance.PauseMusic();
         _source.PlayOneShot(_battleIntroClip);
@@ -205,7 +208,7 @@ public class BattleManager : MonoBehaviour
         // Party / enemies enter formation
         OnUnitsFormation?.Invoke();
         SpawnParty();
-        SpawnEnemies(contactPoint);
+        SpawnEnemies(contactPoint, pos);
 
         // Fade background in
         _background.DOFade(1.0f, 0.4f).SetEase(Ease.OutQuad);

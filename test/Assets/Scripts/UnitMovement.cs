@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum EDirectionFacing
+public enum EDirection
 {
     Left,
     Right,
@@ -16,22 +16,16 @@ public class UnitMovement : MonoBehaviour
     [SerializeField]
     private float _runSpeed;
 
-    [SerializeField]
-    private SpriteRenderer _testSpr;
-
-    [SerializeField]
-    private Sprite[] _testDir;
-
     private Rigidbody2D rb;
     private Vector2 frameInput;
     private bool isRunning;
     private bool isMoving;
-    private EDirectionFacing direction;
+    private EDirection direction;
 
     public bool IsRunning { get { return isRunning; } }
     public bool IsMoving { get { return isMoving; } }
     public Vector2 Velocity { get { return rb.linearVelocity; } }
-    public EDirectionFacing Direction { get { return direction; } }
+    public EDirection Direction { get { return direction; } }
 
     private void Start()
     {
@@ -42,27 +36,43 @@ public class UnitMovement : MonoBehaviour
     {
         if (GameManager.Instance.GameState != GameManager.EGameState.Playing)
         {
-            rb.linearVelocity = Vector2.zero;
+            FreezeMovement();
             return;
         }
 
+        GetInput();
+        UpdateDirection();
+    }
+
+    private void FreezeMovement()
+    {
+        frameInput = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
+    }
+
+    private void GetInput()
+    {
         // Get axis
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
         frameInput = new Vector2(x, y);
 
-        // Set current direction
-        if(Mathf.Abs(frameInput.normalized.x) == 1)
-        {
-            direction = frameInput.x > 0 ? EDirectionFacing.Right : EDirectionFacing.Left;
-        }
-        else if(Mathf.Abs(frameInput.normalized.y) == 1)
-        {
-            direction = frameInput.y > 0 ? EDirectionFacing.Up : EDirectionFacing.Down;
-        }
-
         // Get speed
         isRunning = Input.GetKey(KeyCode.X);
+    }
+
+    private void UpdateDirection()
+    {
+
+        // Set current direction
+        if (Mathf.Abs(frameInput.normalized.x) == 1)
+        {
+            direction = frameInput.x > 0 ? EDirection.Right : EDirection.Left;
+        }
+        else if (Mathf.Abs(frameInput.normalized.y) == 1)
+        {
+            direction = frameInput.y > 0 ? EDirection.Up : EDirection.Down;
+        }
     }
 
     private void FixedUpdate()

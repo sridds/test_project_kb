@@ -77,7 +77,7 @@ public class HankGameIntro : MonoBehaviour
     private IEnumerator IStartIntro()
     {
         // start music
-        AudioManager.Instance.PlayTrack(_introMusic);
+        //AudioManager.Instance.PlayTrack(_i);
 
         // open spotlight
         _spotlight.transform.DOScale(1.0f, 1.2f).SetEase(Ease.OutQuad);
