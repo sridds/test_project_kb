@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Health
 {
-    private int currentHealth;
-    private int maxHealth;
+    private int currentPercent;
+    private float distance;
 
     #region Accessors
-    public int CurrentHealth => currentHealth;
-    public int MaxHealth => maxHealth;
-    public bool IsDead { get { return CurrentHealth <= 0; } }
+    public float Distance => distance;
+    public int CurrentPercent => currentPercent;
+    public bool IsDead { get { return Distance <= 0; } }
     #endregion
 
     #region Events
@@ -19,32 +19,25 @@ public class Health
     public HealthDepleted OnHealthDepleted;
     #endregion
 
-    public Health(int maxHealth)
+    public Health()
     {
-        this.maxHealth = maxHealth;
-        currentHealth = maxHealth;
+
     }
 
     public void TakeDamage(int damageAmount)
     {
         if (IsDead) return;
 
-        currentHealth -= damageAmount;
+        currentPercent += damageAmount;
 
-        if (currentHealth < 0)
-        {
-            currentHealth = 0;
-            OnHealthDepleted?.Invoke();
-        }
-
-        OnHealthUpdated?.Invoke(currentHealth + damageAmount, currentHealth);
+        OnHealthUpdated?.Invoke(currentPercent - damageAmount, currentPercent);
     }
 
     public void Heal(int healAmount)
     {
-        currentHealth += healAmount;
-        currentHealth %= maxHealth;
+        currentPercent -= healAmount;
+        currentPercent = (int)Mathf.Clamp(currentPercent, 0, Mathf.Infinity);
 
-        OnHealthUpdated?.Invoke(currentHealth - healAmount, currentHealth);
+        OnHealthUpdated?.Invoke(currentPercent + healAmount, currentPercent);
     }
 }

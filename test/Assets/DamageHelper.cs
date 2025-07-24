@@ -94,7 +94,7 @@ public class DamageHelper : MonoBehaviour
         }
     }
 
-    public void EndDamageChain(Unit key, bool displayTotal = true)
+/*    public void EndDamageChain(Unit key, bool displayTotal = true)
     {
         if (!damageChains.ContainsKey(key)) return;
 
@@ -107,4 +107,4 @@ public class DamageHelper : MonoBehaviour
 
         damageChains.Remove(key);
     }
-}
+*/}

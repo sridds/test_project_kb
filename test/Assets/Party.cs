@@ -9,13 +9,14 @@ public class Party : MonoBehaviour
     [SerializeField] private int _maxEquippables = 48;
 
     private int money;
-    // mana, just fought,
+    private int mana;
     private Dictionary<PartyDataObject, PartyMember> party = new Dictionary<PartyDataObject, PartyMember>();
     private Consumable[] myInventory;
     private Key[] keys;
 
     #region - Accessors -
     public int Money => money;
+    public int Mana => mana;
     public Consumable[] Bag => myInventory;
     #endregion
 
@@ -74,11 +75,10 @@ public class Party : MonoBehaviour
     public PartyMember GetPartyMember(PartyDataObject obj) => party[obj];
 }
 
-public class PartyMember
+public class PartyMember : Unit
 {
     // Data / stats
     private PartyDataObject data;
-    private Health health;
 
     // Party members carry their own exclusive weapons and armors (like Deltarune) max of 48
     private Weapon[] weapons;
@@ -89,8 +89,6 @@ public class PartyMember
     private Armor equippedArmor;
 
     #region Accessors
-    public int Attack { get { return data.DefaultStats.BaseAttack + equippedWeapon.attackBonus; } }
-    public int Defense { get { return data.DefaultStats.BaseDefense + equippedArmor.defenseBonus; } }
     public Weapon EquippedWeapon { get { return equippedWeapon; } }
     public Armor EquippedArmor { get { return equippedArmor; } }
     #endregion

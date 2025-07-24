@@ -1,39 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
-public class Unit : MonoBehaviour
+public class Unit
 {
-    [Header("References")]
-    [SerializeField]
-    protected UnitFlasher _flasher;
+    private UnitDataObject data;
+    protected Health health;
 
-    [Header("Settings")]
-    [SerializeField]
-    protected Stats _myStats;
+    public ActionData attack;
+    public ActionData guard;
+    public List<ActionData> abilities;
 
-    protected Health myHealth;
-    public Stats MyStats { get { return _myStats; } }
-    public Health MyHealth { get { return myHealth; } }
+    #region -Accessors-
+    public UnitDataObject Data { get { return data; } }
+    public Health Health { get { return health; } }
+    public int Attack { get { return data.DefaultStats.BaseAttack; } }
+    public int Defense { get { return data.DefaultStats.BaseDefense; } }
 
-    private void Awake()
-    {
-        // Initialize
-        myHealth = new Health(_myStats.MaxHP);
-
-        myHealth.OnHealthUpdated += HealthUpdate;
-    }
-
-    private void HealthUpdate(int oldHealth, int newHealth)
-    {
-        if (oldHealth > newHealth)
-        {
-            OnDamaged(oldHealth - newHealth);
-        }
-    }
-
-    protected virtual void OnDamaged(int damage) { }
-
-    public void SetTarget(bool target)
-    {
-        if (target) _flasher.EnableFlash();
-        else _flasher.DisableFlashing();
-    }
+    #endregion
 }

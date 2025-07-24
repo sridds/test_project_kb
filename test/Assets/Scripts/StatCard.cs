@@ -32,7 +32,7 @@ namespace Hank.Battles
             _partyMemberNameText.text = myPartyUnit.MyStats.Name;
             _partyMemberNameText.color = myPartyUnit.VisualGuide.BaseColor;
 
-            _healthText.text = myPartyUnit.MyHealth.CurrentHealth.ToString();
+            _healthText.text = myPartyUnit.MyHealth.CurrentPercent.ToString();
             _maxHealthText.text = $"/ {myPartyUnit.MyStats.MaxHP}";
 
             // Subscribe to events

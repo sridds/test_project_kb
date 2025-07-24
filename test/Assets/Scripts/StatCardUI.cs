@@ -22,13 +22,13 @@ public class StatCardUI : MonoBehaviour
         // Set current
         _nameText.text = myUnit.MyStats.Name;
         _healthSlider.maxValue = myUnit.MyStats.MaxHP;
-        _healthSlider.value = myUnit.MyHealth.CurrentHealth;
+        _healthSlider.value = myUnit.MyHealth.CurrentPercent;
 
         myUnit.MyHealth.OnHealthUpdated += UpdateHealth;
     }
 
     private void UpdateHealth(int lastHealth, int newHealth)
     {
-        _healthSlider.value = myUnit.MyHealth.CurrentHealth;
+        _healthSlider.value = myUnit.MyHealth.CurrentPercent;
     }
 }
