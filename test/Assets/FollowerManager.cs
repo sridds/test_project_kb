@@ -29,15 +29,13 @@ public class FollowerManager : MonoBehaviour
     private float positionThreshold = 0.001f;
     private float timer;
 
+
     private void Start()
     {
-        // initialize values
         lastLeaderPosition = new Waypoint() { position = leader.transform.position, direction = leader.Direction };
         previousFrameLeaderPosition = lastLeaderPosition;
 
-        positionHistory.Add(lastLeaderPosition);
-        timeHistory.Add(timer);        // Initialize path with a trail from each follower's current position to the leader
-        InitializePathFromFollowerPositions();
+        Clear();
     }
 
     public void Clear()

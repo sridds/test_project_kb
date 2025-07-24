@@ -9,6 +9,7 @@ public class Party : MonoBehaviour
     [SerializeField] private int _maxEquippables = 48;
 
     private int money;
+    // mana, just fought,
     private Dictionary<PartyDataObject, PartyMember> party = new Dictionary<PartyDataObject, PartyMember>();
     private Consumable[] myInventory;
     private Key[] keys;

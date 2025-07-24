@@ -1931,7 +1931,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1940,6 +1940,50 @@ TextureImporter:
       bones: []
       spriteID: a5a5bb99537e4e847999a160ab2599e7
       internalID: -1111088442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_71
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 368
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f30054b72b360d1459fbee004b6cdd4d
+      internalID: -2086027380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_72
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 400
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3a5a2432bab69442ac8f4b36d1fe6a6
+      internalID: 1699690040
       vertices: []
       indices: 
       edges: []
@@ -2027,6 +2071,9 @@ TextureImporter:
       spritesheet_69: 1878327164
       spritesheet_7: 617691325
       spritesheet_70: -1111088442
+      spritesheet_71: -2086027380
+      spritesheet_72: 1699690040
+      spritesheet_73: -740375696
       spritesheet_8: 1021051345
       spritesheet_9: 92115415
   mipmapLimitGroupName: 

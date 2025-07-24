@@ -91,12 +91,3 @@ public abstract class BattleUnit : MonoBehaviour, IUnit
     public Vector2 GetSpriteSize() => _unitRenderer.bounds.size;
     #endregion
 }
-
-[System.Serializable]
-public struct Stats
-{
-    public string Name;
-    public int MaxHP;
-    public int BaseAttack;
-    public int BaseDefense;
-}

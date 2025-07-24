@@ -8,6 +8,20 @@ public class SavePoint : Interactable
 
     protected override void HandleInteraction()
     {
-        // save the game
+        if (handler == null) handler = FindFirstObjectByType<DialogueHandler>();
+
+        GameManager.Instance.ChangeGameState(GameManager.EGameState.Cutscene);
+        handler.HandleDialogue(flavorText);
+
+        handler.OnQueueEmpty += FinishInteraction;
+    }
+
+    private void FinishInteraction()
+    {
+        GameManager.Instance.ActivateSavePoint();
+
+        isInteracting = false;
+        handler.OnQueueEmpty -= FinishInteraction;
+        GameManager.Instance.ChangeGameState(GameManager.EGameState.Playing);
     }
 }

@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class RoomManager : MonoBehaviour
 {
@@ -12,15 +14,44 @@ public class RoomManager : MonoBehaviour
     [SerializeField]
     private Room _defaultRoom;
 
+    private List<Room> rooms = new List<Room>();
+    private int currentRoomIndex;
+
+    public int CurrentRoomIndex { get { return currentRoomIndex; } }
+
+    private void Awake()
+    {
+        // Get all rooms
+        foreach(Room room in FindObjectsByType<Room>(FindObjectsSortMode.InstanceID))
+        {
+            rooms.Add(room);
+        }
+    }
+
     private void Start()
     {
         // get room from save data or resort to default
-        _defaultRoom.EnterRoom();
+
+        if(SaveManager.DoesSaveFileExist())
+        {
+            currentRoomIndex = GameManager.Instance.ActiveSaveData.roomIndex;
+            ValidateRoom(rooms[currentRoomIndex]);
+        }
+        else
+        {
+            ValidateRoom(_defaultRoom);
+        }
     }
 
     public void HandleTransition(RoomConnection connection)
     {
         StartCoroutine(HandleRoomTransition(connection));
+    }
+
+    private void ValidateRoom(Room room)
+    {
+        room.EnterRoom();
+        currentRoomIndex = rooms.IndexOf(room);
     }
 
     // Make this entire thing beter imo
@@ -44,7 +75,7 @@ public class RoomManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.1f);
 
         // Fade back out to the game, allow the party to move again
-        connection.To.MyRoom.EnterRoom();
+        ValidateRoom(connection.To.MyRoom);
         FindFirstObjectByType<Fader>().FadeOut(_roomFadeOutTime);
         GameManager.Instance.ChangeGameState(GameManager.EGameState.Playing);
     }

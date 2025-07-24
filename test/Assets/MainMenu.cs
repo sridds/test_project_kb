@@ -25,6 +25,7 @@ public class MainMenu : MonoBehaviour
             if (index == 1)
             {
                 Debug.Log("Deleted save data!");
+                SaveManager.DeleteData();
             }
             SceneManager.LoadScene(_sceneIndex);
         }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,9 +13,11 @@ public class GameManager : MonoBehaviour
     }
 
     private EGameState state;
+    private SaveData activeSaveData;
 
     #region - Accessors -
     public EGameState GameState { get { return state; } }
+    public SaveData ActiveSaveData { get { return activeSaveData; } }
     #endregion
 
     #region - Delegates -
@@ -33,16 +36,48 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // loading
+        if(SaveManager.DoesSaveFileExist())
+        {
+            LoadGameData();
+        }
+        else
+        {
+            activeSaveData = new SaveData();
+        }
+    }
+
+    public void LoadGameData()
+    {
+        activeSaveData = SaveManager.Load();
+
+        UnitMovement movement = FindObjectOfType<UnitMovement>();
+        movement.transform.position = new Vector3(activeSaveData.hankPositionX, activeSaveData.hankPositionY);
+    }
+
+    public void ActivateSavePoint()
+    {
+        UnitMovement movement = FindObjectOfType<UnitMovement>();
+
+        // Record position of leader
+        activeSaveData.hankPositionX = movement.transform.position.x;
+        activeSaveData.hankPositionY = movement.transform.position.y;
+
+        // Record the scene index and the room the player is currently in
+        activeSaveData.currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        activeSaveData.roomIndex = FindObjectOfType<RoomManager>().CurrentRoomIndex;
+
+        // Record who is currently in the party, aswell as their positions in the world
+        // Save flag list
+        // Save value lists
+
+        SaveManager.Save(activeSaveData);
     }
 
     public void ChangeGameState(EGameState state)
     {
         this.state = state;
         OnGameStateUpdated?.Invoke(state);
-    }
-
-    public void RoomChanged(Room newRoom)
-    {
-        
     }
 }
