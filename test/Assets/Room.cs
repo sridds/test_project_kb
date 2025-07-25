@@ -58,14 +58,14 @@ public class Room : MonoBehaviour
 
     private List<IRoomBehavior> roomBehaviors = new List<IRoomBehavior>();
     private RoomManager roomManager;
-    private CameraController camera;
+    private CameraController cam;
 
     private void Awake()
     {
         // Cache component
         if (_collider == null) _collider = GetComponent<BoxCollider2D>();
-        if (roomManager == null) roomManager = FindObjectOfType<RoomManager>();
-        if (camera == null) camera = FindObjectOfType<CameraController>();
+        if (roomManager == null) roomManager = FindFirstObjectByType<RoomManager>();
+        if (cam == null) cam = FindFirstObjectByType<CameraController>();
 
         InitalizeRoomBehaviors();
     }
@@ -108,7 +108,7 @@ public class Room : MonoBehaviour
 
     private void UpdateCameraBounds()
     {
-        camera.SetBounds(RoomBounds);
+        cam.SetBounds(RoomBounds);
     }
 
     private void HandleAudioOnExit()

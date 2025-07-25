@@ -42,7 +42,7 @@ public abstract class BattleUnit : MonoBehaviour, IUnit
     private void Awake()
     {
         // Setup health
-        health = new Health(stats.MaxHP);
+        //health = new Health(stats.MaxHP);
 
         health.OnHealthUpdated += HandleHealthUpdate;
         health.OnHealthDepleted += HandleDeath;

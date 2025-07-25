@@ -52,13 +52,13 @@ public class GameManager : MonoBehaviour
     {
         activeSaveData = SaveManager.Load();
 
-        UnitMovement movement = FindObjectOfType<UnitMovement>();
+        UnitMovement movement = FindFirstObjectByType<UnitMovement>();
         movement.transform.position = new Vector3(activeSaveData.hankPositionX, activeSaveData.hankPositionY);
     }
 
     public void ActivateSavePoint()
     {
-        UnitMovement movement = FindObjectOfType<UnitMovement>();
+        UnitMovement movement = FindFirstObjectByType<UnitMovement>();
 
         // Record position of leader
         activeSaveData.hankPositionX = movement.transform.position.x;
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
 
         // Record the scene index and the room the player is currently in
         activeSaveData.currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        activeSaveData.roomIndex = FindObjectOfType<RoomManager>().CurrentRoomIndex;
+        activeSaveData.roomIndex = FindFirstObjectByType<RoomManager>().CurrentRoomIndex;
 
         // Record who is currently in the party, aswell as their positions in the world
         // Save flag list

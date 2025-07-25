@@ -16,8 +16,8 @@ public class PartyManager : MonoBehaviour
     [SerializeField]
     private Item[] startingItems;
 
-    [SerializeField]
-    private int _maxBagSize = 15;
+    //[SerializeField]
+    //private int _maxBagSize = 15;
     #endregion
 
     #region Private Fields

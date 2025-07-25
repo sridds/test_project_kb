@@ -96,7 +96,7 @@ public class PartyMember : Unit
     public PartyMember(PartyDataObject data, int maxInventorySize)
     {
         this.data = data;
-        health = new Health(data.DefaultStats.MaxHP);
+        health = new Health();
 
         weapons = new Weapon[maxInventorySize];
         armors = new Armor[maxInventorySize];

@@ -3928,7 +3928,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1528088649}
-  - component: {fileID: 1528088648}
   - component: {fileID: 1528088650}
   m_Layer: 0
   m_Name: BattleManager
@@ -3937,26 +3936,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1528088648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1528088647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca572054f63e0c243bc35e8d46c30a65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _battleUI: {fileID: 2130588419}
-  _defaultXValue: -7.5
-  _forwardXValue: -6.5
-  _enemyDefaultXValue: 7.5
-  _partySpacing: 0
-  _background: {fileID: 856738604}
-  _source: {fileID: 1312333587}
-  _battleIntroClip: {fileID: 8300000, guid: 35135b8c180f9d345a5f651af3c8fe4d, type: 3}
 --- !u!4 &1528088649
 Transform:
   m_ObjectHideFlags: 0
@@ -4752,17 +4731,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &2130588419 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4407611565266383084, guid: aee5f44d00bb2064d91a286937ec027f, type: 3}
-  m_PrefabInstance: {fileID: 2458080253473345356}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ada5e9943a8a27547aea6c4973a5cfdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1019768901074626000
 PrefabInstance:
   m_ObjectHideFlags: 0

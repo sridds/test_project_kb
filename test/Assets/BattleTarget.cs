@@ -18,7 +18,6 @@ public class BattleTarget : MonoBehaviour
     [SerializeField] private float _snapIncrement = 0.1f;
     [SerializeField] private float _cursorSpawnRadius = 3.0f;
     [SerializeField] private float _cursorFlickerInterval = 0.05f;
-    [SerializeField] private float _preDeathFlickerInterval = 0.05f;
     [SerializeField] private int _flickerAmountBeforeDeath = 5;
 
     [Header("Audio")]
