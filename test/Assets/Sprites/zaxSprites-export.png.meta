@@ -1,0 +1,3276 @@
+fileFormatVersion: 2
+guid: 40ef756cb79491c4db7998bbc3f9e23c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 184260379701532460
+    second: zaxSprites-export_0
+  - first:
+      213: 1507246354659318725
+    second: zaxSprites-export_1
+  - first:
+      213: -5176177020766342781
+    second: zaxSprites-export_2
+  - first:
+      213: -4690184851172866972
+    second: zaxSprites-export_3
+  - first:
+      213: 7637584794148001697
+    second: zaxSprites-export_4
+  - first:
+      213: -1594648723297302693
+    second: zaxSprites-export_5
+  - first:
+      213: 3492319632396139238
+    second: zaxSprites-export_6
+  - first:
+      213: -2719160287116188949
+    second: zaxSprites-export_7
+  - first:
+      213: -1482372697643162132
+    second: zaxSprites-export_8
+  - first:
+      213: -3448095102802656582
+    second: zaxSprites-export_9
+  - first:
+      213: 2550448682159750747
+    second: zaxSprites-export_10
+  - first:
+      213: 8690309448306855797
+    second: zaxSprites-export_11
+  - first:
+      213: -4233074387580780579
+    second: zaxSprites-export_12
+  - first:
+      213: 7687684985366547725
+    second: zaxSprites-export_13
+  - first:
+      213: -5584087460268211105
+    second: zaxSprites-export_14
+  - first:
+      213: 1027733607306926905
+    second: zaxSprites-export_15
+  - first:
+      213: 6068861404113240837
+    second: zaxSprites-export_16
+  - first:
+      213: -3507777683997984762
+    second: zaxSprites-export_17
+  - first:
+      213: -6906472563056076358
+    second: zaxSprites-export_18
+  - first:
+      213: -1931192813801352974
+    second: zaxSprites-export_19
+  - first:
+      213: 3468248956452125826
+    second: zaxSprites-export_20
+  - first:
+      213: 2528015914047162134
+    second: zaxSprites-export_21
+  - first:
+      213: -7343212366960794720
+    second: zaxSprites-export_22
+  - first:
+      213: 1703523854636015468
+    second: zaxSprites-export_23
+  - first:
+      213: 6511240700182182712
+    second: zaxSprites-export_24
+  - first:
+      213: -6447609819448722875
+    second: zaxSprites-export_25
+  - first:
+      213: 5495051879200999391
+    second: zaxSprites-export_26
+  - first:
+      213: -6539287442101733665
+    second: zaxSprites-export_27
+  - first:
+      213: -4158790918991908232
+    second: zaxSprites-export_28
+  - first:
+      213: 8219044618491638727
+    second: zaxSprites-export_29
+  - first:
+      213: 4958561891437063690
+    second: zaxSprites-export_30
+  - first:
+      213: 6309529834383771467
+    second: zaxSprites-export_31
+  - first:
+      213: 281957266282291838
+    second: zaxSprites-export_32
+  - first:
+      213: -3022945576620862441
+    second: zaxSprites-export_33
+  - first:
+      213: 5268438051033140305
+    second: zaxSprites-export_34
+  - first:
+      213: 2168452459757083364
+    second: zaxSprites-export_35
+  - first:
+      213: 2847644356440148276
+    second: zaxSprites-export_36
+  - first:
+      213: -3554548723273248224
+    second: zaxSprites-export_37
+  - first:
+      213: 4110823773017298931
+    second: zaxSprites-export_38
+  - first:
+      213: -6911787981991653764
+    second: zaxSprites-export_39
+  - first:
+      213: 1276763642197740705
+    second: zaxSprites-export_40
+  - first:
+      213: 3540142239708690910
+    second: zaxSprites-export_41
+  - first:
+      213: 6984310228685658766
+    second: zaxSprites-export_42
+  - first:
+      213: 3523713240924120132
+    second: zaxSprites-export_43
+  - first:
+      213: 8750334503956074760
+    second: zaxSprites-export_44
+  - first:
+      213: -942081997017189776
+    second: zaxSprites-export_45
+  - first:
+      213: 8118587072252030332
+    second: zaxSprites-export_46
+  - first:
+      213: -845285004430001130
+    second: zaxSprites-export_47
+  - first:
+      213: -220471158925467855
+    second: zaxSprites-export_48
+  - first:
+      213: 2941542030873254536
+    second: zaxSprites-export_49
+  - first:
+      213: -5351799014442436536
+    second: zaxSprites-export_50
+  - first:
+      213: -5046830775691782859
+    second: zaxSprites-export_51
+  - first:
+      213: 5648848077632626748
+    second: zaxSprites-export_52
+  - first:
+      213: -3280266277796590660
+    second: zaxSprites-export_53
+  - first:
+      213: 6709884481025032009
+    second: zaxSprites-export_54
+  - first:
+      213: 956849670876603784
+    second: zaxSprites-export_55
+  - first:
+      213: -7107009241461625434
+    second: zaxSprites-export_56
+  - first:
+      213: 8737629425428801896
+    second: zaxSprites-export_57
+  - first:
+      213: 6319936435721225581
+    second: zaxSprites-export_58
+  - first:
+      213: 5560583230165500821
+    second: zaxSprites-export_59
+  - first:
+      213: 6613851499884384767
+    second: zaxSprites-export_60
+  - first:
+      213: -6623899372157670789
+    second: zaxSprites-export_61
+  - first:
+      213: -1662805470256974590
+    second: zaxSprites-export_62
+  - first:
+      213: -2187847189401722691
+    second: zaxSprites-export_63
+  - first:
+      213: 898355362307046116
+    second: zaxSprites-export_64
+  - first:
+      213: 7608604219081902879
+    second: zaxSprites-export_65
+  - first:
+      213: -904129919887214014
+    second: zaxSprites-export_66
+  - first:
+      213: -6011770532733489392
+    second: zaxSprites-export_67
+  - first:
+      213: 760355257250560798
+    second: zaxSprites-export_68
+  - first:
+      213: -2529054229691843129
+    second: zaxSprites-export_69
+  - first:
+      213: -4279552136429393943
+    second: zaxSprites-export_70
+  - first:
+      213: 4138445699909397125
+    second: zaxSprites-export_71
+  - first:
+      213: 8497146776688731936
+    second: zaxSprites-export_72
+  - first:
+      213: 4514964611279746021
+    second: zaxSprites-export_73
+  - first:
+      213: -5774452012695982420
+    second: zaxSprites-export_74
+  - first:
+      213: 8185263032119196596
+    second: zaxSprites-export_75
+  - first:
+      213: -5049934535526580358
+    second: zaxSprites-export_76
+  - first:
+      213: -105855750755201034
+    second: zaxSprites-export_77
+  - first:
+      213: -6459885252496317154
+    second: zaxSprites-export_78
+  - first:
+      213: 1759933776643427819
+    second: zaxSprites-export_79
+  - first:
+      213: -6397175202185340680
+    second: zaxSprites-export_80
+  - first:
+      213: -8161280715711009955
+    second: zaxSprites-export_81
+  - first:
+      213: 6970516763107310869
+    second: zaxSprites-export_82
+  - first:
+      213: -1412159107094671350
+    second: zaxSprites-export_83
+  - first:
+      213: -2401185920797089175
+    second: zaxSprites-export_84
+  - first:
+      213: -8987252766652137665
+    second: zaxSprites-export_85
+  - first:
+      213: 3992997770151384962
+    second: zaxSprites-export_86
+  - first:
+      213: 8920076376626570915
+    second: zaxSprites-export_87
+  - first:
+      213: 3397674038333458201
+    second: zaxSprites-export_88
+  - first:
+      213: 3160775565762576218
+    second: zaxSprites-export_89
+  - first:
+      213: -8966637318118155876
+    second: zaxSprites-export_90
+  - first:
+      213: 8020536376287631459
+    second: zaxSprites-export_91
+  - first:
+      213: 1939707198320080373
+    second: zaxSprites-export_92
+  - first:
+      213: -9162586986290834168
+    second: zaxSprites-export_93
+  - first:
+      213: 8026708308030428030
+    second: zaxSprites-export_94
+  - first:
+      213: 4628975832331035939
+    second: zaxSprites-export_95
+  - first:
+      213: -5157006879871050794
+    second: zaxSprites-export_96
+  - first:
+      213: 9217404564225680869
+    second: zaxSprites-export_97
+  - first:
+      213: 1912675973410823179
+    second: zaxSprites-export_98
+  - first:
+      213: 5918343118376482687
+    second: zaxSprites-export_99
+  - first:
+      213: -8018677568806354908
+    second: zaxSprites-export_100
+  - first:
+      213: -7343805964412954017
+    second: zaxSprites-export_101
+  - first:
+      213: 5423812979106803161
+    second: zaxSprites-export_102
+  - first:
+      213: 6244866304978753393
+    second: zaxSprites-export_103
+  - first:
+      213: -5843335640958836617
+    second: zaxSprites-export_104
+  - first:
+      213: -3348889091246125181
+    second: zaxSprites-export_105
+  - first:
+      213: 3149308060270608228
+    second: zaxSprites-export_106
+  - first:
+      213: 8876692913895122528
+    second: zaxSprites-export_107
+  - first:
+      213: -5984055951691293958
+    second: zaxSprites-export_108
+  - first:
+      213: 7032945333031368784
+    second: zaxSprites-export_109
+  - first:
+      213: -8053943454542558276
+    second: zaxSprites-export_110
+  - first:
+      213: -7973443429929895458
+    second: zaxSprites-export_111
+  - first:
+      213: -371585631848611602
+    second: zaxSprites-export_112
+  - first:
+      213: 1977214262521342364
+    second: zaxSprites-export_113
+  - first:
+      213: 3979523834481031313
+    second: zaxSprites-export_114
+  - first:
+      213: 3037434868766902168
+    second: zaxSprites-export_115
+  - first:
+      213: 792195626759789267
+    second: zaxSprites-export_116
+  - first:
+      213: 8374130523972239983
+    second: zaxSprites-export_117
+  - first:
+      213: -1900731569023596135
+    second: zaxSprites-export_118
+  - first:
+      213: -684760246856397006
+    second: zaxSprites-export_119
+  - first:
+      213: -5605748283055631548
+    second: zaxSprites-export_120
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: zaxSprites-export_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 591
+        width: 88
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c27d94ec6df9e8200800000000000000
+      internalID: 184260379701532460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_1
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 591
+        width: 79
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cb9876e290dae410800000000000000
+      internalID: 1507246354659318725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_2
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 624
+        width: 40
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 381bea69c668a28b0800000000000000
+      internalID: -5176177020766342781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_3
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 591
+        width: 22
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4644cee3abd19eeb0800000000000000
+      internalID: -4690184851172866972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_4
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 591
+        width: 22
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a7dd1597e62ef960800000000000000
+      internalID: 7637584794148001697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_5
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 591
+        width: 47
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b57855a5f6baed9e0800000000000000
+      internalID: -1594648723297302693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_6
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 591
+        width: 47
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ea381bd336377030800000000000000
+      internalID: 3492319632396139238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_7
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 591
+        width: 45
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be22717202a934ad0800000000000000
+      internalID: -2719160287116188949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_8
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 591
+        width: 31
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce5ed3ca2ed8d6be0800000000000000
+      internalID: -1482372697643162132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_9
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 543
+        width: 39
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab20fa5d5c7e520d0800000000000000
+      internalID: -3448095102802656582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_10
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 543
+        width: 39
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5ebef54093056320800000000000000
+      internalID: 2550448682159750747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_11
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 543
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57f0d86666e2a9870800000000000000
+      internalID: 8690309448306855797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_12
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 543
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddf7174b5491145c0800000000000000
+      internalID: -4233074387580780579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_13
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 543
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0d80e953c420ba60800000000000000
+      internalID: 7687684985366547725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_14
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 547
+        width: 48
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5400086a065182b0800000000000000
+      internalID: -5584087460268211105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_15
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 547
+        width: 48
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93b924b454e334e00800000000000000
+      internalID: 1027733607306926905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_16
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 547
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5038f37fa4de83450800000000000000
+      internalID: 6068861404113240837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_17
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 495
+        width: 34
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 608f14a08ced15fc0800000000000000
+      internalID: -3507777683997984762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_18
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 575
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab99f04cbc74720a0800000000000000
+      internalID: -6906472563056076358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_19
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 367
+        width: 70
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f055942e560335e0800000000000000
+      internalID: -1931192813801352974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_20
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 370
+        width: 89
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28cb2f1ec02b12030800000000000000
+      internalID: 3468248956452125826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_21
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 447
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 617c05f6411551320800000000000000
+      internalID: 2528015914047162134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_22
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 447
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a3eb0d124ba71a90800000000000000
+      internalID: -7343212366960794720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_23
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 495
+        width: 22
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6fdbfd8be124a710800000000000000
+      internalID: 1703523854636015468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_24
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 447
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83bbc653be29c5a50800000000000000
+      internalID: 6511240700182182712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_25
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 495
+        width: 22
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54a3075b70d7586a0800000000000000
+      internalID: -6447609819448722875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_26
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 367
+        width: 61
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd74e12f198524c40800000000000000
+      internalID: 5495051879200999391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_27
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 495
+        width: 49
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd67a51d7b8cf35a0800000000000000
+      internalID: -6539287442101733665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_28
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 431
+        width: 77
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 872fd5281b10946c0800000000000000
+      internalID: -4158790918991908232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_29
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 495
+        width: 24
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c3b74eb889ef0270800000000000000
+      internalID: 8219044618491638727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_30
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 431
+        width: 66
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0e25e7c4c950d440800000000000000
+      internalID: 4958561891437063690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_31
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 495
+        width: 29
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b478c2e74f3ff8750800000000000000
+      internalID: 6309529834383771467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_32
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 495
+        width: 47
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e72a89ac3a6b9e300800000000000000
+      internalID: 281957266282291838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_33
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 431
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 714dc2aa3075c06d0800000000000000
+      internalID: -3022945576620862441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_34
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 431
+        width: 81
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15c4bf87e704d1940800000000000000
+      internalID: 5268438051033140305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_35
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 399
+        width: 29
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ea9420f504e71e10800000000000000
+      internalID: 2168452459757083364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_36
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 399
+        width: 29
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 439c248647dd48720800000000000000
+      internalID: 2847644356440148276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_37
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 402
+        width: 19
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 022da7cd4c4bbaec0800000000000000
+      internalID: -3554548723273248224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_38
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 399
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f75de401749c0930800000000000000
+      internalID: 4110823773017298931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_39
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 432
+        width: 48
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7ec29a53756410a0800000000000000
+      internalID: -6911787981991653764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_40
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 431
+        width: 43
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ac845b94c9f7b110800000000000000
+      internalID: 1276763642197740705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_41
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 431
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed9313c4c9c112130800000000000000
+      internalID: 3540142239708690910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_42
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 431
+        width: 62
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8a9fe506214de060800000000000000
+      internalID: 6984310228685658766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_43
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 400
+        width: 34
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4446f9fe58eb6e030800000000000000
+      internalID: 3523713240924120132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_44
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 400
+        width: 34
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 801552ebede6f6970800000000000000
+      internalID: 8750334503956074760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_45
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 336
+        width: 64
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 072ff724a6d0de2f0800000000000000
+      internalID: -942081997017189776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_46
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 367
+        width: 41
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7d29a79de30ba070800000000000000
+      internalID: 8118587072252030332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_47
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 367
+        width: 36
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61c3cf854c1f444f0800000000000000
+      internalID: -845285004430001130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_48
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 367
+        width: 46
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13f570926aab0fcf0800000000000000
+      internalID: -220471158925467855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_49
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 399
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88ad41264e472d820800000000000000
+      internalID: 2941542030873254536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_50
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 367
+        width: 43
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8487fd2c6279ab5b0800000000000000
+      internalID: -5351799014442436536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_51
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 367
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 535d165162e06f9b0800000000000000
+      internalID: -5046830775691782859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_52
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 367
+        width: 47
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c30e071d56db46e40800000000000000
+      internalID: 5648848077632626748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_53
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 303
+        width: 79
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbbcd3f23372a72d0800000000000000
+      internalID: -3280266277796590660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_54
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 367
+        width: 50
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94f376f826c4e1d50800000000000000
+      internalID: 6709884481025032009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_55
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 335
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 885ac00c4b9674d00800000000000000
+      internalID: 956849670876603784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_56
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 351
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ade24bdfb4de5d90800000000000000
+      internalID: -7107009241461625434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_57
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 335
+        width: 53
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8692fa12bab424970800000000000000
+      internalID: 8737629425428801896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_58
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 335
+        width: 53
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d65463e24bce4b750800000000000000
+      internalID: 6319936435721225581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_59
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 306
+        width: 48
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59342029cf82b2d40800000000000000
+      internalID: 5560583230165500821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_60
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 312
+        width: 62
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff11bcfb5ee19cb50800000000000000
+      internalID: 6613851499884384767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_61
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 367
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7aeb9ead9e2314a0800000000000000
+      internalID: -6623899372157670789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_62
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 308
+        width: 52
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 205b1c61c378ce8e0800000000000000
+      internalID: -1662805470256974590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_63
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 306
+        width: 66
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db0afdca29433a1e0800000000000000
+      internalID: -2187847189401722691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_64
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 335
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eaf06c3179977c00800000000000000
+      internalID: 898355362307046116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_65
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 335
+        width: 33
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1b4ae2a931379960800000000000000
+      internalID: 7608604219081902879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_66
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 339
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24af15ec0a2e373f0800000000000000
+      internalID: -904129919887214014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_67
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 316
+        width: 45
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01f624d5d86e19ca0800000000000000
+      internalID: -6011770532733489392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_68
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 239
+        width: 73
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1b3583f3135d8a00800000000000000
+      internalID: 760355257250560798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_69
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 287
+        width: 39
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cdb48dd39ef6ecd0800000000000000
+      internalID: -2529054229691843129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_70
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 287
+        width: 40
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e7ac56810afb94c0800000000000000
+      internalID: -4279552136429393943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_71
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 287
+        width: 40
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58aa7590076be6930800000000000000
+      internalID: 4138445699909397125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_72
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 287
+        width: 42
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02723ec39fdebe570800000000000000
+      internalID: 8497146776688731936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_73
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 287
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e3f9c4846068ae30800000000000000
+      internalID: 4514964611279746021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_74
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 271
+        width: 64
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cae67b22d760ddfa0800000000000000
+      internalID: -5774452012695982420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_75
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 272
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bbf99e3c55e79170800000000000000
+      internalID: 8185263032119196596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_76
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 272
+        width: 58
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7ff5feab470be9b0800000000000000
+      internalID: -5049934535526580358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_77
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 252
+        width: 45
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ffcdca61cce78ef0800000000000000
+      internalID: -105855750755201034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_78
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 242
+        width: 48
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e152c2bb690e956a0800000000000000
+      internalID: -6459885252496317154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_79
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 248
+        width: 62
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bed0b01027a8c6810800000000000000
+      internalID: 1759933776643427819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_80
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 244
+        width: 52
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f81ecb1c0ba837a0800000000000000
+      internalID: -6397175202185340680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_81
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 241
+        width: 65
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5baccbed6e4dbe80800000000000000
+      internalID: -8161280715711009955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_82
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 239
+        width: 65
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51dbaed80104cb060800000000000000
+      internalID: 6970516763107310869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_83
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 252
+        width: 54
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a001a4726c0076ce0800000000000000
+      internalID: -1412159107094671350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_84
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 240
+        width: 111
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 962683780264daed0800000000000000
+      internalID: -2401185920797089175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_85
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 207
+        width: 53
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3f7d09a93dd64380800000000000000
+      internalID: -8987252766652137665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_86
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 207
+        width: 57
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 287dccee05af96730800000000000000
+      internalID: 3992997770151384962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_87
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 208
+        width: 61
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a62e26343a7acb70800000000000000
+      internalID: 8920076376626570915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_88
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 128
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 917ce654986f62f20800000000000000
+      internalID: 3397674038333458201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_89
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 143
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5f330c61a45ddb20800000000000000
+      internalID: 3160775565762576218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_90
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 143
+        width: 31
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c995ecfcdda109380800000000000000
+      internalID: -8966637318118155876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_91
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 143
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36819b0f65bae4f60800000000000000
+      internalID: 8020536376287631459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_92
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 143
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f5f22c7b693bea10800000000000000
+      internalID: 1939707198320080373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_93
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 143
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80594827ea3f7d080800000000000000
+      internalID: -9162586986290834168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_94
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 143
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7394d7cda8946f60800000000000000
+      internalID: 8026708308030428030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_95
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 144
+        width: 58
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 325a5ff7efc6d3040800000000000000
+      internalID: 4628975832331035939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_96
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 80
+        width: 58
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6db5a05d091ae68b0800000000000000
+      internalID: -5157006879871050794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_97
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 64
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e56cb18d9ccaef70800000000000000
+      internalID: 9217404564225680869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_98
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 133
+        width: 62
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0c939df9a03b8a10800000000000000
+      internalID: 1912675973410823179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_99
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 132
+        width: 64
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7735bd95bd222250800000000000000
+      internalID: 5918343118376482687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_100
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 133
+        width: 61
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42087e66c3fe7b090800000000000000
+      internalID: -8018677568806354908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_101
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 132
+        width: 64
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5a55cf626f851a90800000000000000
+      internalID: -7343805964412954017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_102
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 128
+        width: 113
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dd60dbfa21454b40800000000000000
+      internalID: 5423812979106803161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_103
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 95
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 177901251d83aa650800000000000000
+      internalID: 6244866304978753393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_104
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 96
+        width: 28
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 770e441a13d48eea0800000000000000
+      internalID: -5843335640958836617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_105
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 95
+        width: 28
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38f081c5d1b5681d0800000000000000
+      internalID: -3348889091246125181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_106
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 21
+        width: 81
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46f34bcbef694bb20800000000000000
+      internalID: 3149308060270608228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_107
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 21
+        width: 80
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06622f8ac29503b70800000000000000
+      internalID: 8876692913895122528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_108
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 15
+        width: 88
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afad06b11dc54fca0800000000000000
+      internalID: -5984055951691293958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_109
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 21
+        width: 64
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 058731ca48a0a9160800000000000000
+      internalID: 7032945333031368784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_110
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 21
+        width: 83
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbb88e68915aa3090800000000000000
+      internalID: -8053943454542558276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_111
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 15
+        width: 56
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed93b521273a85190800000000000000
+      internalID: -7973443429929895458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_112
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 15
+        width: 56
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee0460a26dcd7daf0800000000000000
+      internalID: -371585631848611602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_113
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 47
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c99ab6265e9707b10800000000000000
+      internalID: 1977214262521342364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_114
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 47
+        width: 38
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1983171d7db1a3730800000000000000
+      internalID: 3979523834481031313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_115
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 47
+        width: 40
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8978c3d8be2272a20800000000000000
+      internalID: 3037434868766902168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_116
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 47
+        width: 40
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3da92ada9b17efa00800000000000000
+      internalID: 792195626759789267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_117
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 48
+        width: 43
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f620f10f753e63470800000000000000
+      internalID: 8374130523972239983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_118
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 16
+        width: 58
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9994afe55be3f95e0800000000000000
+      internalID: -1900731569023596135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_119
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 0
+        width: 36
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23fc0d9fe2e3f76f0800000000000000
+      internalID: -684760246856397006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zaxSprites-export_120
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 0
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 443963813a16432b0800000000000000
+      internalID: -5605748283055631548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      zaxSprites-export_0: 184260379701532460
+      zaxSprites-export_1: 1507246354659318725
+      zaxSprites-export_10: 2550448682159750747
+      zaxSprites-export_100: -8018677568806354908
+      zaxSprites-export_101: -7343805964412954017
+      zaxSprites-export_102: 5423812979106803161
+      zaxSprites-export_103: 6244866304978753393
+      zaxSprites-export_104: -5843335640958836617
+      zaxSprites-export_105: -3348889091246125181
+      zaxSprites-export_106: 3149308060270608228
+      zaxSprites-export_107: 8876692913895122528
+      zaxSprites-export_108: -5984055951691293958
+      zaxSprites-export_109: 7032945333031368784
+      zaxSprites-export_11: 8690309448306855797
+      zaxSprites-export_110: -8053943454542558276
+      zaxSprites-export_111: -7973443429929895458
+      zaxSprites-export_112: -371585631848611602
+      zaxSprites-export_113: 1977214262521342364
+      zaxSprites-export_114: 3979523834481031313
+      zaxSprites-export_115: 3037434868766902168
+      zaxSprites-export_116: 792195626759789267
+      zaxSprites-export_117: 8374130523972239983
+      zaxSprites-export_118: -1900731569023596135
+      zaxSprites-export_119: -684760246856397006
+      zaxSprites-export_12: -4233074387580780579
+      zaxSprites-export_120: -5605748283055631548
+      zaxSprites-export_13: 7687684985366547725
+      zaxSprites-export_14: -5584087460268211105
+      zaxSprites-export_15: 1027733607306926905
+      zaxSprites-export_16: 6068861404113240837
+      zaxSprites-export_17: -3507777683997984762
+      zaxSprites-export_18: -6906472563056076358
+      zaxSprites-export_19: -1931192813801352974
+      zaxSprites-export_2: -5176177020766342781
+      zaxSprites-export_20: 3468248956452125826
+      zaxSprites-export_21: 2528015914047162134
+      zaxSprites-export_22: -7343212366960794720
+      zaxSprites-export_23: 1703523854636015468
+      zaxSprites-export_24: 6511240700182182712
+      zaxSprites-export_25: -6447609819448722875
+      zaxSprites-export_26: 5495051879200999391
+      zaxSprites-export_27: -6539287442101733665
+      zaxSprites-export_28: -4158790918991908232
+      zaxSprites-export_29: 8219044618491638727
+      zaxSprites-export_3: -4690184851172866972
+      zaxSprites-export_30: 4958561891437063690
+      zaxSprites-export_31: 6309529834383771467
+      zaxSprites-export_32: 281957266282291838
+      zaxSprites-export_33: -3022945576620862441
+      zaxSprites-export_34: 5268438051033140305
+      zaxSprites-export_35: 2168452459757083364
+      zaxSprites-export_36: 2847644356440148276
+      zaxSprites-export_37: -3554548723273248224
+      zaxSprites-export_38: 4110823773017298931
+      zaxSprites-export_39: -6911787981991653764
+      zaxSprites-export_4: 7637584794148001697
+      zaxSprites-export_40: 1276763642197740705
+      zaxSprites-export_41: 3540142239708690910
+      zaxSprites-export_42: 6984310228685658766
+      zaxSprites-export_43: 3523713240924120132
+      zaxSprites-export_44: 8750334503956074760
+      zaxSprites-export_45: -942081997017189776
+      zaxSprites-export_46: 8118587072252030332
+      zaxSprites-export_47: -845285004430001130
+      zaxSprites-export_48: -220471158925467855
+      zaxSprites-export_49: 2941542030873254536
+      zaxSprites-export_5: -1594648723297302693
+      zaxSprites-export_50: -5351799014442436536
+      zaxSprites-export_51: -5046830775691782859
+      zaxSprites-export_52: 5648848077632626748
+      zaxSprites-export_53: -3280266277796590660
+      zaxSprites-export_54: 6709884481025032009
+      zaxSprites-export_55: 956849670876603784
+      zaxSprites-export_56: -7107009241461625434
+      zaxSprites-export_57: 8737629425428801896
+      zaxSprites-export_58: 6319936435721225581
+      zaxSprites-export_59: 5560583230165500821
+      zaxSprites-export_6: 3492319632396139238
+      zaxSprites-export_60: 6613851499884384767
+      zaxSprites-export_61: -6623899372157670789
+      zaxSprites-export_62: -1662805470256974590
+      zaxSprites-export_63: -2187847189401722691
+      zaxSprites-export_64: 898355362307046116
+      zaxSprites-export_65: 7608604219081902879
+      zaxSprites-export_66: -904129919887214014
+      zaxSprites-export_67: -6011770532733489392
+      zaxSprites-export_68: 760355257250560798
+      zaxSprites-export_69: -2529054229691843129
+      zaxSprites-export_7: -2719160287116188949
+      zaxSprites-export_70: -4279552136429393943
+      zaxSprites-export_71: 4138445699909397125
+      zaxSprites-export_72: 8497146776688731936
+      zaxSprites-export_73: 4514964611279746021
+      zaxSprites-export_74: -5774452012695982420
+      zaxSprites-export_75: 8185263032119196596
+      zaxSprites-export_76: -5049934535526580358
+      zaxSprites-export_77: -105855750755201034
+      zaxSprites-export_78: -6459885252496317154
+      zaxSprites-export_79: 1759933776643427819
+      zaxSprites-export_8: -1482372697643162132
+      zaxSprites-export_80: -6397175202185340680
+      zaxSprites-export_81: -8161280715711009955
+      zaxSprites-export_82: 6970516763107310869
+      zaxSprites-export_83: -1412159107094671350
+      zaxSprites-export_84: -2401185920797089175
+      zaxSprites-export_85: -8987252766652137665
+      zaxSprites-export_86: 3992997770151384962
+      zaxSprites-export_87: 8920076376626570915
+      zaxSprites-export_88: 3397674038333458201
+      zaxSprites-export_89: 3160775565762576218
+      zaxSprites-export_9: -3448095102802656582
+      zaxSprites-export_90: -8966637318118155876
+      zaxSprites-export_91: 8020536376287631459
+      zaxSprites-export_92: 1939707198320080373
+      zaxSprites-export_93: -9162586986290834168
+      zaxSprites-export_94: 8026708308030428030
+      zaxSprites-export_95: 4628975832331035939
+      zaxSprites-export_96: -5157006879871050794
+      zaxSprites-export_97: 9217404564225680869
+      zaxSprites-export_98: 1912675973410823179
+      zaxSprites-export_99: 5918343118376482687
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
