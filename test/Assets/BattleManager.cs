@@ -12,13 +12,32 @@ public class BattleManager : MonoBehaviour
         ENEMYACTION,
     }
 
+    public enum PlanningStates
+    {
+        CHOOSEUNIT,
+        CHOOSEACTION,
+        CHOOSESUBACTION,
+        CHOOSETARGET,
+    }
+
+    public enum SelectionTypes
+    {
+        PARTYMEMBERS,
+        ENEMIES,
+        ALL,
+    }
+
+    private PlanningStates planningState = PlanningStates.CHOOSEUNIT;
+
     private BattleStates battleState = BattleStates.START;
 
     [SerializeField] private List<BattleEntity> partyMembers = new();
     [SerializeField] private List<BattleEntity> enemies = new();
 
+    [SerializeField] private BattleEntity hoveredUnit;
     [SerializeField] private BattleEntity selectedUnit;
-    private Vector2Int selectedUnitCordinates = Vector2Int.zero;
+
+    private Vector2Int hoveredUnitCoordinates = Vector2Int.zero;
 
     BattleUIManager battleUIManager;
 
@@ -79,7 +98,7 @@ public class BattleManager : MonoBehaviour
                 ChangeBattleState(BattleStates.PLAN);
                 break;
             case BattleStates.PLAN:
-                ControlUnitSelector();
+                ControlPlanningFlow();
                 break;
             case BattleStates.PARTYACTION:
                 break;
@@ -88,6 +107,21 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    void ControlPlanningFlow()
+    {
+        switch (planningState)
+        {
+            case PlanningStates.CHOOSEUNIT:
+                ControlUnitSelector(SelectionTypes.PARTYMEMBERS);
+                break;
+            case PlanningStates.CHOOSEACTION:
+                break;
+            case PlanningStates.CHOOSESUBACTION:
+                break;
+            case PlanningStates.CHOOSETARGET: 
+                break;
+        }
+    }
     public void ChangeBattleState(BattleStates newState)
     {
         battleState = newState;
@@ -108,81 +142,122 @@ public class BattleManager : MonoBehaviour
 
     void SetUpBattle()
     {
-        selectedUnit = partyMembers[0];
+        hoveredUnit = partyMembers[0];
     }
 
-    public void ControlUnitSelector()
+    public void ControlUnitSelector(SelectionTypes targets)
     {
+        if (hoveredUnit == null)
+        {
+            SetHoveredUnit();
+        }
+
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            selectedUnitCordinates.y--;
+            hoveredUnitCoordinates.y--;
 
-            if (selectedUnitCordinates.x == 0 && selectedUnitCordinates.y < 0)
+            if (hoveredUnitCoordinates.x == 0 && hoveredUnitCoordinates.y < 0)
             {
-                selectedUnitCordinates.y = partyMembers.Count - 1;
+                hoveredUnitCoordinates.y = partyMembers.Count - 1;
             }
-            if (selectedUnitCordinates.x == 1 && selectedUnitCordinates.y < 0)
+            if (hoveredUnitCoordinates.x == 1 && hoveredUnitCoordinates.y < 0)
             {
-                selectedUnitCordinates.y = enemies.Count - 1;
+                hoveredUnitCoordinates.y = enemies.Count - 1;
             }
 
-            SetSelectedUnit();
+            SetHoveredUnit();
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            selectedUnitCordinates.y++;
+            hoveredUnitCoordinates.y++;
 
-            if (selectedUnitCordinates.x == 0 && selectedUnitCordinates.y > partyMembers.Count - 1)
+            if (hoveredUnitCoordinates.x == 0 && hoveredUnitCoordinates.y > partyMembers.Count - 1)
             {
-                selectedUnitCordinates.y = 0;
+                hoveredUnitCoordinates.y = 0;
             }
-            if (selectedUnitCordinates.x == 1 && selectedUnitCordinates.y > enemies.Count - 1)
+            if (hoveredUnitCoordinates.x == 1 && hoveredUnitCoordinates.y > enemies.Count - 1)
             {
-                selectedUnitCordinates.y = 0;
+                hoveredUnitCoordinates.y = 0;
             }
 
-            SetSelectedUnit();
+            SetHoveredUnit();
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+
+        if (targets == SelectionTypes.PARTYMEMBERS)
         {
-            selectedUnitCordinates.x = 1;
-            if (selectedUnitCordinates.y > enemies.Count - 1)
-            {
-                selectedUnitCordinates.y = enemies.Count - 1;
-            }
-            SetSelectedUnit();
+            hoveredUnitCoordinates.y = 0;
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+
+        if (targets == SelectionTypes.PARTYMEMBERS)
         {
-            selectedUnitCordinates.x = 0;
-            if (selectedUnitCordinates.y > partyMembers.Count - 1)
+            hoveredUnitCoordinates.y = 1;
+        }
+
+        if (targets == SelectionTypes.ALL)
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                selectedUnitCordinates.y = partyMembers.Count - 1;
+                hoveredUnitCoordinates.x = 1;
+                if (hoveredUnitCoordinates.y > enemies.Count - 1)
+                {
+                    hoveredUnitCoordinates.y = enemies.Count - 1;
+                }
+                SetHoveredUnit();
             }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                hoveredUnitCoordinates.x = 0;
+                if (hoveredUnitCoordinates.y > partyMembers.Count - 1)
+                {
+                    hoveredUnitCoordinates.y = partyMembers.Count - 1;
+                }
+                SetHoveredUnit();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
             SetSelectedUnit();
         }
     }
 
-    void SetSelectedUnit()
+    void SetHoveredUnit()
     {
-        if (selectedUnitCordinates.x == 0)
+        if (hoveredUnitCoordinates.x == 0)
         {
-            selectedUnit = partyMembers[selectedUnitCordinates.y];
+            hoveredUnit = partyMembers[hoveredUnitCoordinates.y];
         }
-        if (selectedUnitCordinates.x == 1)
+        if (hoveredUnitCoordinates.x == 1)
         {
-            selectedUnit = enemies[selectedUnitCordinates.y];
+            hoveredUnit = enemies[hoveredUnitCoordinates.y];
         }
 
-        Vector2 targetPosition = selectedUnit.selectorCenter + (Vector2)selectedUnit.transform.position;
-        Vector2 targetSize = selectedUnit.selectorSize;
+        Vector2 targetPosition = hoveredUnit.selectorCenter + (Vector2)hoveredUnit.transform.position;
+        Vector2 targetSize = hoveredUnit.selectorSize;
         battleUIManager.MoveUnitSelector(targetPosition);
         battleUIManager.ResizeUnitSelector(targetSize);
     }
 
+    void SetSelectedUnit()
+    {
 
+        switch (planningState)
+        {
+            case PlanningStates.CHOOSEUNIT:
+                Unit selectedPartyUnit = hoveredUnit.Unit;
+                battleUIManager.SetCurrentBattleUIToUnit((PartyDataObject)selectedPartyUnit.Data);
+                planningState = PlanningStates.CHOOSEACTION;
+                break;
+            case PlanningStates.CHOOSEACTION:
+                break;
+            case PlanningStates.CHOOSESUBACTION:
+                break;
+            case PlanningStates.CHOOSETARGET:
+                break;
+        }
+    }
 
 
 

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Unit
 {
-    private UnitDataObject data;
+    protected UnitDataObject data;
     protected Health health;
 
     public ActionData attack;

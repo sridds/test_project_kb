@@ -1,6 +1,7 @@
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleUIManager : MonoBehaviour
 {
@@ -23,10 +24,26 @@ public class BattleUIManager : MonoBehaviour
 
     #endregion
 
+    #region -Action Selection UI-
+    [Foldout("Action Selection UI")]
+    [SerializeField] Image actionTypeSelectionBackground;
+    [Foldout("Action Selection UI")]
+    [SerializeField] Image attackButton;
+    [Foldout("Action Selection UI")]
+    [SerializeField] Image abilityButton;
+    [Foldout("Action Selection UI")]
+    [SerializeField] Image guardButton;
+    [Foldout("Action Selection UI")]
+    [SerializeField] Image itemButton;
+
+
+    #endregion
+
     private void Awake()
     {
         Init();
     }
+
     void Init()
     {
         if (instance == null)
@@ -58,6 +75,11 @@ public class BattleUIManager : MonoBehaviour
         unitSelectorBL.transform.DOLocalMove(new Vector2(-targetSize.x, -targetSize.y), unitSelectorMoveDuration);
         unitSelectorTL.transform.DOComplete();
         unitSelectorBR.transform.DOLocalMove(new Vector2(targetSize.x, -targetSize.y), unitSelectorMoveDuration);
+    }
+
+    public void SetCurrentBattleUIToUnit(PartyDataObject theUnit)
+    {
+        actionTypeSelectionBackground.color = theUnit.UIColor;
     }
 
 }

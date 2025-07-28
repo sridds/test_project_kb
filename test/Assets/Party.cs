@@ -77,9 +77,6 @@ public class Party : MonoBehaviour
 
 public class PartyMember : Unit
 {
-    // Data / stats
-    private PartyDataObject data;
-
     // Party members carry their own exclusive weapons and armors (like Deltarune) max of 48
     private Weapon[] weapons;
     private Armor[] armors;
