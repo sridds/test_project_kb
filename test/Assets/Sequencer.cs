@@ -4,16 +4,18 @@ using System.Threading;
 using System;
 using System.Threading.Tasks;
 using System.Collections;
+using NaughtyAttributes;
 
 public class Sequencer : MonoBehaviour
 {
-    private List<SequencerAction> sequenceActions = new List<SequencerAction>();
-    private CancellationTokenSource cancellationTokenSource;
-    private int currentActionIndex = 0;
+    private List<SequencerAction> sequenceActionList = new List<SequencerAction>();
 
     public event Action OnSequenceStarted;
     public event Action OnSequenceCompleted;
     public event Action<SequencerAction> OnActionStarted;
+
+    private bool isRunning;
+    private int currentActionIndex;
 
     private void Awake()
     {
@@ -22,25 +24,80 @@ public class Sequencer : MonoBehaviour
 
     private void InitializeSequence()
     {
-        sequenceActions.Clear();
+        sequenceActionList.Clear();
 
         for (int i = 0; i < transform.childCount; i++)
         {
             if (transform.GetChild(i).TryGetComponent(out SequencerAction action))
             {
-                sequenceActions.Add(action);
+                sequenceActionList.Add(action);
             }
         }
     }
 
     public async void PlaySequence()
     {
+        if(sequenceActionList.Count == 0)
+        {
+            Debug.LogWarning("Failed to play sequencer, no actions to execute");
+            return;
+        }
 
+        if(isRunning)
+        {
+            Debug.LogWarning("Failed to play sequencer, sequencer is already running!");
+            return;
+        }
+
+        currentActionIndex = 0;
+        await ExecuteSequenceAsync();
     }
+
+    private async Task ExecuteSequenceAsync()
+    {
+        isRunning = true;
+        OnSequenceStarted?.Invoke();
+
+        while(currentActionIndex < sequenceActionList.Count)
+        {
+            if (sequenceActionList[currentActionIndex].ExecutionMode == EActionExecutionMode.Sequential)
+            {
+                await ExecuteSequentialActionAsync(sequenceActionList[currentActionIndex]);
+            }
+            else if (sequenceActionList[currentActionIndex].ExecutionMode == EActionExecutionMode.Parallel)
+            {
+                _ = ExecuteSequentialActionAsync(sequenceActionList[currentActionIndex]);
+            }
+
+            currentActionIndex++;
+        }
+
+        isRunning = false;
+        OnSequenceCompleted?.Invoke();
+    }
+
+    private async Task ExecuteSequentialActionAsync(SequencerAction action)
+    {
+        OnActionStarted?.Invoke(action);
+        Debug.Log($"Executing sequential action: {action.name}");
+
+        await action.ExecuteActionAsync(this);
+    }
+}
+
+public enum EActionExecutionMode
+{
+    Sequential,     // Wait for the action to complete
+    Parallel,       // Start the action and immediately continue to the next
 }
 
 public abstract class SequencerAction : MonoBehaviour
 {
+    [SerializeField] protected EActionExecutionMode _executionMode;
+    [SerializeField] protected float _delay;
+
+    public EActionExecutionMode ExecutionMode => _executionMode;
+
     public virtual async Task ExecuteActionAsync(Sequencer sequencer, CancellationToken cancellationToken = default)
     {
         var tcs = new TaskCompletionSource<bool>();
