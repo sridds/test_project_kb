@@ -79,6 +79,12 @@ public class BattleUIManager : MonoBehaviour
 
     public void SetCurrentBattleUIToUnit(PartyDataObject theUnit)
     {
+        if (theUnit == null)
+        {
+            actionTypeSelectionBackground.color = Color.gray;
+            return;
+        }
+
         actionTypeSelectionBackground.color = theUnit.UIColor;
     }
 

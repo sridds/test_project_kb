@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BattleEntity : MonoBehaviour
 {
-    protected Unit unit;
+    [SerializeField] protected Unit unit;
 
     #region -Selector Variables-
     [Foldout("Selection Settings")]
@@ -15,10 +15,11 @@ public class BattleEntity : MonoBehaviour
 
     #region -Accessors-
     public Unit Unit { get { return unit; } }
+
     #endregion
 
     //When instatianted, must be initted
-    public void Init(Unit unit)
+    public virtual void Init(Unit unit)
     {
         this.unit = unit;
     }

@@ -115,6 +115,11 @@ public class BattleManager : MonoBehaviour
                 ControlUnitSelector(SelectionTypes.PARTYMEMBERS);
                 break;
             case PlanningStates.CHOOSEACTION:
+                if (Input.GetKeyDown(KeyCode.X))
+                {
+                    SetSelectedUnit();
+                    planningState = PlanningStates.CHOOSEUNIT;
+                }
                 break;
             case PlanningStates.CHOOSESUBACTION:
                 break;
@@ -145,6 +150,7 @@ public class BattleManager : MonoBehaviour
         hoveredUnit = partyMembers[0];
     }
 
+    //Moves the unit selector. Changes what it can target depending on the input variable
     public void ControlUnitSelector(SelectionTypes targets)
     {
         if (hoveredUnit == null)
@@ -154,6 +160,7 @@ public class BattleManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            Debug.Log("Up");
             hoveredUnitCoordinates.y--;
 
             if (hoveredUnitCoordinates.x == 0 && hoveredUnitCoordinates.y < 0)
@@ -170,6 +177,8 @@ public class BattleManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            Debug.Log("Down");
+
             hoveredUnitCoordinates.y++;
 
             if (hoveredUnitCoordinates.x == 0 && hoveredUnitCoordinates.y > partyMembers.Count - 1)
@@ -187,12 +196,12 @@ public class BattleManager : MonoBehaviour
 
         if (targets == SelectionTypes.PARTYMEMBERS)
         {
-            hoveredUnitCoordinates.y = 0;
+            hoveredUnitCoordinates.x = 0;
         }
 
-        if (targets == SelectionTypes.PARTYMEMBERS)
+        if (targets == SelectionTypes.ENEMIES)
         {
-            hoveredUnitCoordinates.y = 1;
+            hoveredUnitCoordinates.x = 1;
         }
 
         if (targets == SelectionTypes.ALL)
@@ -223,6 +232,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    //Control which unit you are hovered over.
     void SetHoveredUnit()
     {
         if (hoveredUnitCoordinates.x == 0)
@@ -240,15 +250,39 @@ public class BattleManager : MonoBehaviour
         battleUIManager.ResizeUnitSelector(targetSize);
     }
 
+    //Sets the selected unit to something. Has functionality depending on which planning state you are in.
     void SetSelectedUnit()
     {
+        switch (planningState)
+        {
+            case PlanningStates.CHOOSEUNIT:
+
+                selectedUnit = hoveredUnit;
+                PartyBattleEntity selectedPartyUnit = (PartyBattleEntity)selectedUnit;
+                battleUIManager.SetCurrentBattleUIToUnit(selectedPartyUnit.PartyMember.PartyData);
+                SetPlanningState(PlanningStates.CHOOSEACTION);
+
+                break;
+            case PlanningStates.CHOOSEACTION:
+                selectedUnit = null;
+                battleUIManager.SetCurrentBattleUIToUnit(null);
+                break;
+            case PlanningStates.CHOOSESUBACTION:
+                break;
+            case PlanningStates.CHOOSETARGET:
+                break;
+        }
+    }
+
+    //Call this to set the planning state. Has built in functionality for things that need to happen whenever you switch planning states.
+    void SetPlanningState(PlanningStates newState)
+    {
+        planningState = newState;
 
         switch (planningState)
         {
             case PlanningStates.CHOOSEUNIT:
-                Unit selectedPartyUnit = hoveredUnit.Unit;
-                battleUIManager.SetCurrentBattleUIToUnit((PartyDataObject)selectedPartyUnit.Data);
-                planningState = PlanningStates.CHOOSEACTION;
+                SetSelectedUnit();
                 break;
             case PlanningStates.CHOOSEACTION:
                 break;

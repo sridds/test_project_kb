@@ -982,7 +982,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 342139172, guid: 97faac8cfe67b45529d75d2c5a239a43, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.62605155, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2996,8 +2996,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3c6848e5649604dad6ff17fba39113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 224cda181fc116d499c83c13224ebaee, type: 2}
   selectorSize: {x: 0.8, y: 0.8}
   selectorCenter: {x: 0, y: 1}
+  partyData: {fileID: 11400000, guid: 224cda181fc116d499c83c13224ebaee, type: 2}
 --- !u!4 &1794766561
 Transform:
   m_ObjectHideFlags: 0
@@ -3142,6 +3144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3c2d4b6e64c8942bbb3ca1ae964220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
   selectorSize: {x: 0.68, y: 0.68}
   selectorCenter: {x: 0, y: 0.8}
 --- !u!4 &2018726775
@@ -3283,10 +3286,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.23408966
-    y: 0.116204694
-    width: 0.53126734
-    height: 0.76759064
+    x: 0.1424581
+    y: 0.020958085
+    width: 0.7150838
+    height: 0.9580838
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -3351,6 +3354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3c2d4b6e64c8942bbb3ca1ae964220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
   selectorSize: {x: 1, y: 1}
   selectorCenter: {x: 0, y: 1}
 --- !u!4 &2035043901
@@ -3405,6 +3409,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 2018726774}
   - {fileID: 2035043900}
+  hoveredUnit: {fileID: 0}
   selectedUnit: {fileID: 0}
   BattleEntityPrefab: {fileID: 117627882497754196, guid: 31d75aa3c8b861547b001dedbf6c55fb, type: 3}
   partySpawnX: -1.7
@@ -3751,8 +3756,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3c6848e5649604dad6ff17fba39113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 73b3f0187b7ef984daf9efddf6436c35, type: 2}
   selectorSize: {x: 0.8, y: 0.8}
   selectorCenter: {x: 0, y: 1}
+  partyData: {fileID: 11400000, guid: 73b3f0187b7ef984daf9efddf6436c35, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -30,6 +30,12 @@ public class Party : MonoBehaviour
             RegisterPartyMember(member);
         }
 
+        foreach (PartyBattleEntity entity in FindObjectsByType<PartyBattleEntity>(FindObjectsSortMode.None))
+        {
+            RegisterPartyMemberFromBattle(entity);
+            entity.Init(party[entity.partyData]);
+        }
+
         // Initialize inventory
         myInventory = new Consumable[_maxInventorySize];
         keys = new Key[_maxKeyItemSlots];
@@ -63,6 +69,12 @@ public class Party : MonoBehaviour
         CreatePartyMemberFromData(fieldMember.myDataObject);
     }
 
+    // Adds member to the party. TEMP.
+    public void RegisterPartyMemberFromBattle(PartyBattleEntity battleEntity)
+    {
+        CreatePartyMemberFromData(battleEntity.partyData);
+    }
+
     // Create / load party member data and add to the list of party members. This function will handle loading data from file aswell
     private void CreatePartyMemberFromData(PartyDataObject data)
     {
@@ -77,6 +89,8 @@ public class Party : MonoBehaviour
 
 public class PartyMember : Unit
 {
+    private PartyDataObject partyData;
+
     // Party members carry their own exclusive weapons and armors (like Deltarune) max of 48
     private Weapon[] weapons;
     private Armor[] armors;
@@ -86,15 +100,14 @@ public class PartyMember : Unit
     private Armor equippedArmor;
 
     #region Accessors
+    public PartyDataObject PartyData { get { return partyData; } }
     public Weapon EquippedWeapon { get { return equippedWeapon; } }
     public Armor EquippedArmor { get { return equippedArmor; } }
     #endregion
 
-    public PartyMember(PartyDataObject data, int maxInventorySize)
+    public PartyMember(PartyDataObject data, int maxInventorySize) : base(data) 
     {
-        this.data = data;
         health = new Health();
-
         weapons = new Weapon[maxInventorySize];
         armors = new Armor[maxInventorySize];
     }

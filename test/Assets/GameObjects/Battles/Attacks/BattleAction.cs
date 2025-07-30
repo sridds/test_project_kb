@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewActionData", menuName = "ActionData")]
-public class ActionData : ScriptableObject
+public class BattleAction : MonoBehaviour
 {
     public float mana;
     public float damage;

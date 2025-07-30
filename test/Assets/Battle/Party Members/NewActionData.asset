@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18a98adde0cfde844aad88e73e066602, type: 3}
-  m_Name: Attack
+  m_Name: NewActionData
   m_EditorClassIdentifier: 
   mana: 0
-  damage: 15
-  flatKnockback: 15
-  scalingKnockback: 0.25
+  damage: 0
+  flatKnockback: 0
+  scalingKnockback: 0
