@@ -46,6 +46,12 @@ TagManager:
   - name: Background Elements
     uniqueID: 4226025279
     locked: 0
+  - name: Spotlight Darkness
+    uniqueID: 1638563479
+    locked: 0
+  - name: HighlightedRooms
+    uniqueID: 4132659559
+    locked: 0
   - name: Shadows
     uniqueID: 1356006691
     locked: 0

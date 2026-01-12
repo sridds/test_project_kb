@@ -93,12 +93,13 @@ public enum EActionExecutionMode
 
 public abstract class SequencerAction : MonoBehaviour
 {
+    [Header("Default Sequencer Settings")]
     [SerializeField] protected EActionExecutionMode _executionMode;
     [SerializeField] protected float _delay;
 
     public EActionExecutionMode ExecutionMode => _executionMode;
 
-    public virtual async Task ExecuteActionAsync(Sequencer sequencer, CancellationToken cancellationToken = default)
+    public virtual async Task ExecuteActionAsync(Sequencer sequencer)
     {
         var tcs = new TaskCompletionSource<bool>();
         StartCoroutine(ExecuteWithCallback(() => tcs.SetResult(true)));

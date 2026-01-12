@@ -408,12 +408,12 @@ TextureImporter:
       name: spritesheet_8
       rect:
         serializedVersion: 2
-        x: 48
-        y: 496
-        width: 48
-        height: 64
+        x: 224
+        y: 288
+        width: 32
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1984,6 +1984,28 @@ TextureImporter:
       bones: []
       spriteID: e3a5a2432bab69442ac8f4b36d1fe6a6
       internalID: 1699690040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_73
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 288
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dd2354c319ae25449faa08fbb65a23d
+      internalID: -740375696
       vertices: []
       indices: 
       edges: []

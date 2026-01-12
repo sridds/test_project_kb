@@ -118,7 +118,13 @@ public class DialogueHandler : MonoBehaviour
             _continueArrow.gameObject.SetActive(true);
         }
     }
-    
+
+    /*
+    public async Task HandleDialogueAsync(DialogueData[] data)
+    {
+
+    }
+    */
     public void HandleDialogue(DialogueData[] data)
     {
         // Open dialogue box if it isn't already

@@ -33,13 +33,13 @@ public class MainMenu : MonoBehaviour
 
     private void GetInput()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             index++;
             index %= 2;
         }
 
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             index--;
 
