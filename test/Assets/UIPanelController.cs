@@ -56,12 +56,12 @@ namespace Hank.UI
             closeCoroutine = StartCoroutine(IClose(callback));
         }
 
-        protected virtual void BeforeOpen()
+        protected virtual void PreOpen()
         {
             DispatchOnBeforePanelOpen();
         }
 
-        protected virtual void AfterOpen()
+        protected virtual void PostOpen()
         {
             IsOpen = true;
 
@@ -84,9 +84,9 @@ namespace Hank.UI
         {
             if(openCoroutine != null) StopCoroutine(openCoroutine);
 
-            BeforeOpen();
+            PreOpen();
             yield return StartCoroutine(ITransitionIn());
-            AfterOpen();
+            PostOpen();
 
             callback?.Invoke(this);
         }

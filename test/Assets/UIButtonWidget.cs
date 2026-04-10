@@ -6,12 +6,10 @@ namespace Hank.UI
     {
         public void OnSelectionEnter()
         {
-            Debug.Log("erm what the button");
         }
 
         public void OnSelectionExit()
         {
-            Debug.Log("Erm what the unbutton");
         }
     }
 }
